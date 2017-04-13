@@ -1,4 +1,4 @@
-set( MY_LIB_NAME Math )
+set( MY_LIB_NAME math )
 
 MACRO( ADD_FILTER group_name )
 	SOURCE_GROUP( ${group_name} FILES ${ARGN} )
