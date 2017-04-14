@@ -5,7 +5,7 @@
 namespace mt
 {
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE float segment2_distance_squared(
+	LIBMATH_FUNCTION_INLINE float segment2_distance_squared(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		float & _sc,
@@ -111,7 +111,7 @@ namespace mt
 		return wcd;
 	}   // End of ::DistanceSquared()
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE bool segment2_intersect_segment2(
+	LIBMATH_FUNCTION_INLINE bool segment2_intersect_segment2(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		mt::vec2f & _intersectionPoint )

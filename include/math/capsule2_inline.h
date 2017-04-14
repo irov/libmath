@@ -7,7 +7,7 @@
 namespace mt
 {
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE bool capsule2_intersect_segment(
+	LIBMATH_FUNCTION_INLINE bool capsule2_intersect_segment(
 		const mt::capsule2 & _capsule,
 		const mt::segment2 & _segment )
 	{
@@ -17,7 +17,7 @@ namespace mt
 		return distancesq <= _capsule.radius * _capsule.radius;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE bool capsule2_intersect_capsule2(
+	LIBMATH_FUNCTION_INLINE bool capsule2_intersect_capsule2(
 		const mt::capsule2 & _capsule0,
 		const mt::capsule2 & _capsule1 )
 	{

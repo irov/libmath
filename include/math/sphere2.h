@@ -30,7 +30,7 @@ namespace mt
 		float radius;
 	};
 
-	MENGINE_MATH_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
+	LIBMATH_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
 }
 
 #	if MENGINE_MATH_FORCE_INLINE == 1

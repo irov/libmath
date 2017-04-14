@@ -5,7 +5,7 @@
 namespace mt
 {	
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE bool triangle_intersect_v2( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _p )
+	LIBMATH_FUNCTION_INLINE bool triangle_intersect_v2( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _p )
 	{
 		mt::vec2f v0 = _c - _a;
 		mt::vec2f v1 = _b - _a;
@@ -24,7 +24,7 @@ namespace mt
 		return ((u > 0.f) && (v > 0.f) && (u + v < 1.f));
 	}
 	//////////////////////////////////////////////////////////////////////////
-	MENGINE_MATH_FUNCTION_INLINE bool triangle_intersect_triangle( const mt::vec2f & a1, const mt::vec2f & a2, const mt::vec2f & a3, const mt::vec2f & b1, const mt::vec2f & b2, const mt::vec2f & b3 )
+	LIBMATH_FUNCTION_INLINE bool triangle_intersect_triangle( const mt::vec2f & a1, const mt::vec2f & a2, const mt::vec2f & a3, const mt::vec2f & b1, const mt::vec2f & b2, const mt::vec2f & b3 )
 	{
 		mt::line2f la1;
 		mt::line2f la2;
