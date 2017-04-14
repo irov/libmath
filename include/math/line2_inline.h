@@ -17,7 +17,7 @@ namespace mt
 		return _line.a * _a.x + _line.b * _a.y + _line.c;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	static MENGINE_MATH_INLINE float s_line_dot( float _a, float _b, float _c, float _d )
+	static LIBMATH_FUNCTION_INLINE float s_line_dot( float _a, float _b, float _c, float _d )
 	{
 		return _a * _d - _c * _b;
 	}
