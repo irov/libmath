@@ -42,6 +42,6 @@ namespace mt
 		mt::vec2f & _intersectionPoint );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "segment2_inline.h"
 #	endif

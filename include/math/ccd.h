@@ -12,6 +12,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float & _time );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "ccd_inline.h"
 #	endif

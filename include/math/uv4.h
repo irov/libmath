@@ -42,6 +42,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE mt::vec2f calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "uv4_inline.h"
 #	endif

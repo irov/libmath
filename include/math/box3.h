@@ -31,6 +31,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE bool is_intersect(const box3f & _a, const box3f & _b);
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "box3_inline.h"
 #	endif

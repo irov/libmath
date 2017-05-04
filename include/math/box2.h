@@ -42,6 +42,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE vec2f box_size( const box2f& _box );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "box2_inline.h"
 #	endif

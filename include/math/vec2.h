@@ -113,6 +113,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE float signed_angle(const mt::vec2f & _vec);
 };
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "vec2_inline.h"
 #	endif

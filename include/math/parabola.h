@@ -6,6 +6,6 @@ namespace mt
 {	
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "parabola_inline.h"
 #	endif

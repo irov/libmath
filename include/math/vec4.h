@@ -93,6 +93,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE vec4f homogenize_v4(const vec4f& _rhs);
 };
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "vec4_inline.h"
 #	endif

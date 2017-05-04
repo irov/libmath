@@ -46,6 +46,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE mat2f transpose_m2(const mat2f& _rhs);
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "mat2_inline.h"
 #	endif

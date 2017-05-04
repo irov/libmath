@@ -78,6 +78,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void translate_m3(mat3f & _out, const mat3f & _in, const vec2f & _offset);
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "mat3_inline.h"
 #	endif

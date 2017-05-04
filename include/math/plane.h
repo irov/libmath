@@ -33,6 +33,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void mul_plane_mat4( planef & _out, const planef & _plane, const mt::mat4f & _wm );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "plane_inline.h"
 #	endif

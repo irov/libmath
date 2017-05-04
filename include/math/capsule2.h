@@ -33,6 +33,6 @@ namespace mt
 		const mt::capsule2 & _capsule1 );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "capsule2_inline.h"
 #	endif

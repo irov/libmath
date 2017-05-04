@@ -1,4 +1,4 @@
-set( MY_LIB_NAME math )
+PROJECT(math)
 
 MACRO( ADD_FILTER group_name )
 	SOURCE_GROUP( ${group_name} FILES ${ARGN} )
@@ -174,6 +174,6 @@ config
 	include/math/config.h
 )
 
-INCLUDE_DIRECTORIES( ${MY_LIB_NAME} include/math ) 
+INCLUDE_DIRECTORIES( ${PROJECT_NAME} include/math ) 
 
-ADD_LIBRARY( ${MY_LIB_NAME} ${SRC_FILES} )
+ADD_LIBRARY( ${PROJECT_NAME} STATIC ${SRC_FILES} )

@@ -25,6 +25,6 @@ namespace mt
     LIBMATH_FUNCTION_INLINE bool rect_contains_point( const rectf & _rect, const mt::vec2f & _point );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #		include "rect_inline.h"
 #	endif

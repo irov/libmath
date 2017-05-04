@@ -133,6 +133,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void make_euler_angles( vec3f & _euler, const mat4f & _rotate );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "mat4_inline.h"
 #	endif
