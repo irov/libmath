@@ -274,6 +274,16 @@ namespace mt
 		return	_rhs;
 	}
 
+	LIBMATH_FUNCTION_INLINE float dot_v4_z( const vec4f &a )
+	{
+		return a.w;
+	}
+
+	LIBMATH_FUNCTION_INLINE float dot_v4_v2( const vec4f &a, const vec2f &b )
+	{
+		return a.x * b.x + a.y * b.y + a.w;
+	}
+
 	LIBMATH_FUNCTION_INLINE float dot_v4_v3(const vec4f &a, const vec3f &b)
 	{
 		return a.x * b.x + a.y * b.y + a.z * b.z + a.w;

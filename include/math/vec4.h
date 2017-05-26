@@ -79,7 +79,9 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void sub_v4_v4(vec4f& _out, const vec4f& _a, const vec4f& _b);
 	LIBMATH_FUNCTION_INLINE void scale_v4_v4(vec4f& _out, const vec4f& _a, float _val);
 	LIBMATH_FUNCTION_INLINE void neg_v4(vec4f& _out);
-	
+		
+	LIBMATH_FUNCTION_INLINE float dot_v4_z( const vec4f &a );
+	LIBMATH_FUNCTION_INLINE float dot_v4_v2( const vec4f &a, const vec2f &b );
 	LIBMATH_FUNCTION_INLINE float dot_v4_v3(const vec4f &a, const vec3f &b);
 	LIBMATH_FUNCTION_INLINE float dot_v4_v4(const vec4f &a, const vec4f &b);
 	

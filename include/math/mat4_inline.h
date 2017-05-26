@@ -87,6 +87,33 @@ namespace mt
 		return !operator==(_a, _b);
 	}
 	//////////////////////////////////////////////////////////////////////////
+	LIBMATH_FUNCTION_INLINE void mul_m4_v2_z( vec2f& _out, const mat4f& _m )
+	{
+		_out.x = dot_v4_z( _m.v0 );
+		_out.y = dot_v4_z( _m.v1 );
+	}
+	//////////////////////////////////////////////////////////////////////////
+	LIBMATH_FUNCTION_INLINE void mul_m4_v3_z( vec3f& _out, const mat4f& _m )
+	{
+		_out.x = dot_v4_z( _m.v0 );
+		_out.y = dot_v4_z( _m.v1 );
+		_out.z = dot_v4_z( _m.v2 );
+	}
+	//////////////////////////////////////////////////////////////////////////
+	LIBMATH_FUNCTION_INLINE void mul_m4_v4_z( vec4f& _out, const mat4f& _m )
+	{
+		_out.x = dot_v4_z( _m.v0 );
+		_out.y = dot_v4_z( _m.v1 );
+		_out.z = dot_v4_z( _m.v2 );
+		_out.w = dot_v4_z( _m.v3 );
+	}
+	//////////////////////////////////////////////////////////////////////////
+	LIBMATH_FUNCTION_INLINE void mul_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v )
+	{
+		_out.x = dot_v4_v2( _m.v0, _v );
+		_out.y = dot_v4_v2( _m.v1, _v );
+	}
+	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void mul_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v )
 	{
 		_out.x = dot_v4_v3( _m.v0, _v );

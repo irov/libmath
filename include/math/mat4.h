@@ -50,6 +50,11 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE bool cmp_m4_m4( const mat4f& _a, const mat4f& _b );
 
+	LIBMATH_FUNCTION_INLINE void mul_m4_v2_z( vec2f& _out, const mat4f& _m );
+	LIBMATH_FUNCTION_INLINE void mul_m4_v3_z( vec3f& _out, const mat4f& _m );
+	LIBMATH_FUNCTION_INLINE void mul_m4_v4_z( vec4f& _out, const mat4f& _m );
+
+	LIBMATH_FUNCTION_INLINE void mul_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v );
 	LIBMATH_FUNCTION_INLINE void mul_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v );
 
 	LIBMATH_FUNCTION_INLINE void mul_v3_v3_m4( vec3f& _out, const vec3f& _v, const mat4f& _m );

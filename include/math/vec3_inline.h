@@ -185,6 +185,12 @@ namespace mt
 
 		return len;
 	}
+	//////////////////////////////////////////////////////////////////////////
+	LIBMATH_FUNCTION_INLINE bool cmp_v3_v2( const vec3f& _a, const vec2f& _b )
+	{
+		return mt::equal_f_f( _a.x, _b.x ) == true &&
+			mt::equal_f_f( _a.y, _b.y ) == true;
+	}
     //////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE bool cmp_v3_v3(const vec3f& _a, const vec3f& _b)
 	{

@@ -66,6 +66,7 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void dir_v3_v3(vec3f & _out, const vec3f& _a, const vec3f& _b);
 	LIBMATH_FUNCTION_INLINE float dir_v3_v3_f( vec3f & _out, const vec3f& _a, const vec3f& _b );
 
+	LIBMATH_FUNCTION_INLINE bool cmp_v3_v2( const vec3f& _a, const vec2f& _b );
 	LIBMATH_FUNCTION_INLINE bool cmp_v3_v3( const vec3f& _a, const vec3f& _b );
 
 	LIBMATH_FUNCTION_INLINE void add_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
