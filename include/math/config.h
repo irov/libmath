@@ -4,21 +4,24 @@
 
 namespace mt
 {
-	const float m_pi = 3.14159265358979323846f;
-	const float m_inv_pi = 1.f / m_pi;
-	const float m_negative_pi = -m_pi;
-	const float m_half_pi = m_pi * 0.5f;
-	const float m_two_pi = 2.f * m_pi;
-	const float m_inv_two_pi = 1.f / m_two_pi;
-	const float m_e = 2.71828182845904523536f;
-	const float m_sqrt2 = 1.4142135623730950488016887242097f;
-	const float	m_deg2rad = m_pi / 180.f;
-	const float	m_rad2deg = 180.f / m_pi;
-	const float m_eps = 0.00001f;
-	const float m_eps2 = m_eps * 10.f;	
-	const float m_neps = -m_eps;
-	const float m_1_eps = 1.f + m_eps;
-	const float m_1_neps = 1.f - m_eps;
+    namespace constant
+    {
+        const float pi = 3.14159265358979323846f;
+        const float inv_pi = 1.f / pi;
+        const float negative_pi = -pi;
+        const float half_pi = pi * 0.5f;
+        const float two_pi = 2.f * pi;
+        const float inv_two_pi = 1.f / two_pi;
+        const float e = 2.71828182845904523536f;
+        const float sqrt2 = 1.4142135623730950488016887242097f;
+        const float	deg2rad = pi / 180.f;
+        const float	rad2deg = 180.f / pi;
+        const float eps = 0.00001f;
+        const float eps2 = eps * 10.f;
+        const float neps = -eps;
+        const float one_eps = 1.f + eps;
+        const float one_neps = 1.f - eps;
+    }
 }
 
 #	ifndef LIBMATH_FORCE_INLINE

@@ -646,7 +646,7 @@ namespace mt
 
 		_euler.y = asinf( 2.f * (_q.w * _q.y - _q.x * _q.z) );
 
-		if( mt::m_half_pi - fabsf( _euler.y ) > mt::m_eps )
+		if( mt::constant::half_pi - fabsf( _euler.y ) > mt::constant::eps )
 		{
 			_euler.z = atan2f( 2.f * (_q.x * _q.y + _q.w * _q.z), sqx - sqy - sqz + sqw );
 			_euler.x = atan2f( 2.f * (_q.w * _q.x + _q.y * _q.z), sqw - sqx - sqy + sqz );
@@ -658,7 +658,7 @@ namespace mt
 
 			if( _euler.y < 0.f )
 			{
-				_euler.z = mt::m_pi - _euler.z;
+				_euler.z = mt::constant::pi - _euler.z;
 			}
 		}
 	}

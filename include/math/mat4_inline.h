@@ -1058,13 +1058,13 @@ namespace mt
 			if( mt::equal_f_f( sinY, -1.f ) == true )
 			{
 				y = x + atan2f( _rotate.v0.y, _rotate.v0.z );
-				z = m_half_pi;
+				z = constant::half_pi;
 				
 			}
 			else
 			{				
 				y = -x + atan2f( -_rotate.v0.y, -_rotate.v0.z );
-				z = -m_half_pi;
+				z = -constant::half_pi;
 			}
 		}
 		else if( mt::equal_f_f( sinY, 0.f ) == true )

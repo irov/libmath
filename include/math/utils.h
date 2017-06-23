@@ -79,22 +79,22 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE bool equal_f_f( float _a, float _b )
 	{
-		return (_a >= (_b + mt::m_neps)) && (_a <= (_b + mt::m_eps));
+		return (_a >= (_b + mt::constant::neps)) && (_a <= (_b + mt::constant::eps));
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE bool equal_f_z( float _f )
 	{
-		return (_f >= mt::m_neps) && (_f <= mt::m_eps);
+		return (_f >= mt::constant::neps) && (_f <= mt::constant::eps);
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE bool equal_f_1( float _f )
 	{
-		return (_f >= mt::m_1_eps) && (_f <= mt::m_1_neps);
+		return (_f >= mt::constant::one_eps) && (_f <= mt::constant::one_neps);
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE bool greatequal_f_z( float _f )
 	{
-		return _f >= mt::m_neps;
+		return _f >= mt::constant::one_neps;
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE uint32_t factorial( uint32_t _value )

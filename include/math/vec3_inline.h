@@ -441,20 +441,20 @@ namespace mt
 
 		if( (n.x <= 0) && (n.y <= 0) )
 		{
-			result = m_pi + asinf(-n.y);
+			result = constant::pi + asinf(-n.y);
 		}
 
 		if( (n.x >= 0) && (n.y <= 0) )
 		{
-			result = m_half_pi - asinf(-n.y);
+			result = constant::half_pi - asinf(-n.y);
 		}
 
 		if( (n.x <= 0) && (n.y >= 0) )
 		{
-			result = m_pi - asinf(n.y);
+			result = constant::pi - asinf(n.y);
 		}
 
-		return m_half_pi - result;
+		return constant::half_pi - result;
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void linerp_v3( mt::vec3f & _out, const mt::vec3f & _in1, const mt::vec3f & _in2, float _scale )

@@ -7,16 +7,16 @@ namespace mt
 	{
 		if( _angle < 0.f )
 		{
-			float pi_count = floorf(_angle * mt::m_inv_two_pi);
-			float pi_abs = pi_count * mt::m_two_pi;
+			float pi_count = floorf(_angle * mt::constant::inv_two_pi);
+			float pi_abs = pi_count * mt::constant::two_pi;
 
 			_angle -= pi_abs;
 		}
 		
-		if( _angle > mt::m_two_pi )
+		if( _angle > mt::constant::two_pi )
 		{
-			float pi_count = floorf(_angle * mt::m_inv_two_pi);
-			float pi_abs = pi_count * mt::m_two_pi;
+			float pi_count = floorf(_angle * mt::constant::inv_two_pi);
+			float pi_abs = pi_count * mt::constant::two_pi;
 
 			_angle -= pi_abs;
 		}
@@ -26,9 +26,9 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE float angle_norm2(float _angle)
 	{
-		float angle2 = mt::angle_norm( _angle + mt::m_pi );
+		float angle2 = mt::angle_norm( _angle + mt::constant::pi );
 		
-		angle2 += mt::m_negative_pi;
+		angle2 += mt::constant::negative_pi;
 
 		return angle2;
 	}
@@ -44,18 +44,18 @@ namespace mt
 		{
 			float dist = norm_angle_to - norm_angle_from;
 
-			if( (norm_angle_from + mt::m_two_pi) - norm_angle_to < dist )
+			if( (norm_angle_from + mt::constant::two_pi) - norm_angle_to < dist )
 			{
-				correct_angle = norm_angle_to - mt::m_two_pi;
+				correct_angle = norm_angle_to - mt::constant::two_pi;
 			}
 		}
 		else
 		{
 			float dist = norm_angle_from - norm_angle_to;
 
-			if( (norm_angle_to + mt::m_two_pi) - norm_angle_from < dist )
+			if( (norm_angle_to + mt::constant::two_pi) - norm_angle_from < dist )
 			{
-				correct_angle = norm_angle_to + mt::m_two_pi;
+				correct_angle = norm_angle_to + mt::constant::two_pi;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace mt
 	{
 		if (_x <= -1.f) 
 		{
-			return mt::m_pi;
+			return mt::constant::pi;
 		}
 
 		if (_x >= 1.f) 
@@ -160,7 +160,7 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE float cosf_fast( float x )
 	{
-		x = mt::angle_norm2( x + mt::m_half_pi );
+		x = mt::angle_norm2( x + mt::constant::half_pi );
 
 		float cos = sinf_fast_pi_pi( x );
 

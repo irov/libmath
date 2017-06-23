@@ -452,7 +452,7 @@ namespace mt
 
 		if( _vec.y < 0.f )
 		{
-			return mt::m_two_pi - x;
+			return mt::constant::two_pi - x;
 		}
 
 		return x;
