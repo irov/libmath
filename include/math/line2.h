@@ -19,6 +19,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void line_intersect_v2_np( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f & _p );
 };
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "line2_inline.h"
 #	endif

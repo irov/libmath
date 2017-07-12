@@ -17,6 +17,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE float sinf_fast( float x );
 }
 
-#	if MENGINE_MATH_FORCE_INLINE == 1
+#	if LIBMATH_FORCE_INLINE == 1
 #	include "angle_inline.h"
 #	endif

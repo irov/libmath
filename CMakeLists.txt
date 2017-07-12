@@ -22,6 +22,13 @@ utils
 )
 
 ADD_FILTER(
+isometric
+    src/isometric.cpp
+	include/math/isometric.h
+    include/math/isometric_inline.h
+)
+
+ADD_FILTER(
 rect
     src/rect.cpp
 	include/math/rect.h
