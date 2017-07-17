@@ -18,7 +18,7 @@ namespace mt
 	}
 	//////////////////////////////////////////////////////////////////////////
 	template<class T>
-	LIBMATH_INLINE T ltrim_f( T _value, T _trim )
+	LIBMATH_INLINE T ltrim( T _value, T _trim )
 	{
 		if( _value < _trim )
 		{
@@ -29,7 +29,7 @@ namespace mt
 	}
 	//////////////////////////////////////////////////////////////////////////
 	template<class T>
-	LIBMATH_INLINE T rtrim_f( T _value, T _trim )
+	LIBMATH_INLINE T rtrim( T _value, T _trim )
 	{
 		if( _value > _trim )
 		{
@@ -56,7 +56,7 @@ namespace mt
 	}
 	//////////////////////////////////////////////////////////////////////////
 	template< typename T >
-	LIBMATH_FUNCTION_INLINE T clamp( const T & _leftBound, const T & _value, const T & _rightBound )
+    LIBMATH_INLINE T clamp( const T & _leftBound, const T & _value, const T & _rightBound )
 	{
 		T clampedValue = _value;
 
@@ -194,4 +194,9 @@ namespace mt
 	{
 		_out = _in1 + (_in2 - _in1) * _scale;
 	}
+    //////////////////////////////////////////////////////////////////////////
+    LIBMATH_INLINE float dot2_f( float _a, float _b, float _c, float _d )
+    {
+        return _a * _d - _c * _b;
+    }
 }

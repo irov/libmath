@@ -21,7 +21,3 @@ namespace mt
         sy = ix * hh + iy * hh;
     }
 }
-
-#	if LIBMATH_FORCE_INLINE == 1
-#	include "isometric_inline.h"
-#	endif
