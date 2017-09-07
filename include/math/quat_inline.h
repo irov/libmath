@@ -298,11 +298,11 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void q_from_angle_axis( quatf& out, const vec3f & _rhs, float _val )
 	{
 		float hangle = 0.01745329251994329547f * _val * 0.5f;
-		float fsin = sinf_fast( hangle );
+		float fsin = ::sinf( hangle );
 
 		float i_length = 1.0f / sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
 
-		out.w = cosf_fast( hangle );
+		out.w = ::cosf( hangle );
 		out.x = fsin * _rhs[0] * i_length;
 		out.y = fsin * _rhs[1] * i_length;
 		out.z = fsin * _rhs[2] * i_length;
@@ -349,9 +349,9 @@ namespace mt
 			*/
 
 		float angle = sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
-		float fsin = sinf_fast( angle );
+		float fsin = ::sinf( angle );
 
-		_out.w = cosf_fast( angle );
+		_out.w = ::cosf( angle );
 
 		if( mt::equal_f_z( fsin ) == false )
 		{
@@ -387,8 +387,8 @@ namespace mt
 
 		if( fabsf( _rhs[0] ) < 1.f )
 		{
-			float angle = cosf_fast( _rhs.w );
-			float fsin = sinf_fast( angle );
+			float angle = ::cosf( _rhs.w );
+			float fsin = ::sinf( angle );
 
 			if( mt::equal_f_z( fsin ) == false )
 			{
@@ -610,12 +610,12 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE void make_quat_from_euler( quatf & _out, const mt::vec3f & _euler )
 	{
-		float c1 = cosf_fast( _euler.z * 0.5f );
-		float c2 = cosf_fast( _euler.y * 0.5f );
-		float c3 = cosf_fast( _euler.x * 0.5f );
-		float s1 = sinf_fast( _euler.z * 0.5f );
-		float s2 = sinf_fast( _euler.y * 0.5f );
-		float s3 = sinf_fast( _euler.x * 0.5f );
+		float c1 = ::cosf( _euler.z * 0.5f );
+		float c2 = ::cosf( _euler.y * 0.5f );
+		float c3 = ::cosf( _euler.x * 0.5f );
+		float s1 = ::sinf( _euler.z * 0.5f );
+		float s2 = ::sinf( _euler.y * 0.5f );
+		float s3 = ::sinf( _euler.x * 0.5f );
 
 		quatf q;
 		q.x = c1 * c2 * s3 - s1 * s2 * c3;
@@ -628,8 +628,8 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE void make_quat_from_angle( quatf & _out, float _angle )
 	{
-		float c = cosf_fast( _angle * 0.5f );
-		float s = sinf_fast( _angle * 0.5f );
+		float c = ::cosf( _angle * 0.5f );
+		float s = ::sinf( _angle * 0.5f );
 
 		_out.x = 0.f;
 		_out.y = 0.f;

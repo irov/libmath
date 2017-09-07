@@ -13,8 +13,6 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE float angle_delta_deg( float _angle1, float _angle2 );
 	LIBMATH_FUNCTION_INLINE float acos32( float _x );
 	LIBMATH_FUNCTION_INLINE float angle_in_interval_deg( float _angle, float _min, float _max );	
-	LIBMATH_FUNCTION_INLINE float cosf_fast( float x );
-	LIBMATH_FUNCTION_INLINE float sinf_fast( float x );
 }
 
 #	if LIBMATH_FORCE_INLINE == 1

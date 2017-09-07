@@ -16,6 +16,14 @@ namespace mt
 		, v3( _rhs.v3 )
 	{
 	}
+    //////////////////////////////////////////////////////////////////////////
+    LIBMATH_METHOD_INLINE mat4f::mat4f( const vec4f & _v0, const vec4f & _v1, const vec4f & _v2, const vec4f & _v3 )
+        :v0( _v0 )
+        , v1( _v1 )
+        , v2( _v2 )
+        , v3( _v3 )
+    {
+    }
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_METHOD_INLINE vec4f& mat4f::operator[]( size_t i )
 	{
@@ -68,6 +76,16 @@ namespace mt
 	{
 		return v0.buff();
 	}
+    LIBMATH_METHOD_INLINE const mat4f & mat4f::identity()
+    {
+        static mat4f ident(
+            vec4f( 1.f, 0.f, 0.f, 0.f ),
+            vec4f( 0.f, 1.f, 0.f, 0.f ),
+            vec4f( 0.f, 0.f, 1.f, 0.f ),
+            vec4f( 0.f, 0.f, 0.f, 1.f ) );
+
+        return ident;
+    }
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE bool cmp_m4_m4( const mat4f& _a, const mat4f& _b )
 	{
@@ -630,8 +648,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void rotate_axis_m4( mat4f &out, const vec3f &u, float degrees )
 	{
-		float c = cosf_fast( degrees );
-		float s = sinf_fast( degrees );
+		float c = ::cosf( degrees );
+		float s = ::sinf( degrees );
 		float ic = 1.f - c;
 
 		float icux = ic*u.x;
@@ -761,13 +779,13 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_m4_euler( mat4f & _out, float _x, float _y, float _z )
 	{
-		float ca = cosf_fast( _x );
-		float cb = cosf_fast( _y );
-		float cy = cosf_fast( _z );
+		float ca = ::cosf( _x );
+		float cb = ::cosf( _y );
+		float cy = ::cosf( _z );
 
-		float sa = sinf_fast( _x );
-		float sb = sinf_fast( _y );
-		float sy = sinf_fast( _z );
+		float sa = ::sinf( _x );
+		float sb = ::sinf( _y );
+		float sy = ::sinf( _z );
 
 		_out.v0.x = ca * cb;
 		_out.v0.y = ca * sb * sy - sa * cy;
@@ -857,8 +875,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_x_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = cosf_fast( _angle );
-		float sina = sinf_fast( _angle );
+		float cosa = ::cosf( _angle );
+		float sina = ::sinf( _angle );
 
 		_out.v0.x = 1.f;
 		_out.v0.y = 0.f;
@@ -883,8 +901,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_y_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = cosf_fast( _angle );
-		float sina = sinf_fast( _angle );
+		float cosa = ::cosf( _angle );
+		float sina = ::sinf( _angle );
 
 		_out.v0.x = cosa;
 		_out.v0.y = 0.f;
@@ -909,8 +927,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_z_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = cosf_fast( _angle );
-		float sina = sinf_fast( _angle );
+		float cosa = ::cosf( _angle );
+		float sina = ::sinf( _angle );
 
 		_out.v0.x = cosa;
 		_out.v0.y = -sina;
@@ -1077,7 +1095,7 @@ namespace mt
 		else
 		{
 			y = -asinf( sinY );
-			float cosY = cosf_fast( y );
+			float cosY = ::cosf( y );
 			float one_div_cosY = 1.f / cosY;
 
 			x = atan2f( _rotate.v1.x * one_div_cosY, _rotate.v0.x * one_div_cosY );

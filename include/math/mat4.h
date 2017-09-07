@@ -20,6 +20,7 @@ namespace mt
 		vec4f v3;
 
 		LIBMATH_METHOD_INLINE mat4f();
+        LIBMATH_METHOD_INLINE mat4f( const vec4f & _v0, const vec4f & _v1, const vec4f & _v2, const vec4f & _v3 );
 		LIBMATH_METHOD_INLINE mat4f( const mat4f& _rhs );
 
 		LIBMATH_METHOD_INLINE vec4f& operator [] ( size_t i );
@@ -31,6 +32,8 @@ namespace mt
 
 		LIBMATH_METHOD_INLINE float * buff();
 		LIBMATH_METHOD_INLINE const float * buff() const;
+
+        static LIBMATH_METHOD_INLINE const mat4f & identity();
 	};
 
 	LIBMATH_FUNCTION_INLINE bool operator==(const mat4f& _a, const mat4f& _b);

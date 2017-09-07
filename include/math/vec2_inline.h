@@ -407,9 +407,9 @@ namespace mt
 
 		if( theta != 0.0f )
 		{
-			float d = 1.0f / sinf_fast( theta );
-			float s0 = sinf_fast( (1.0f - t) * theta );
-			float s1 = sinf_fast( t * theta );
+			float d = 1.0f / ::sinf( theta );
+			float s0 = ::sinf( (1.0f - t) * theta );
+			float s1 = ::sinf( t * theta );
 
 			mt::vec2f s2( (a.x * s0 + b.x * s1) * d, (a.y * s0 + b.y * s1) * d );
 
@@ -422,16 +422,16 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void rotate_v2( vec2f& _out, float _angle )
 	{
 		vec2f _v = _out;
-		float sin_angle = sinf_fast( _angle );
-		float cos_angle = cosf_fast( _angle );
+		float sin_angle = ::sinf( _angle );
+		float cos_angle = ::cosf( _angle );
 		_out.x = cos_angle * _v.x - sin_angle * _v.y;
 		_out.y = cos_angle * _v.y + sin_angle * _v.x;
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void direction( mt::vec2f & _vec, float _angle )
 	{
-		float cos_angle = cosf_fast( _angle );
-		float sin_angle = sinf_fast( _angle );
+		float cos_angle = ::cosf( _angle );
+		float sin_angle = ::sinf( _angle );
 
 		_vec.x = cos_angle;
 		_vec.y = sin_angle;

@@ -1,6 +1,8 @@
 #	include "angle.h"
 
-namespace	mt
+#	include <math.h>
+
+namespace mt
 { 
 	LIBMATH_METHOD_INLINE mat3f::mat3f()
 	{}
@@ -311,8 +313,8 @@ namespace	mt
 
 	LIBMATH_FUNCTION_INLINE void make_rotate_x_axis_m3(mat3f & _out, float _angle)
 	{
-		float cosa = cosf_fast(_angle);
-		float sina = sinf_fast(_angle);
+		float cosa = ::cosf(_angle);
+		float sina = ::sinf(_angle);
 
 		_out.v0.x = 1.f;
 		_out.v0.y = 0.f;
@@ -329,8 +331,8 @@ namespace	mt
 
 	LIBMATH_FUNCTION_INLINE void make_rotate_y_axis_m3(mat3f & _out, float _angle)
 	{
-		float cosa = cosf_fast(_angle);
-		float sina = sinf_fast(_angle);
+		float cosa = ::cosf(_angle);
+		float sina = ::sinf(_angle);
 
 		_out.v0.x = cosa;
 		_out.v0.y = 0.f;
@@ -347,8 +349,8 @@ namespace	mt
 
 	LIBMATH_FUNCTION_INLINE void make_rotate_z_axis_m3(mat3f & _out, float _angle)
 	{
-		float cosa = cosf_fast(_angle);
-		float sina = sinf_fast(_angle);
+		float cosa = ::cosf(_angle);
+		float sina = ::sinf(_angle);
 
 		_out.v0.x = cosa;
 		_out.v0.y = -sina;
