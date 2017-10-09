@@ -1,6 +1,6 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
 namespace mt
 {
@@ -114,5 +114,5 @@ namespace mt
 };
 
 #	if LIBMATH_FORCE_INLINE == 1
-#	include "vec2_inline.h"
+#	include "math/vec2_inline.h"
 #	endif

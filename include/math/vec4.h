@@ -1,14 +1,8 @@
 #	pragma once
 
-/*	
-	Vector4 class.
-	-	basic operation with vectors(+,-,*,=,==).
-	-	dot, norm, homogenize.
-*/
+#	include "math/config.h"
 
-#	include "config.h"
-
-#	include "vec3.h"
+#	include "math/vec3.h"
 
 namespace mt
 {
@@ -96,5 +90,5 @@ namespace mt
 };
 
 #	if LIBMATH_FORCE_INLINE == 1
-#	include "vec4_inline.h"
+#	include "math/vec4_inline.h"
 #	endif

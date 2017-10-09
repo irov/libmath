@@ -1,9 +1,9 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
-#	include "mat3.h"
-#	include "mat4.h"
+#	include "math/mat3.h"
+#	include "math/mat4.h"
 
 namespace mt
 {
@@ -43,5 +43,5 @@ namespace mt
 }
 
 #	if LIBMATH_FORCE_INLINE == 1
-#	include "box2_inline.h"
+#	include "math/box2_inline.h"
 #	endif

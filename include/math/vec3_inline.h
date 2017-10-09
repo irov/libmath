@@ -1,6 +1,4 @@
-#	include "utils.h"
-
-#	include <math.h>
+#	include "math/utils.h"
 
 namespace mt
 {
@@ -89,7 +87,8 @@ namespace mt
 	LIBMATH_METHOD_INLINE float vec3f::length()	const
 	{
 		float sqrlen = this->sqrlength();
-        float len = sqrtf(sqrlen);
+
+        float len = math_sqrtf(sqrlen);
 
 		return len;
 	}
@@ -430,28 +429,29 @@ namespace mt
 
 		float result = 0.f;
 
-		vec2f d(dir[ind1], dir[ind2]);
-		vec2f n;
+        float dx = dir[ind1];
+        float dy = dir[ind2];
+
+        vec2f d( dx, dy );
+
+        vec2f n;
 		mt::norm_v2_v2(n, d);
 
-		if( (n.x >= 0) && (n.y >= 0) )
+		if( n.x >= 0.f && n.y >= 0.f )
 		{
-			result = asinf(n.y);
+			result = math_asinf(n.y);
 		}
-
-		if( (n.x <= 0) && (n.y <= 0) )
+        else if( n.x <= 0.f && n.y <= 0.f )
 		{
-			result = constant::pi + asinf(-n.y);
+			result = constant::pi + math_asinf(-n.y);
 		}
-
-		if( (n.x >= 0) && (n.y <= 0) )
+		else if( n.x >= 0.f && n.y <= 0.f )
 		{
-			result = constant::half_pi - asinf(-n.y);
+			result = constant::half_pi - math_asinf(-n.y);
 		}
-
-		if( (n.x <= 0) && (n.y >= 0) )
+        else if( n.x <= 0.f && n.y >= 0.f )
 		{
-			result = constant::pi - asinf(n.y);
+			result = constant::pi - math_asinf(n.y);
 		}
 
 		return constant::half_pi - result;

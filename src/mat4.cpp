@@ -1,5 +1,5 @@
-#	include "mat4.h"
+#	include "math/mat4.h"
 
 #	if LIBMATH_FORCE_INLINE == 0
-#	include "mat4_inline.h"
+#	include "math/mat4_inline.h"
 #	endif

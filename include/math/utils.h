@@ -1,6 +1,7 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
+#	include "math/constant.h"
 
 #	include <stdint.h>
 

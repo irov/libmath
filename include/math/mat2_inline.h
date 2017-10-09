@@ -1,6 +1,4 @@
-#	include "angle.h"
-
-#	include <math.h>
+#	include "math/angle.h"
 
 namespace mt
 { 
@@ -9,8 +7,8 @@ namespace mt
 
 	LIBMATH_METHOD_INLINE mat2f::mat2f( float angle )
 	{
-		float c = ::cosf( angle );
-		float s = ::sinf( angle );
+		float c = math_cosf( angle );
+		float s = math_sinf( angle );
 		v0.x = c; v1.x = -s;
 		v0.y = s; v1.y = c;
 	}

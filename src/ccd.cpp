@@ -1,6 +1,6 @@
-#	include	"ccd.h"
+#	include	"math/ccd.h"
 
 #	if LIBMATH_FORCE_INLINE == 0
-#	include "ccd_inline.h"
+#	include "math/ccd_inline.h"
 #	endif
 

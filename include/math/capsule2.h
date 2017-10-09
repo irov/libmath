@@ -1,8 +1,8 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
-#	include "segment2.h"
+#	include "math/segment2.h"
 
 namespace mt
 {
@@ -34,5 +34,5 @@ namespace mt
 }
 
 #	if LIBMATH_FORCE_INLINE == 1
-#		include "capsule2_inline.h"
+#		include "math/capsule2_inline.h"
 #	endif

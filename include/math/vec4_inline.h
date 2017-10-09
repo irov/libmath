@@ -1,6 +1,4 @@
-#	include "utils.h"
-
-#	include <math.h>
+#	include "math/utils.h"
 
 namespace mt
 {
@@ -117,8 +115,9 @@ namespace mt
 
 	LIBMATH_METHOD_INLINE float vec4f::length() const
 	{
-		float sqlen = sqrlength();
-		float len = sqrtf(sqlen);
+		float sqlen = this->sqrlength();
+
+		float len = math_sqrtf(sqlen);
 
 		return len;
 	}

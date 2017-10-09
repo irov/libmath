@@ -1,6 +1,6 @@
-#	include	"angle.h"
+#	include	"math/angle.h"
 
 #	if LIBMATH_FORCE_INLINE == 0
-#	include "angle_inline.h"
+#	include "math/angle_inline.h"
 #	endif
 

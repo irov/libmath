@@ -1,6 +1,4 @@
-#	include <math.h>
-
-#	include "utils.h"
+#	include "math/utils.h"
 
 namespace mt
 {
@@ -36,7 +34,7 @@ namespace mt
 			return false;
 		}
 
-		float z = dist - ::sqrtf( r * r - x );
+		float z = dist - math_sqrtf( r * r - x );
 
 		_time = z / nSpeedLen;
 		mt::norm_v3_v3( _normal, nPos + nSpeedDir * z );

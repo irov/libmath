@@ -1,6 +1,4 @@
-#	include "angle.h"
-
-#	include <math.h>
+#	include "math/angle.h"
 
 namespace mt
 {
@@ -315,6 +313,9 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void mul_m4_m4( mat4f& _out, const mat4f& _a, const mat4f& _b )
 	{
+        math_assert( &_out != &_a );
+        math_assert( &_out != &_b );
+
 		mul_v4_m4( _out.v0, _a.v0, _b );
 		mul_v4_m4( _out.v1, _a.v1, _b );
 		mul_v4_m4( _out.v2, _a.v2, _b );
@@ -331,6 +332,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void mul_m4_m3( mat4f& _out, const mat4f& _a, const mat3f& _b )
 	{
+        math_assert( &_out != &_a );
+
 		mul_v4_m3_i( _out.v0, _a.v0, _b );
 		mul_v4_m3_i( _out.v1, _a.v1, _b );
 		mul_v4_m3_i( _out.v2, _a.v2, _b );
@@ -648,8 +651,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void rotate_axis_m4( mat4f &out, const vec3f &u, float degrees )
 	{
-		float c = ::cosf( degrees );
-		float s = ::sinf( degrees );
+		float c = math_cosf( degrees );
+		float s = math_sinf( degrees );
 		float ic = 1.f - c;
 
 		float icux = ic*u.x;
@@ -727,7 +730,7 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE void make_projection_fov_m4( mat4f & _out, float fovy, float aspect, float zn, float zf )
 	{
-		float yscale = 1.f / tanf( fovy * 0.5f );
+		float yscale = 1.f / math_tanf( fovy * 0.5f );
 		float xscale = yscale / aspect;
 
 		_out.v0.x = xscale;
@@ -753,7 +756,7 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_projection_fov2_m4( mat4f &_out, float _fov, float _aspect, float _zn, float _zf )
 	{
-		float yscale = 1.f / tanf( _fov * 0.5f );
+		float yscale = 1.f / math_tanf( _fov * 0.5f );
 		float xscale = yscale / _aspect;
 
 		_out.v0.x = xscale;
@@ -779,13 +782,13 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_m4_euler( mat4f & _out, float _x, float _y, float _z )
 	{
-		float ca = ::cosf( _x );
-		float cb = ::cosf( _y );
-		float cy = ::cosf( _z );
+		float ca = math_cosf( _x );
+		float cb = math_cosf( _y );
+		float cy = math_cosf( _z );
 
-		float sa = ::sinf( _x );
-		float sb = ::sinf( _y );
-		float sy = ::sinf( _z );
+		float sa = math_sinf( _x );
+		float sb = math_sinf( _y );
+		float sy = math_sinf( _z );
 
 		_out.v0.x = ca * cb;
 		_out.v0.y = ca * sb * sy - sa * cy;
@@ -875,8 +878,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_x_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = ::cosf( _angle );
-		float sina = ::sinf( _angle );
+		float cosa = math_cosf( _angle );
+		float sina = math_sinf( _angle );
 
 		_out.v0.x = 1.f;
 		_out.v0.y = 0.f;
@@ -901,8 +904,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_y_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = ::cosf( _angle );
-		float sina = ::sinf( _angle );
+		float cosa = math_cosf( _angle );
+		float sina = math_sinf( _angle );
 
 		_out.v0.x = cosa;
 		_out.v0.y = 0.f;
@@ -927,8 +930,8 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void make_rotate_z_axis_m4( mat4f & _out, float _angle )
 	{
-		float cosa = ::cosf( _angle );
-		float sina = ::sinf( _angle );
+		float cosa = math_cosf( _angle );
+		float sina = math_sinf( _angle );
 
 		_out.v0.x = cosa;
 		_out.v0.y = -sina;
@@ -1069,37 +1072,39 @@ namespace mt
 		float y;
 		float z;		
 
-		if( mt::equal_f_f( fabsf( sinY ), 1.f ) == true )
+        float fsinY = math_fabsf( sinY );
+
+		if( mt::equal_f_f( fsinY, 1.f ) == true )
 		{
 			x = 0.f;
 
 			if( mt::equal_f_f( sinY, -1.f ) == true )
 			{
-				y = x + atan2f( _rotate.v0.y, _rotate.v0.z );
+				y = x + math_atan2f( _rotate.v0.y, _rotate.v0.z );
 				z = constant::half_pi;
 				
 			}
 			else
 			{				
-				y = -x + atan2f( -_rotate.v0.y, -_rotate.v0.z );
+				y = -x + math_atan2f( -_rotate.v0.y, -_rotate.v0.z );
 				z = -constant::half_pi;
 			}
 		}
 		else if( mt::equal_f_f( sinY, 0.f ) == true )
 		{			
-			x = atan2f( _rotate.v1.x, _rotate.v0.x );
+			x = math_atan2f( _rotate.v1.x, _rotate.v0.x );
 			y = 0.f;
-			z = atan2f( _rotate.v2.y, _rotate.v2.z );
+			z = math_atan2f( _rotate.v2.y, _rotate.v2.z );
 			
 		}
 		else
 		{
-			y = -asinf( sinY );
-			float cosY = ::cosf( y );
+			y = -math_asinf( sinY );
+			float cosY = math_cosf( y );
 			float one_div_cosY = 1.f / cosY;
 
-			x = atan2f( _rotate.v1.x * one_div_cosY, _rotate.v0.x * one_div_cosY );
-			z = atan2f( _rotate.v2.y * one_div_cosY, _rotate.v2.z * one_div_cosY );
+			x = math_atan2f( _rotate.v1.x * one_div_cosY, _rotate.v0.x * one_div_cosY );
+			z = math_atan2f( _rotate.v2.y * one_div_cosY, _rotate.v2.z * one_div_cosY );
 		}
 
 		_euler.x = x;

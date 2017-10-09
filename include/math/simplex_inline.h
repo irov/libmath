@@ -1,6 +1,4 @@
-#	include "utils.h"
-
-#	include <math.h>
+#	include "math/utils.h"
 
 namespace mt
 {

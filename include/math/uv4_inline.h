@@ -1,9 +1,7 @@
-#	include "uv4.h"
+#	include "math/line2.h"
+#	include "math/vec3.h"
 
-#	include "line2.h"
-#	include "vec3.h"
-
-#	include "utils.h"
+#	include "math/utils.h"
 
 namespace mt
 {

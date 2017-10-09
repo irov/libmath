@@ -1,6 +1,6 @@
-#	include	"isometric.h"
+#	include	"math/isometric.h"
 
 #	if LIBMATH_FORCE_INLINE == 0
-#	include "isometric_inline.h"
+#	include "math/isometric_inline.h"
 #	endif
 

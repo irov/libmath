@@ -1,4 +1,4 @@
-#	include <math.h>
+#   include "math/constant.h"
 
 namespace mt
 {
@@ -7,7 +7,7 @@ namespace mt
 	{
 		if( _angle < 0.f )
 		{
-			float pi_count = floorf(_angle * mt::constant::inv_two_pi);
+			float pi_count = math_floorf(_angle * mt::constant::inv_two_pi);
 			float pi_abs = pi_count * mt::constant::two_pi;
 
 			_angle -= pi_abs;
@@ -15,7 +15,7 @@ namespace mt
 		
 		if( _angle > mt::constant::two_pi )
 		{
-			float pi_count = floorf(_angle * mt::constant::inv_two_pi);
+			float pi_count = math_floorf(_angle * mt::constant::inv_two_pi);
 			float pi_abs = pi_count * mt::constant::two_pi;
 
 			_angle -= pi_abs;
@@ -78,7 +78,7 @@ namespace mt
 	{
 		if ((_angle >= 360.f) || (_angle < 0.f))
 		{
-			_angle -= floorf( _angle / 360.f ) * 360.f;
+			_angle -= math_floorf( _angle / 360.f ) * 360.f;
 		}
 
 		return _angle;
@@ -113,7 +113,7 @@ namespace mt
 			return 0.f;
 		}
 
-		return ::acosf(_x);
+		return math_acosf(_x);
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE float angle_in_interval_deg( float _angle, float _min, float _max )

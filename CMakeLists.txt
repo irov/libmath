@@ -186,13 +186,17 @@ parabola
     include/math/parabola_inline.h
 )
 
+ADD_FILTER(
+config
+    include/math/constant.h
+)
 
 ADD_FILTER(
 config
-	include/math/config.h
+	include/math/config.h    
 )
 
-INCLUDE_DIRECTORIES( ${PROJECT_NAME} include/math ) 
+INCLUDE_DIRECTORIES( ${PROJECT_NAME} include ) 
 
 ADD_LIBRARY( ${PROJECT_NAME} STATIC ${SRC_FILES} )
 

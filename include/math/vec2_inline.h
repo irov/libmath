@@ -1,8 +1,6 @@
-#	include "angle.h"
+#	include "math/angle.h"
 
-#	include "utils.h"
-
-#	include <math.h>
+#	include "math/utils.h"
 
 namespace mt
 {
@@ -109,7 +107,7 @@ namespace mt
 	{
 		float sql = sqrlength();
 
-		return sqrtf( sql );
+		return math_sqrtf( sql );
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_METHOD_INLINE float * vec2f::buff()
@@ -399,39 +397,51 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE vec2f slerp_v2_v2( const vec2f& a, const vec2f& b, float t )
 	{
-		float s = sqrtf( a.sqrlength() * b.sqrlength() );
+        float asqrl = a.sqrlength();
+        float bsqrl = b.sqrlength();
+
+		float s = math_sqrtf( asqrl * bsqrl );
 		float cos = mt::dot_v2_v2( a, b ) / s;
-		if( cos > 1.0f ) cos = 1.0f;
-		else if( cos < -1.0f ) cos = -1.0f;
-		float theta = acosf( cos );
+        if( cos > 1.f )
+        {
+            cos = 1.f;
+        }
+        else if( cos < -1.f )
+        {
+            cos = -1.f;
+        }
 
-		if( theta != 0.0f )
-		{
-			float d = 1.0f / ::sinf( theta );
-			float s0 = ::sinf( (1.0f - t) * theta );
-			float s1 = ::sinf( t * theta );
+		float theta = math_acosf( cos );
 
-			mt::vec2f s2( (a.x * s0 + b.x * s1) * d, (a.y * s0 + b.y * s1) * d );
+        if( theta == 0.f )
+        {
+            return a;
+        }
 
-			return s2;
-		}
+        float d = 1.f / math_sinf( theta );
+        float s0 = math_sinf( (1.f - t) * theta );
+        float s1 = math_sinf( t * theta );
 
-		return a;
+        float s2x = (a.x * s0 + b.x * s1) * d;
+        float s2y = (a.y * s0 + b.y * s1) * d;
+        mt::vec2f s2( s2x, s2y );
+
+        return s2;    
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void rotate_v2( vec2f& _out, float _angle )
 	{
 		vec2f _v = _out;
-		float sin_angle = ::sinf( _angle );
-		float cos_angle = ::cosf( _angle );
+		float sin_angle = math_sinf( _angle );
+		float cos_angle = math_cosf( _angle );
 		_out.x = cos_angle * _v.x - sin_angle * _v.y;
 		_out.y = cos_angle * _v.y + sin_angle * _v.x;
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void direction( mt::vec2f & _vec, float _angle )
 	{
-		float cos_angle = ::cosf( _angle );
-		float sin_angle = ::sinf( _angle );
+		float cos_angle = math_cosf( _angle );
+		float sin_angle = math_sinf( _angle );
 
 		_vec.x = cos_angle;
 		_vec.y = sin_angle;

@@ -1,10 +1,10 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
-#	include "utils.h"
+#	include "math/utils.h"
 
-#	include "mat4.h"
+#	include "math/mat4.h"
 
 namespace mt
 {
@@ -99,5 +99,5 @@ namespace mt
 };
 
 #	if LIBMATH_FORCE_INLINE == 1
-#	include "quat_inline.h"
+#	include "math/quat_inline.h"
 #	endif

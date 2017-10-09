@@ -1,8 +1,8 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
-#	include "vec2.h"
+#	include "math/vec2.h"
 
 namespace mt
 {

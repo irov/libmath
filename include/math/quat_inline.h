@@ -1,7 +1,5 @@
-#	include "mat4.h"
-#	include "angle.h"
-
-#	include <math.h>
+#	include "math/mat4.h"
+#	include "math/angle.h"
 
 namespace mt
 {
@@ -51,7 +49,7 @@ namespace mt
 
 	LIBMATH_METHOD_INLINE float quatf::length() const
 	{
-		return sqrtf( x*x + y*y + z*z + w*w );
+		return math_sqrtf( x*x + y*y + z*z + w*w );
 	}
 
 	LIBMATH_METHOD_INLINE void quatf::normalize()
@@ -98,7 +96,7 @@ namespace mt
 
 	LIBMATH_METHOD_INLINE float quatf::getPitch( bool _reprojectAxis ) const
 	{
-		if( _reprojectAxis )
+		if( _reprojectAxis == true )
 		{
 			// pitch = atan2(localy.z, localy.y)
 			// pick parts of yAxis() implementation that we need
@@ -111,18 +109,18 @@ namespace mt
 			float fTzz = fTz*z;
 
 			// Vector3(fTxy-fTwz, 1.0-(fTxx+fTzz), fTyz+fTwx);
-			return (atan2f( fTyz + fTwx, 1.0f - (fTxx + fTzz) )) * 180.f / 3.14f;
+			return math_atan2f( fTyz + fTwx, 1.0f - (fTxx + fTzz) ) * 180.f / 3.14f;
 		}
 		else
 		{
 			// internal version
-			return (atan2f( 2 * (y*z + w*x), w*w - x*x - y*y + z*z ));
+			return math_atan2f( 2 * (y*z + w*x), w*w - x*x - y*y + z*z );
 		}
 	}
 
 	LIBMATH_METHOD_INLINE float quatf::getYaw( bool _reprojectAxis ) const
 	{
-		if( _reprojectAxis )
+		if( _reprojectAxis == true )
 		{
 			float fTx = 2.f*x;
 			float fTy = 2.f*y;
@@ -132,12 +130,12 @@ namespace mt
 			float fTxz = fTz*x;
 			float fTyy = fTy*y;
 
-			return (atan2f( fTxz + fTwy, 1.0f - (fTxx + fTyy) ));
+			return math_atan2f( fTxz + fTwy, 1.0f - (fTxx + fTyy) );
 
 		}
 		else
 		{
-			return (asinf( -2 * (x*z - w*y) ));
+            return math_asinf( -2 * (x*z - w*y) );
 		}
 	}
 
@@ -298,11 +296,11 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void q_from_angle_axis( quatf& out, const vec3f & _rhs, float _val )
 	{
 		float hangle = 0.01745329251994329547f * _val * 0.5f;
-		float fsin = ::sinf( hangle );
+		float fsin = math_sinf( hangle );
 
-		float i_length = 1.0f / sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
+		float i_length = 1.0f / math_sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
 
-		out.w = ::cosf( hangle );
+		out.w = math_cosf( hangle );
 		out.x = fsin * _rhs[0] * i_length;
 		out.y = fsin * _rhs[1] * i_length;
 		out.z = fsin * _rhs[2] * i_length;
@@ -348,10 +346,10 @@ namespace mt
 			use exp(q) = cos(A)+A*(x*i+y*j+z*k) since A/sin(A) has limit 1.
 			*/
 
-		float angle = sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
-		float fsin = ::sinf( angle );
+		float angle = math_sqrtf( _rhs.x*_rhs.x + _rhs.y*_rhs.y + _rhs.z*_rhs.z );
+		float fsin = math_sinf( angle );
 
-		_out.w = ::cosf( angle );
+		_out.w = math_cosf( angle );
 
 		if( mt::equal_f_z( fsin ) == false )
 		{
@@ -385,10 +383,10 @@ namespace mt
 
 		_out.w = 0.0f;
 
-		if( fabsf( _rhs[0] ) < 1.f )
+		if( math_fabsf( _rhs[0] ) < 1.f )
 		{
-			float angle = ::cosf( _rhs.w );
-			float fsin = ::sinf( angle );
+			float angle = math_cosf( _rhs.w );
+			float fsin = math_sinf( angle );
 
 			if( mt::equal_f_z( fsin ) == false )
 			{
@@ -420,7 +418,7 @@ namespace mt
 
 		if( ftrace > 0.0f )
 		{
-			froot = sqrtf( ftrace + 1.0f );
+			froot = math_sqrtf( ftrace + 1.0f );
 			out.w = 0.5f*froot;
 			froot = 0.5f / froot;
 			out.x = (_rhs.v2.y - _rhs.v1.z)*froot;
@@ -444,7 +442,7 @@ namespace mt
 			int j = s_iNext[i];
 			int k = s_iNext[j];
 
-			froot = sqrtf( _rhs[i][i] - _rhs[j][j] - _rhs[k][k] + 1.0f );
+			froot = math_sqrtf( _rhs[i][i] - _rhs[j][j] - _rhs[k][k] + 1.0f );
 			out[i] = 0.5f*froot;
 			froot = 0.5f / froot;
 			out.w = (_rhs[k][j] - _rhs[j][k])*froot;
@@ -467,7 +465,7 @@ namespace mt
 
 		if( ftrace > 0.0f )
 		{
-			froot = sqrtf( ftrace + 1.0f );
+			froot = math_sqrtf( ftrace + 1.0f );
 			out.w = 0.5f*froot;
 			froot = 0.5f / froot;
 			out.x = (_rhs[2][1] - _rhs[1][2])*froot;
@@ -491,7 +489,7 @@ namespace mt
 			int j = s_iNext[i];
 			int k = s_iNext[j];
 
-			froot = sqrtf( _rhs[i][i] - _rhs[j][j] - _rhs[k][k] + 1.0f );
+			froot = math_sqrtf( _rhs[i][i] - _rhs[j][j] - _rhs[k][k] + 1.0f );
 			out[i] = 0.5f*froot;
 			froot = 0.5f / froot;
 			out.w = (_rhs[k][j] - _rhs[j][k])*froot;
@@ -557,8 +555,8 @@ namespace mt
 		float fsqrlen = _rhs[1] * _rhs[1] + _rhs[2] * _rhs[2] + _rhs[3] * _rhs[3];
 		if( fsqrlen > 0.0f )
 		{
-			_out1 = 2.0f * acosf( _rhs[0] );
-			float invl = 1.0f / sqrtf( fsqrlen );
+			_out1 = 2.0f * math_acosf( _rhs[0] );
+			float invl = 1.0f / math_sqrtf( fsqrlen );
 			_out[0] = _rhs[0] * invl;
 			_out[1] = _rhs[1] * invl;
 			_out[2] = _rhs[2] * invl;
@@ -610,12 +608,12 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE void make_quat_from_euler( quatf & _out, const mt::vec3f & _euler )
 	{
-		float c1 = ::cosf( _euler.z * 0.5f );
-		float c2 = ::cosf( _euler.y * 0.5f );
-		float c3 = ::cosf( _euler.x * 0.5f );
-		float s1 = ::sinf( _euler.z * 0.5f );
-		float s2 = ::sinf( _euler.y * 0.5f );
-		float s3 = ::sinf( _euler.x * 0.5f );
+		float c1 = math_cosf( _euler.z * 0.5f );
+		float c2 = math_cosf( _euler.y * 0.5f );
+		float c3 = math_cosf( _euler.x * 0.5f );
+		float s1 = math_sinf( _euler.z * 0.5f );
+		float s2 = math_sinf( _euler.y * 0.5f );
+		float s3 = math_sinf( _euler.x * 0.5f );
 
 		quatf q;
 		q.x = c1 * c2 * s3 - s1 * s2 * c3;
@@ -628,8 +626,8 @@ namespace mt
 
 	LIBMATH_FUNCTION_INLINE void make_quat_from_angle( quatf & _out, float _angle )
 	{
-		float c = ::cosf( _angle * 0.5f );
-		float s = ::sinf( _angle * 0.5f );
+		float c = math_cosf( _angle * 0.5f );
+		float s = math_sinf( _angle * 0.5f );
 
 		_out.x = 0.f;
 		_out.y = 0.f;
@@ -644,16 +642,16 @@ namespace mt
 		float sqy = _q.y * _q.y;
 		float sqz = _q.z * _q.z;
 
-		_euler.y = asinf( 2.f * (_q.w * _q.y - _q.x * _q.z) );
+		_euler.y = math_asinf( 2.f * (_q.w * _q.y - _q.x * _q.z) );
 
-		if( mt::constant::half_pi - fabsf( _euler.y ) > mt::constant::eps )
+		if( mt::constant::half_pi - math_fabsf( _euler.y ) > mt::constant::eps )
 		{
-			_euler.z = atan2f( 2.f * (_q.x * _q.y + _q.w * _q.z), sqx - sqy - sqz + sqw );
-			_euler.x = atan2f( 2.f * (_q.w * _q.x + _q.y * _q.z), sqw - sqx - sqy + sqz );
+			_euler.z = math_atan2f( 2.f * (_q.x * _q.y + _q.w * _q.z), sqx - sqy - sqz + sqw );
+			_euler.x = math_atan2f( 2.f * (_q.w * _q.x + _q.y * _q.z), sqw - sqx - sqy + sqz );
 		}
 		else
 		{
-			_euler.z = atan2f( 2.f * (_q.y * _q.z - _q.x * _q.z), 2.f * (_q.x * _q.z + _q.y * _q.w) );
+			_euler.z = math_atan2f( 2.f * (_q.y * _q.z - _q.x * _q.z), 2.f * (_q.x * _q.z + _q.y * _q.w) );
 			_euler.x = 0.f;
 
 			if( _euler.y < 0.f )

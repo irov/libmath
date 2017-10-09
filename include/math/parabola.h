@@ -1,11 +1,11 @@
 #	pragma once
 
-#	include "config.h"
+#	include "math/config.h"
 
 namespace mt
 {	
 }
 
 #	if LIBMATH_FORCE_INLINE == 1
-#		include "parabola_inline.h"
+#		include "math/parabola_inline.h"
 #	endif
