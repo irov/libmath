@@ -172,9 +172,8 @@ namespace mt
 
 		return n;
 	}
-
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_INLINE float length_f( const float & _a, const float & _b )
+	LIBMATH_INLINE float length_f( float _a, float _b )
 	{
 		float d = _a - _b;
 
@@ -184,11 +183,6 @@ namespace mt
 		}
 
 		return -d;
-	}
-	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_INLINE float length( const float & _a, const float & _b )
-	{
-		return length_f( _a, _b );
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_INLINE void linerp_f1( float & _out, float _in1, float _in2, float _scale )
