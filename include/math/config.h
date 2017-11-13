@@ -1,5 +1,6 @@
 #	pragma once
 
+#   include <stddef.h>
 #   include <math.h>
 
 #   define math_floorf ::floorf
