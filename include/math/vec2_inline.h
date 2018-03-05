@@ -382,7 +382,7 @@ namespace mt
 		return ((p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y));
 	}
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_FUNCTION_INLINE float pseudo_cross_v2( const mt::vec2f& a, const mt::vec2f& b )
+	LIBMATH_FUNCTION_INLINE float cross_v2( const mt::vec2f& a, const mt::vec2f& b )
 	{
 		return a.x * b.y - a.y * b.x;
 	}

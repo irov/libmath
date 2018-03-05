@@ -8,6 +8,7 @@
 #   define math_asinf ::asinf
 #   define math_atan2f ::atan2f
 #   define math_sqrtf ::sqrtf
+#   define math_powf ::powf
 #   define math_cosf ::cosf
 #   define math_sinf ::sinf
 #   define math_tanf ::tanf

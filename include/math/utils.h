@@ -8,6 +8,11 @@
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
+    LIBMATH_INLINE float abs_f( float _x )
+    {
+        return (_x >= 0.f) ? _x : -_x;
+    }
+    //////////////////////////////////////////////////////////////////////////
     LIBMATH_INLINE float min_f( float _x, float _y )
     {
         return (_x < _y) ? _x : _y;
@@ -17,7 +22,18 @@ namespace mt
 	{
 		return ( _x > _y ) ? _x : _y;
 	}
-	//////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////    
+    LIBMATH_INLINE float ltrim_f( float _value, float _trim )
+    {
+        if( _value < _trim )
+        {
+            return _trim;
+        }
+
+        return _value;
+    }
+
+    //////////////////////////////////////////////////////////////////////////
 	template<class T>
 	LIBMATH_INLINE T ltrim( T _value, T _trim )
 	{
@@ -173,7 +189,7 @@ namespace mt
 		return n;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_INLINE float length_f( float _a, float _b )
+	LIBMATH_INLINE float length( float _a, float _b )
 	{
 		float d = _a - _b;
 

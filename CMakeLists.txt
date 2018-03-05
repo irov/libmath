@@ -187,7 +187,14 @@ parabola
 )
 
 ADD_FILTER(
-config
+convex8
+    src/convex8.cpp
+    include/math/convex8.h
+    include/math/convex8_inline.h
+)
+
+ADD_FILTER(
+constant
     include/math/constant.h
 )
 
