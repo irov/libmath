@@ -1,16 +1,12 @@
-#	include "convex8.h"
+#	include "math/convex8.h"
 
-#   include "utils.h"
+#   include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     LIBMATH_METHOD_INLINE convex8::convex8()
         : count( 0 )
-    {
-    }
-    //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE convex8::~convex8()
     {
     }
     //////////////////////////////////////////////////////////////////////////
@@ -54,7 +50,7 @@ namespace mt
         this->count = 0U;
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE int32_t convex8_line_sect( const vec2f & x0, const vec2f & x1, const vec2f & y0, const vec2f & y1, vec2f & res )
+    LIBMATH_FUNCTION_INLINE int32_t convex8_line_sect( const vec2f & x0, const vec2f & x1, const vec2f & y0, const vec2f & y1, vec2f & res )
     {
         vec2f dx = x1 - x0;
         vec2f dy = y1 - y0;
@@ -80,7 +76,7 @@ namespace mt
         return 1;
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE int convex8_left_of( const vec2f & a, const vec2f & b, const vec2f & c )
+    LIBMATH_FUNCTION_INLINE int convex8_left_of( const vec2f & a, const vec2f & b, const vec2f & c )
     {
         vec2f tmp1 = b - a;
         vec2f tmp2 = c - b;
@@ -89,7 +85,7 @@ namespace mt
         return x < 0.f ? -1 : (x > 0 ? 1 : 0);
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE void convex8_poly_edge_clip( const mt::convex8 & sub, const vec2f & x0, const vec2f & x1, int left, mt::convex8 & res )
+    LIBMATH_FUNCTION_INLINE void convex8_poly_edge_clip( const mt::convex8 & sub, const vec2f & x0, const vec2f & x1, int left, mt::convex8 & res )
     {
         res.clear();
 
@@ -134,7 +130,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE int convex8_poly_winding( const mt::convex8 & c )
+    LIBMATH_FUNCTION_INLINE int convex8_poly_winding( const mt::convex8 & c )
     {
         const mt::vec2f & v0 = c[0];
         const mt::vec2f & v1 = c[1];
@@ -145,7 +141,7 @@ namespace mt
         return winding;
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result )
+    LIBMATH_FUNCTION_INLINE void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result )
     {
         mt::convex8 P1, P2;
         mt::convex8 * p1 = &P1;
@@ -189,7 +185,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    LIBMATH_METHOD_INLINE float convex8_area( const mt::convex8 & _convex )
+    LIBMATH_FUNCTION_INLINE float convex8_area( const mt::convex8 & _convex )
     {
         float area = 0.f;
 

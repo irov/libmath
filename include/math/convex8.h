@@ -1,9 +1,8 @@
 #	pragma once
 
 #	include "math/config.h"
-#	include "math/vec2.h"
 
-#   include <stdint.h>
+#	include "math/vec2.h"
 
 namespace mt
 {    
@@ -11,7 +10,6 @@ namespace mt
 	{
     public:
         LIBMATH_METHOD_INLINE convex8();
-        LIBMATH_METHOD_INLINE ~convex8();
 
     public:
         LIBMATH_METHOD_INLINE const mt::vec2f & operator [] ( size_t i ) const;

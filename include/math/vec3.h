@@ -35,6 +35,7 @@ namespace mt
 
 		LIBMATH_METHOD_INLINE vec2f to_vec2f() const;
 		LIBMATH_METHOD_INLINE void from_f3( const float * _v );
+        LIBMATH_METHOD_INLINE void from_f2( const float * _v );
 
 		LIBMATH_METHOD_INLINE float * buff();
 		LIBMATH_METHOD_INLINE const float * buff() const;

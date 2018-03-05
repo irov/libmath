@@ -17,24 +17,28 @@ namespace mt
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE bool line_intersect_v2( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f & _p )
 	{
-		float zn = dot2_f( _l1.a, _l1.b, _l2.a, _l2.b );
+		float zn = cross2_f( _l1.a, _l1.b, _l2.a, _l2.b );
 
 		if( mt::equal_f_z( zn ) == true )
 		{
 			return false;
 		}
 
-		_p.x = -dot2_f( _l1.c, _l1.b, _l2.c, _l2.b ) / zn;
-		_p.y = -dot2_f( _l1.a, _l1.c, _l2.a, _l2.c ) / zn;
+        float inv_zn = 1.f / zn;
+
+		_p.x = -cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
+		_p.y = -cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
 
 		return true;
 	}
 	//////////////////////////////////////////////////////////////////////////
 	LIBMATH_FUNCTION_INLINE void line_intersect_v2_np( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f & _p )
 	{
-		float zn = dot2_f( _l1.a, _l1.b, _l2.a, _l2.b );
+		float zn = cross2_f( _l1.a, _l1.b, _l2.a, _l2.b );
 
-		_p.x = -dot2_f( _l1.c, _l1.b, _l2.c, _l2.b ) / zn;
-		_p.y = -dot2_f( _l1.a, _l1.c, _l2.a, _l2.c ) / zn;
+        float inv_zn = 1.f / zn;
+
+		_p.x = -cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
+		_p.y = -cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
 	}
 }

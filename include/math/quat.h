@@ -96,6 +96,8 @@ namespace mt
 	LIBMATH_FUNCTION_INLINE void quat_to_euler( const quatf & _q, mt::vec3f & _euler );
 
 	LIBMATH_FUNCTION_INLINE void make_quat_from_angle( quatf & _out, float _angle );
+
+    LIBMATH_FUNCTION_INLINE float quatzw_to_angle( const quatf & _q );
 };
 
 #	if LIBMATH_FORCE_INLINE == 1

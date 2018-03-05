@@ -1,6 +1,4 @@
-#	include "triangle.h"
-
-#	include "line2.h"
+#	include "math/line2.h"
 
 namespace mt
 {	

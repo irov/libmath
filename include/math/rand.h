@@ -2,8 +2,6 @@
 
 #	include "math/config.h"
 
-#	include <stdlib.h>
-
 namespace mt
 {
 	LIBMATH_FUNCTION_INLINE float randf( float _max )

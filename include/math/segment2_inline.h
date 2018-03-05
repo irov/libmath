@@ -1,3 +1,5 @@
+#	include "math/segment2.h"
+
 #	include "math/utils.h"
 
 namespace mt

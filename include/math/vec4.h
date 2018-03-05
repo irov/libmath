@@ -1,5 +1,11 @@
 #	pragma once
 
+/*	
+	Vector4 class.
+	-	basic operation with vectors(+,-,*,=,==).
+	-	dot, norm, homogenize.
+*/
+
 #	include "math/config.h"
 
 #	include "math/vec3.h"
