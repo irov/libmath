@@ -1,5 +1,8 @@
 #include <stdio.h>
 
-void main()
+int main()
 {
+    //ToDo
+
+    return 0;
 }
