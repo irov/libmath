@@ -65,7 +65,7 @@ namespace mt
 	MT_FUNCTION_INLINE vec4f operator-(vec4f _rhs);
 	
 	MT_FUNCTION_INLINE void ident_v4( vec4f & _rhs );
-	MT_FUNCTION_INLINE float length_v4( vec4f _rhs );
+	MT_FUNCTION_INLINE float length_v4( const vec4f & _rhs );
 
 	MT_FUNCTION_INLINE void extract_v4_v3( vec3f & _out, const vec4f & _rhs );
 

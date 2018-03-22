@@ -9,6 +9,7 @@ namespace mt
 	class capsule2
 	{
 	public:
+        //cppcheck-suppress uninitMemberVar
 		capsule2()
 		{
 		}

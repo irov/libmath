@@ -243,12 +243,12 @@ namespace mt
 		_out = new_uv;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	MT_FUNCTION_INLINE void multiply_tetragon_uv4_v4( mt::uv4f & _out, const mt::uv4f & _uv1, const mt::vec4f & _mask )
+	MT_FUNCTION_INLINE void multiply_tetragon_uv4_v4( mt::uv4f & _out, const mt::uv4f & _uv, const mt::vec4f & _mask )
 	{
 		mt::uv4f uv2;
 		uv4_from_mask( uv2, _mask );
 
-		multiply_tetragon_uv4( _out, _uv1, uv2 );
+		multiply_tetragon_uv4( _out, _uv, uv2 );
 	}
 	//////////////////////////////////////////////////////////////////////////
 	MT_FUNCTION_INLINE mt::vec2f calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point )

@@ -9,6 +9,7 @@ namespace mt
 	class segment2
 	{
 	public:
+        //cppcheck-suppress uninitMemberVar
 		segment2()
 		{
 		}
@@ -24,6 +25,15 @@ namespace mt
 			, b(_segment.b)
 		{
 		}
+
+    public:
+        segment2 & operator = ( const segment2 & _segment )
+        {
+            a = _segment.a;
+            b = _segment.b;
+
+            return *this;
+        }
 
 	public:
 		mt::vec2f a;

@@ -9,6 +9,7 @@ namespace mt
 	class sphere2
 	{
 	public:
+        //cppcheck-suppress uninitMemberVar
 		sphere2()
 		{
 		}
@@ -24,6 +25,14 @@ namespace mt
 			, radius( _sphere.radius )
 		{
 		}
+
+        sphere2 & operator = ( const sphere2 & _sphere )
+        {
+            position = _sphere.position;
+            radius = _sphere.radius;
+
+            return *this;
+        }
 
 	public:
 		mt::vec2f position;

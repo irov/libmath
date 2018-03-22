@@ -2,40 +2,40 @@
 
 namespace mt
 {
-	//////////////////////////////////////////////////////////////////////////
-	MT_METHOD_INLINE rectf::rectf()
-		: x(0.f)
-		, y(0.f)
-		, width(0.f)
-		, height(0.f)
-	{
-	}
-	//////////////////////////////////////////////////////////////////////////
-	MT_METHOD_INLINE rectf::rectf(float _x, float _y, float _width, float _height)
-		: x(_x)
-		, y(_y)
-		, width(_width)
-		, height(_height)
-	{
-	}
-	//////////////////////////////////////////////////////////////////////////
-	MT_METHOD_INLINE rectf::rectf(const rectf & _rect)
-		: x(_rect.x)
-		, y(_rect.y)
-		, width(_rect.width)
-		, height(_rect.height) 
-	{
-	}
-	//////////////////////////////////////////////////////////////////////////
-	MT_METHOD_INLINE rectf & rectf::operator = (const rectf & _rect)
-	{
-		x = _rect.x;
-		y = _rect.y;
-		width = _rect.width;
-		height = _rect.height;
+    //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE rectf::rectf()
+        : x( 0.f )
+        , y( 0.f )
+        , width( 0.f )
+        , height( 0.f )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE rectf::rectf( float _x, float _y, float _width, float _height )
+        : x( _x )
+        , y( _y )
+        , width( _width )
+        , height( _height )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE rectf::rectf( const rectf & _rect )
+        : x( _rect.x )
+        , y( _rect.y )
+        , width( _rect.width )
+        , height( _rect.height )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE rectf & rectf::operator = ( const rectf & _rect )
+    {
+        x = _rect.x;
+        y = _rect.y;
+        width = _rect.width;
+        height = _rect.height;
 
-		return *this;
-	}
+        return *this;
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE bool rectf::empty() const
     {
@@ -54,7 +54,7 @@ namespace mt
         {
             return true;
         }
-        
+
         return false;
     }
 }

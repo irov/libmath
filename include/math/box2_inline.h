@@ -19,6 +19,14 @@ namespace mt
 		: minimum(_min)
 		, maximum(_max)
 	{}
+    //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE box2f & box2f::operator = ( const box2f & _box )
+    {
+        minimum = _box.minimum;
+        maximum = _box.maximum;
+
+        return *this;
+    }
 	//////////////////////////////////////////////////////////////////////////
 	MT_FUNCTION_INLINE void ident_box( box2f & box )
 	{
