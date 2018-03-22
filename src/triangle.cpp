@@ -1,5 +1,5 @@
-#	include "math/triangle.h"
+#include "math/triangle.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/triangle_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/triangle_inline.h"
+#endif

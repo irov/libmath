@@ -1,10 +1,10 @@
-#	pragma once
+#pragma once
 
-#	include "math/config.h"
+#include "math/config.h"
 
 namespace mt
 {
-	LIBMATH_FUNCTION_INLINE float randf( float _max )
+	MT_FUNCTION_INLINE float randf( float _max )
 	{
 		float rnf = static_cast<float>( ::rand() ) / ( static_cast<float>(RAND_MAX) + 1.0f);
 		float rf = _max * rnf;
@@ -12,7 +12,7 @@ namespace mt
 	}
 
 	/* Равномерное распределение с a != b */
-	LIBMATH_FUNCTION_INLINE float range_randf( float _a, float _b )
+	MT_FUNCTION_INLINE float range_randf( float _a, float _b )
 	{
 		if( _a > _b )
 		{
@@ -25,7 +25,7 @@ namespace mt
 		return _a + rf;
 	}
 
-	LIBMATH_FUNCTION_INLINE uint32_t rand( uint32_t _max )
+	MT_FUNCTION_INLINE uint32_t rand( uint32_t _max )
 	{
 		float rf = randf( static_cast<float>(_max) );
 
@@ -34,7 +34,7 @@ namespace mt
 		return ri;
 	}
 
-	LIBMATH_FUNCTION_INLINE uint32_t range_rand( uint32_t _a, uint32_t _b )
+	MT_FUNCTION_INLINE uint32_t range_rand( uint32_t _a, uint32_t _b )
 	{
 		if( _a > _b )
 		{

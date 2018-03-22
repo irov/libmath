@@ -1,7 +1,7 @@
-#	include "math/vec2.h"
+#include "math/vec2.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/vec2_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/vec2_inline.h"
+#endif
 
 

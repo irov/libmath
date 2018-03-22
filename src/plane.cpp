@@ -1,5 +1,5 @@
-#	include "math/plane.h"
+#include "math/plane.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/plane_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/plane_inline.h"
+#endif

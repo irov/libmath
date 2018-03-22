@@ -1,8 +1,8 @@
-#	pragma once
+#pragma once
 
-#	include "math/config.h"
+#include "math/config.h"
 
-#	include "math/vec2.h"
+#include "math/vec2.h"
 
 namespace mt
 {
@@ -30,9 +30,9 @@ namespace mt
 		float radius;
 	};
 
-	LIBMATH_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
+	MT_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
 }
 
-#	if LIBMATH_FORCE_INLINE == 1
-#		include "math/sphere2_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 1
+#include "math/sphere2_inline.h"
+#endif

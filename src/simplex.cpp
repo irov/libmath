@@ -1,8 +1,8 @@
-#	include "math/simplex.h"
+#include "math/simplex.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include	"math/simplex_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/simplex_inline.h"
+#endif
 
 
 

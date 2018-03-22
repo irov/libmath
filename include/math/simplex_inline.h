@@ -1,25 +1,25 @@
-#	include "math/utils.h"
+#include "math/utils.h"
 
 namespace mt
 {
-	LIBMATH_METHOD_INLINE simplex_solver::simplex_solver()
+	MT_METHOD_INLINE simplex_solver::simplex_solver()
 		: size(0)
 		, eps(0.00001f)
 	{}
 
-	LIBMATH_METHOD_INLINE void simplex_solver::reset()
+	MT_METHOD_INLINE void simplex_solver::reset()
 	{
 		size = 0;
 	}
 
-	LIBMATH_METHOD_INLINE void simplex_solver::addWPQ( const mt::vec3f & w, const mt::vec3f & p, const mt::vec3f & q  )
+	MT_METHOD_INLINE void simplex_solver::addWPQ( const mt::vec3f & w, const mt::vec3f & p, const mt::vec3f & q  )
 	{
 		W[size] = w;
 		P[size] = p;
 		Q[size++] = q;
 	}
 
-	LIBMATH_METHOD_INLINE bool simplex_solver::update( mt::vec3f & V )
+	MT_METHOD_INLINE bool simplex_solver::update( mt::vec3f & V )
 	{
 		bool found = false; 
 
@@ -35,7 +35,7 @@ namespace mt
 		return found;
 	}
 
-	LIBMATH_METHOD_INLINE void simplex_solver::remove_1()
+	MT_METHOD_INLINE void simplex_solver::remove_1()
 	{
 		W[0] = W[1];
 		P[0] = P[1];
@@ -44,7 +44,7 @@ namespace mt
 		size = 1;
 	}
 
-	LIBMATH_METHOD_INLINE void simplex_solver::remove_2()
+	MT_METHOD_INLINE void simplex_solver::remove_2()
 	{
 		W[1] = W[2];
 		P[1] = P[2];
@@ -53,7 +53,7 @@ namespace mt
 		size = 2;
 	}
 
-	LIBMATH_METHOD_INLINE bool simplex_solver::solve( mt::vec3f AO, mt::vec3f AB, mt::vec3f & V )
+	MT_METHOD_INLINE bool simplex_solver::solve( mt::vec3f AO, mt::vec3f AB, mt::vec3f & V )
 	{
 		if( mt::dot_v3_v3( AO, AB ) > 0 )
 		{
@@ -79,7 +79,7 @@ namespace mt
 		return false;
 	}
 
-	LIBMATH_METHOD_INLINE bool simplex_solver::solve( mt::vec3f AO, mt::vec3f AB, mt::vec3f AC, mt::vec3f & V )
+	MT_METHOD_INLINE bool simplex_solver::solve( mt::vec3f AO, mt::vec3f AB, mt::vec3f AC, mt::vec3f & V )
 	{
 		mt::vec3f ABC = mt::cross_v3_v3( AB, AC );
 

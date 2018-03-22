@@ -1,9 +1,9 @@
-#	include "math/utils.h"
+#include "math/utils.h"
 
 namespace mt
 {
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_FUNCTION_INLINE bool capsule2_intersect_segment(
+	MT_FUNCTION_INLINE bool capsule2_intersect_segment(
 		const mt::capsule2 & _capsule,
 		const mt::segment2 & _segment )
 	{
@@ -13,7 +13,7 @@ namespace mt
 		return distancesq <= _capsule.radius * _capsule.radius;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_FUNCTION_INLINE bool capsule2_intersect_capsule2(
+	MT_FUNCTION_INLINE bool capsule2_intersect_capsule2(
 		const mt::capsule2 & _capsule0,
 		const mt::capsule2 & _capsule1 )
 	{

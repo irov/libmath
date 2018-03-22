@@ -1,8 +1,8 @@
-#	pragma once
+#pragma once
 
-#	include "math/config.h"
+#include "math/config.h"
 
-#	include "math/vec2.h"
+#include "math/vec2.h"
 
 namespace mt
 {	
@@ -30,18 +30,18 @@ namespace mt
 		mt::vec2f b;
 	};
 
-	LIBMATH_FUNCTION_INLINE float segment2_distance_squared(
+	MT_FUNCTION_INLINE float segment2_distance_squared(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		float & _sc,
 		float & _tc );
 
-	LIBMATH_FUNCTION_INLINE bool segment2_intersect_segment2(
+	MT_FUNCTION_INLINE bool segment2_intersect_segment2(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		mt::vec2f & _intersectionPoint );
 }
 
-#	if LIBMATH_FORCE_INLINE == 1
-#		include "math/segment2_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 1
+#include "math/segment2_inline.h"
+#endif

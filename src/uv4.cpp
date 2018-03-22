@@ -1,5 +1,5 @@
-#	include "math/uv4.h"
+#include "math/uv4.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/uv4_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/uv4_inline.h"
+#endif

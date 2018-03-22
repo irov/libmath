@@ -1,5 +1,5 @@
-#	include "math/line2.h"
+#include "math/line2.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/line2_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/line2_inline.h"
+#endif

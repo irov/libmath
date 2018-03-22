@@ -1,6 +1,6 @@
-#	include	"math/parabola.h"
+#include "math/parabola.h"
 
-#	if LIBMATH_FORCE_INLINE == 0
-#	include "math/parabola_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 0
+#include "math/parabola_inline.h"
+#endif
 

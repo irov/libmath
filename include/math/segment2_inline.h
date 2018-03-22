@@ -1,11 +1,11 @@
-#	include "math/segment2.h"
+#include "math/segment2.h"
 
-#	include "math/utils.h"
+#include "math/utils.h"
 
 namespace mt
 {
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_FUNCTION_INLINE float segment2_distance_squared(
+	MT_FUNCTION_INLINE float segment2_distance_squared(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		float & _sc,
@@ -111,7 +111,7 @@ namespace mt
 		return wcd;
 	}   // End of ::DistanceSquared()
 	//////////////////////////////////////////////////////////////////////////
-	LIBMATH_FUNCTION_INLINE bool segment2_intersect_segment2(
+	MT_FUNCTION_INLINE bool segment2_intersect_segment2(
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		mt::vec2f & _intersectionPoint )

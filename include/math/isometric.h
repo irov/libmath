@@ -1,6 +1,6 @@
 #   pragma once
 
-#	include "math/config.h"
+#include "math/config.h"
 
 namespace mt
 {
@@ -10,14 +10,14 @@ namespace mt
         float w;
         float h;
 
-        LIBMATH_METHOD_INLINE isometric( float w, float h );
+        MT_METHOD_INLINE isometric( float w, float h );
 
     public:
-        LIBMATH_METHOD_INLINE void screen2iso( float sx, float sy, float & ix, float & iy );
-        LIBMATH_METHOD_INLINE void iso2screen( float ix, float iy, float & sx, float & sy );
+        MT_METHOD_INLINE void screen2iso( float sx, float sy, float & ix, float & iy );
+        MT_METHOD_INLINE void iso2screen( float ix, float iy, float & sx, float & sy );
     };
 }
 
-#	if LIBMATH_FORCE_INLINE == 1
-#	include "math/isometric_inline.h"
-#	endif
+#if MT_FORCE_INLINE == 1
+#include "math/isometric_inline.h"
+#endif

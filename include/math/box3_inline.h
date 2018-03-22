@@ -1,31 +1,31 @@
 namespace mt
 {
-	LIBMATH_METHOD_INLINE box3f::box3f()
+	MT_METHOD_INLINE box3f::box3f()
 	{}
 
-	LIBMATH_METHOD_INLINE box3f::box3f(const box3f & _box)
+	MT_METHOD_INLINE box3f::box3f(const box3f & _box)
 		:	min(_box.min)
 		,	max(_box.max)
 	{}
 
 
-	LIBMATH_METHOD_INLINE box3f::box3f(const vec3f &_min,const vec3f &_max)
+	MT_METHOD_INLINE box3f::box3f(const vec3f &_min,const vec3f &_max)
 		:	min(_min)
 		,	max(_max)
 	{}
 
-	LIBMATH_FUNCTION_INLINE void reset(box3f &box,const vec3f &initValue)
+	MT_FUNCTION_INLINE void reset(box3f &box,const vec3f &initValue)
 	{
 		box.max = initValue;
 		box.min = initValue;
 	}
 
-	LIBMATH_FUNCTION_INLINE void reset(box3f &box,float x, float y, float z)
+	MT_FUNCTION_INLINE void reset(box3f &box,float x, float y, float z)
 	{
 		reset(box,vec3f(x,y,z));
 	}
 
-	LIBMATH_FUNCTION_INLINE void add_internal_point(box3f &box, float x,float y,float z)
+	MT_FUNCTION_INLINE void add_internal_point(box3f &box, float x,float y,float z)
 	{
 		if (x>box.max.x) box.max.x = x;
 		if (y>box.max.y) box.max.y = y;
@@ -35,24 +35,24 @@ namespace mt
 		if (z<box.min.z) box.min.z = z;
 	}
 
-	LIBMATH_FUNCTION_INLINE void add_internal_point(box3f &box, const vec3f &p)
+	MT_FUNCTION_INLINE void add_internal_point(box3f &box, const vec3f &p)
 	{
 		add_internal_point(box,p.x, p.y, p.z);
 	}
 
-	LIBMATH_FUNCTION_INLINE void set_box_from_min_max(box3f &box, const vec3f &min, const vec3f &max)
+	MT_FUNCTION_INLINE void set_box_from_min_max(box3f &box, const vec3f &min, const vec3f &max)
 	{
 		box.min = min;
 		box.max = max;
 	}
 
-	LIBMATH_FUNCTION_INLINE void set_box_from_center_and_extent(box3f &box, const vec3f &center, const vec3f &extent)
+	MT_FUNCTION_INLINE void set_box_from_center_and_extent(box3f &box, const vec3f &center, const vec3f &extent)
 	{
 		box.min = center - extent;
 		box.max = center + extent;
 	}
 
-	LIBMATH_FUNCTION_INLINE void GetUVHVector(vec3f uvh[3],const box3f &box)
+	MT_FUNCTION_INLINE void GetUVHVector(vec3f uvh[3],const box3f &box)
 	{
 		vec3f vDir = box.max - box.min;
 		uvh[0] = vec3f(vDir.x,0,0);
@@ -60,7 +60,7 @@ namespace mt
 		uvh[2] = vec3f(0,0,vDir.z);
 	}
 
-	LIBMATH_FUNCTION_INLINE void get_point_from_box(vec3f point[8],const box3f &box)
+	MT_FUNCTION_INLINE void get_point_from_box(vec3f point[8],const box3f &box)
 	{
 		vec3f uvh[3];
 		GetUVHVector(uvh,box);
@@ -75,7 +75,7 @@ namespace mt
 		point[7] = box.min + uvh[1] + uvh[2];
 	}
 
-	LIBMATH_FUNCTION_INLINE bool is_intersect(const box3f & _a, const box3f & _b)
+	MT_FUNCTION_INLINE bool is_intersect(const box3f & _a, const box3f & _b)
 	{
 		return (_a.max.y > _b.min.y && _a.min.y < _b.max.y &&
 				_a.max.x > _b.min.x && _a.min.x < _b.max.x &&

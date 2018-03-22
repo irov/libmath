@@ -1,69 +1,69 @@
-#	include "math/angle.h"
+#include "math/angle.h"
 
 namespace mt
 { 
-	LIBMATH_METHOD_INLINE mat2f::mat2f()
+	MT_METHOD_INLINE mat2f::mat2f()
 	{}
 
-	LIBMATH_METHOD_INLINE mat2f::mat2f( float angle )
+	MT_METHOD_INLINE mat2f::mat2f( float angle )
 	{
-		float c = math_cosf( angle );
-		float s = math_sinf( angle );
+		float c = MT_cosf( angle );
+		float s = MT_sinf( angle );
 		v0.x = c; v1.x = -s;
 		v0.y = s; v1.y = c;
 	}
 
-	LIBMATH_METHOD_INLINE mat2f::mat2f(const mat2f& _rhs)
+	MT_METHOD_INLINE mat2f::mat2f(const mat2f& _rhs)
 		:v0(_rhs.v0)
 		,v1(_rhs.v1)
 	{}
 
-	LIBMATH_METHOD_INLINE mat2f::mat2f(const vec2f& _v0, const vec2f& _v1)
+	MT_METHOD_INLINE mat2f::mat2f(const vec2f& _v0, const vec2f& _v1)
 		:v0(_v0)
 		,v1(_v1)
 	{}
 
-	LIBMATH_METHOD_INLINE vec2f& mat2f::operator [](size_t i)
+	MT_METHOD_INLINE vec2f& mat2f::operator [](size_t i)
 	{
 		return (&v0)[i];
 	}
 
-	LIBMATH_METHOD_INLINE const vec2f& mat2f::operator [](size_t i)const
+	MT_METHOD_INLINE const vec2f& mat2f::operator [](size_t i)const
 	{
 		return (&v0)[i];
 	}
 
-	LIBMATH_METHOD_INLINE mat2f& mat2f::operator=(const mat2f& _rhs)
+	MT_METHOD_INLINE mat2f& mat2f::operator=(const mat2f& _rhs)
 	{
 		v0 = _rhs.v0;
 		v1 = _rhs.v1;
 		return *this;
 	}	
 
-	LIBMATH_METHOD_INLINE bool cmp_m2_m2(const mat2f& _a, const mat2f& _b)
+	MT_METHOD_INLINE bool cmp_m2_m2(const mat2f& _a, const mat2f& _b)
 	{ 
 		return cmp_v2_v2(_a.v0,_b.v0) &&
 			cmp_v2_v2(_a.v1,_b.v1);
 	}
 
-	LIBMATH_METHOD_INLINE bool operator==(const mat2f& _a, const mat2f& _b)
+	MT_METHOD_INLINE bool operator==(const mat2f& _a, const mat2f& _b)
 	{
 		return cmp_m2_m2(_a, _b);
 	}
 
-	LIBMATH_METHOD_INLINE bool operator!=(const mat2f& _a, const mat2f& _b)
+	MT_METHOD_INLINE bool operator!=(const mat2f& _a, const mat2f& _b)
 	{
 		return !operator==(_a, _b);
 	}
 
 	/*	Matrix/Vector Mult	*/
-	LIBMATH_FUNCTION_INLINE void mul_m2_v2(vec2f& _out, const mat2f& _m, const vec2f& _v)
+	MT_FUNCTION_INLINE void mul_m2_v2(vec2f& _out, const mat2f& _m, const vec2f& _v)
 	{ 
 		_out.x = dot_v2_v2(_m.v0,_v);
 		_out.y = dot_v2_v2(_m.v1,_v);
 	}
 
-	LIBMATH_FUNCTION_INLINE vec2f operator*(const mat2f& m, const vec2f& v)
+	MT_FUNCTION_INLINE vec2f operator*(const mat2f& m, const vec2f& v)
 	{
 		vec2f out;
 		mul_m2_v2(out,m,v);
@@ -71,13 +71,13 @@ namespace mt
 	}
 
 	/*	Vector/Matrix Mult	*/
-	LIBMATH_FUNCTION_INLINE void mul_v2_m2(vec2f& _out, const vec2f& _v, const mat2f& _m)
+	MT_FUNCTION_INLINE void mul_v2_m2(vec2f& _out, const vec2f& _v, const mat2f& _m)
 	{
 		_out.x = _m.v0.x * _v.x + _m.v1.x * _v.y;
 		_out.y = _m.v0.y * _v.x + _m.v1.y * _v.y;
 	}
 
-	LIBMATH_FUNCTION_INLINE vec2f operator* (const vec2f& _v, const mat2f& _m)
+	MT_FUNCTION_INLINE vec2f operator* (const vec2f& _v, const mat2f& _m)
 	{
 		vec2f out;
 		mul_v2_m2(out,_v,_m);
@@ -85,7 +85,7 @@ namespace mt
 	}
 
 	/*	Matrix/Matrix Mult  */
-	LIBMATH_FUNCTION_INLINE void mul_m2_m2(mat2f& _out, const mat2f& _a, const mat2f& _b)
+	MT_FUNCTION_INLINE void mul_m2_m2(mat2f& _out, const mat2f& _a, const mat2f& _b)
 	{
 		_out.v0.x = _a.v0.x * _b.v0.x + _a.v0.y * _b.v1.x; 
 		_out.v0.y = _a.v0.x * _b.v0.y + _a.v0.y * _b.v1.y;
@@ -93,7 +93,7 @@ namespace mt
 		_out.v1.y = _a.v1.x * _b.v0.y + _a.v1.y * _b.v1.y;
 	}
 
-	LIBMATH_FUNCTION_INLINE mat2f operator* (const mat2f& _a, const mat2f& _b)
+	MT_FUNCTION_INLINE mat2f operator* (const mat2f& _a, const mat2f& _b)
 	{
 		mat2f out;
 		mul_m2_m2(out,_a,_b);
@@ -101,13 +101,13 @@ namespace mt
 	}
 
 	/*  Addition of matrix  */
-	LIBMATH_FUNCTION_INLINE void add_m2_m2(mat2f& _out, const mat2f& _a,const mat2f& _b)
+	MT_FUNCTION_INLINE void add_m2_m2(mat2f& _out, const mat2f& _a,const mat2f& _b)
 	{
 		add_v2_v2(_out.v0,_a.v0,_b.v0);
 		add_v2_v2(_out.v1,_a.v1,_b.v1);
 	}
 
-	LIBMATH_FUNCTION_INLINE mat2f operator+(const mat2f& _a, const mat2f& _b)
+	MT_FUNCTION_INLINE mat2f operator+(const mat2f& _a, const mat2f& _b)
 	{
 		mat2f out;
 		add_m2_m2(out,_a,_b);
@@ -115,13 +115,13 @@ namespace mt
 	}
 
 	/*	Substraction of Matrix  */
-	LIBMATH_FUNCTION_INLINE void sub_m2_m2(mat2f& _out, const mat2f& _a, const mat2f& _b)
+	MT_FUNCTION_INLINE void sub_m2_m2(mat2f& _out, const mat2f& _a, const mat2f& _b)
 	{
 		sub_v2_v2(_out.v0,_a.v0,_b.v0);
 		sub_v2_v2(_out.v1,_a.v1,_b.v1);
 	}
 
-	LIBMATH_FUNCTION_INLINE mat2f operator-(const mat2f& _a, const mat2f& _b)
+	MT_FUNCTION_INLINE mat2f operator-(const mat2f& _a, const mat2f& _b)
 	{
 		mat2f out;
 		sub_m2_m2(out,_a,_b);
@@ -129,27 +129,27 @@ namespace mt
 	}
 
 	/*	Scale by Scalar	 */
-	LIBMATH_FUNCTION_INLINE void scale_m2_s(mat2f& _out, const mat2f& _rhs, float _val)
+	MT_FUNCTION_INLINE void scale_m2_s(mat2f& _out, const mat2f& _rhs, float _val)
 	{
 		mul_v2_f(_out.v0,_rhs.v0,_val);
 		mul_v2_f(_out.v1,_rhs.v1,_val);
 	}
 
-	LIBMATH_FUNCTION_INLINE mat2f operator*(const mat2f& _rhs, float _val)
+	MT_FUNCTION_INLINE mat2f operator*(const mat2f& _rhs, float _val)
 	{
 		mat2f out;
 		scale_m2_s(out,_rhs,_val);
 		return out;
 	}
 
-	LIBMATH_FUNCTION_INLINE void scale_m2_s(mat2f& _out, float _val)
+	MT_FUNCTION_INLINE void scale_m2_s(mat2f& _out, float _val)
 	{
 		mul_v2_f(_out.v0,_out.v0,_val);
 		mul_v2_f(_out.v1,_out.v1,_val);
 	}
 
 	/*	Transpose Matrix  */
-	LIBMATH_FUNCTION_INLINE void transpose_m2(mat2f& _out, const mat2f& _rhs)
+	MT_FUNCTION_INLINE void transpose_m2(mat2f& _out, const mat2f& _rhs)
 	{
 		_out.v0.x = _rhs.v0.x;
 		_out.v0.y = _rhs.v1.x;
@@ -158,7 +158,7 @@ namespace mt
 		_out.v1.y = _rhs.v1.y;
 	}
 
-	LIBMATH_FUNCTION_INLINE mat2f transpose_m2(const mat2f& _rhs)
+	MT_FUNCTION_INLINE mat2f transpose_m2(const mat2f& _rhs)
 	{
 		mat2f out;
 		transpose_m2(out, _rhs);
