@@ -27,11 +27,9 @@ namespace mt
 
     MT_FUNCTION_INLINE uint32_t rand( uint32_t _max )
     {
-        uint64_t r = MT_rand();
-        r *= _max;
-        r /= (RAND_MAX + 1);
+        float r = mt::randf( (float)_max );
 
-        return r;
+        return (uint32_t)r;
     }
 
     MT_FUNCTION_INLINE uint32_t range_rand( uint32_t _a, uint32_t _b )
