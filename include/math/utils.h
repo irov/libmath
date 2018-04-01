@@ -169,22 +169,33 @@ namespace mt
         return f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_INLINE bool is_pow2( uint32_t n )
+    MT_INLINE bool is_pow2( uint32_t _n )
     {
-        return !(n & (n - 1));
+        return !(_n & (_n - 1));
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_INLINE uint32_t next_pow2( uint32_t n )
+    MT_INLINE uint32_t next_pow2( uint32_t _n )
     {
-        --n;
-        n |= n >> 16;
-        n |= n >> 8;
-        n |= n >> 4;
-        n |= n >> 2;
-        n |= n >> 1;
-        ++n;
+        --_n;
+        _n |= _n >> 16;
+        _n |= _n >> 8;
+        _n |= _n >> 4;
+        _n |= _n >> 2;
+        _n |= _n >> 1;
+        ++_n;
 
-        return n;
+        return _n;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_INLINE uint32_t get_np2( uint32_t _n )
+    {
+        uint32_t p2 = 0;
+        while( (_n >>= 1) != 0 )
+        {
+            ++p2;
+        }
+
+        return p2;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_INLINE float length( float _a, float _b )

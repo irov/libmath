@@ -20,6 +20,8 @@
 #define MT_sinf (::sinf)
 #define MT_tanf (::tanf)
 #define MT_fabsf (::fabsf)
+#define MT_rand (::rand)
+#define MT_RAND_MAX (RAND_MAX)
 #endif
 
 #ifndef MT_NO_ASSERT
