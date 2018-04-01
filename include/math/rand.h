@@ -27,7 +27,7 @@ namespace mt
 
     MT_FUNCTION_INLINE uint32_t rand( uint32_t _max )
     {
-        uint32_t r = MT_rand();
+        uint64_t r = MT_rand();
         r *= _max;
         r /= (RAND_MAX + 1);
 
