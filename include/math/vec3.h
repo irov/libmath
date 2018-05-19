@@ -35,7 +35,7 @@ namespace mt
 
         MT_METHOD_INLINE vec2f to_vec2f() const;
         MT_METHOD_INLINE void from_f3( const float * _v );
-        MT_METHOD_INLINE void from_f2( const float * _v );
+        MT_METHOD_INLINE void from_f2( const float * _v, float _z );
 
         MT_METHOD_INLINE float * buff();
         MT_METHOD_INLINE const float * buff() const;

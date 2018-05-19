@@ -105,11 +105,11 @@ namespace mt
         this->y = _v[1];
         this->z = _v[2];
     }
-    MT_METHOD_INLINE void vec3f::from_f2( const float * _v )
+    MT_METHOD_INLINE void vec3f::from_f2( const float * _v, float _z )
     {
         this->x = _v[0];
         this->y = _v[1];
-        this->z = 0.f;
+        this->z = _z;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE float * vec3f::buff()
