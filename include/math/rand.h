@@ -36,7 +36,7 @@ namespace mt
     {
         if( _a > _b )
         {
-            return _a;
+            return _b;
         }
 
         uint32_t max = (_b - _a);
