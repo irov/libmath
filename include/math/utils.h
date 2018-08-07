@@ -104,7 +104,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_INLINE constexpr bool equal_f_1( float _f )
     {
-        return (_f >= mt::constant::one_eps) && (_f <= mt::constant::one_neps);
+        return (_f >= mt::constant::one_neps) && (_f <= mt::constant::one_eps);
     }
     //////////////////////////////////////////////////////////////////////////
     MT_INLINE constexpr bool greatequal_f_z( float _f )

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "math/config.h"
+#include "math/utils.h"
 
 namespace mt
 {
@@ -52,6 +53,16 @@ namespace mt
         static MT_METHOD_INLINE const vec2f & identity();
     };
 
+    constexpr bool is_ident_v2( const vec2f& _a )
+    {
+        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y );
+    }
+
+    constexpr bool is_one_v2( const vec2f& _a )
+    {
+        return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y );
+    }
+
     MT_FUNCTION_INLINE bool operator==( const vec2f& _a, const vec2f& _b );
     MT_FUNCTION_INLINE bool operator!=( const vec2f& _a, const vec2f& _b );
     MT_FUNCTION_INLINE vec2f operator+( const vec2f& _a, const vec2f& _b );
@@ -66,7 +77,7 @@ namespace mt
     MT_FUNCTION_INLINE vec2f operator+( vec2f _rhs );
 
     MT_FUNCTION_INLINE void ident_v2( vec2f& _a );
-
+    
     MT_FUNCTION_INLINE float length_v2( const vec2f& _a );
     MT_FUNCTION_INLINE float sqrlength_v2_v2( const vec2f& _a, const vec2f& _b );
     MT_FUNCTION_INLINE float length_v2_v2( const vec2f& _a, const vec2f& _b );

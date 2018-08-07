@@ -136,11 +136,6 @@ namespace mt
         _a.z = 0.f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool is_ident_v3( const vec3f & _a )
-    {
-        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y ) && mt::equal_f_z( _a.z );
-    }
-    //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE float length( const vec3f& _a, const vec3f& _b )
     {
         return length_v3_v3( _a, _b );

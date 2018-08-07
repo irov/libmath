@@ -42,6 +42,16 @@ namespace mt
 
         static MT_METHOD_INLINE const vec3f & identity();
     };
+    
+    constexpr bool is_ident_v3( const vec3f & _a )
+    {
+        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y ) && mt::equal_f_z( _a.z );
+    }
+    
+    constexpr bool is_one_v3( const vec3f & _a )
+    {
+        return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y ) && mt::equal_f_1( _a.z );
+    }
 
     MT_FUNCTION_INLINE bool operator==( const vec3f& _a, const vec3f& _b );
     MT_FUNCTION_INLINE bool operator!=( const vec3f& _a, const vec3f& _b );
@@ -56,7 +66,6 @@ namespace mt
     MT_FUNCTION_INLINE vec3f operator-( vec3f _rhs );
 
     MT_FUNCTION_INLINE void ident_v3( vec3f& _a );
-    MT_FUNCTION_INLINE bool is_ident_v3( const vec3f & _a );
 
     MT_FUNCTION_INLINE float length( const vec3f& _a, const vec3f& _b );
     MT_FUNCTION_INLINE float length_v3_v3( const vec3f& _a, const vec3f& _b );

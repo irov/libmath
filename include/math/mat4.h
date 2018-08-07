@@ -74,6 +74,7 @@ namespace mt
 
     MT_FUNCTION_INLINE void mul_m4_v4( vec4f & _out, const mat4f & _m, const vec4f & _v );
     MT_FUNCTION_INLINE void mul_v4_m4( vec4f & _out, const vec4f & _a, const mat4f & _b );
+    MT_FUNCTION_INLINE void mul_v4_m4_r( vec4f & _out, const vec4f & _a, const mat4f & _b );
     MT_FUNCTION_INLINE void mul_v4_v3_m4( vec4f & _out, const vec3f & _a, const mat4f & _b );
     MT_FUNCTION_INLINE void mul_v3_v3_m4_homogenize( vec3f & _out, const vec3f & _a, const mat4f & _b );
     MT_FUNCTION_INLINE void mul_v2_v3_m4_homogenize( vec2f & _out, const vec3f & _a, const mat4f & _b );
@@ -82,6 +83,7 @@ namespace mt
 
 
     MT_FUNCTION_INLINE void mul_m4_m4( mat4f& _out, const mat4f& _a, const mat4f& _b );
+    MT_FUNCTION_INLINE void mul_m4_m4_r( mat4f& _out, const mat4f& _a, const mat4f& _b );
 
     MT_FUNCTION_INLINE void mul_v4_m3_i( vec4f & _out, const vec4f & _a, const mat3f& _b );
     MT_FUNCTION_INLINE void mul_m4_m3( mat4f& _out, const mat4f& _a, const mat3f& _b );
@@ -130,6 +132,7 @@ namespace mt
     MT_FUNCTION_INLINE void make_rotate_y_axis_m4( mat4f & _out, float _angle );
     MT_FUNCTION_INLINE void make_rotate_z_axis_m4( mat4f & _out, float _angle );
 
+    MT_FUNCTION_INLINE void make_skew_m4( mat4f & _out, float _x, float _y );
     MT_FUNCTION_INLINE void make_scale_m4( mat4f & _out, float _x, float _y, float _z );
     MT_FUNCTION_INLINE void make_translation_m4_v3( mat4f & _out, const mt::vec3f & _pos );
     MT_FUNCTION_INLINE void make_translation_m4( mat4f & _out, float _x, float _y, float _z );
