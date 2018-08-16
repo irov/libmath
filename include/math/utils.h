@@ -30,7 +30,6 @@ namespace mt
 
         return _value;
     }
-
     //////////////////////////////////////////////////////////////////////////
     template<class T>
     MT_INLINE constexpr T ltrim( T _value, T _trim )
