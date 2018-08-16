@@ -23,67 +23,36 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////    
     MT_CONSTEXPR float ltrim_f( float _value, float _trim )
     {
-        if( _value < _trim )
-        {
-            return _trim;
-        }
-
-        return _value;
+        return (_value < _trim) ? _trim : _value;
     }
     //////////////////////////////////////////////////////////////////////////
     template<class T>
     MT_CONSTEXPR T ltrim( T _value, T _trim )
     {
-        if( _value < _trim )
-        {
-            return _trim;
-        }
-
-        return _value;
+        return (_value < _trim) ? _trim : _value;
     }
     //////////////////////////////////////////////////////////////////////////
     template<class T>
     MT_CONSTEXPR T rtrim( T _value, T _trim )
     {
-        if( _value > _trim )
-        {
-            return _trim;
-        }
-
-        return _value;
+        return (_value > _trim) ? _trim : _value;
     }
     //////////////////////////////////////////////////////////////////////////
     template<class T>
     MT_CONSTEXPR T crop( T _value, T _min, T _max )
     {
-        if( _value < _min )
-        {
-            return _min;
-        }
-
-        if( _value > _max )
-        {
-            return _max;
-        }
-
-        return _value;
+        return (_value < _min) ? _min : ((_value > _max) ? _max : _value);
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_CONSTEXPR float clampf( float _leftBound, float _value, float _rightBound )
+    {
+        return (_value < _leftBound) ? _leftBound : ((_value > _rightBound) ? _rightBound : _value);
     }
     //////////////////////////////////////////////////////////////////////////
     template< typename T >
-    MT_CONSTEXPR T clamp( const T & _leftBound, const T & _value, const T & _rightBound )
+    MT_CONSTEXPR T clamp( T _leftBound, T _value, T _rightBound )
     {
-        T clampedValue = _value;
-
-        if( _value < _leftBound )
-        {
-            clampedValue = _leftBound;
-        }
-        else if( _value > _rightBound )
-        {
-            clampedValue = _rightBound;
-        }
-
-        return clampedValue;
+        return (_value < _leftBound) ? _leftBound : ((_value > _rightBound) ? _rightBound : _value);
     }
     //////////////////////////////////////////////////////////////////////////
     MT_CONSTEXPR bool equal_f_f_e( float _a, float _b, float _e )
