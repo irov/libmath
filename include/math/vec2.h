@@ -53,12 +53,12 @@ namespace mt
         static MT_METHOD_INLINE const vec2f & identity();
     };
 
-    constexpr bool is_ident_v2( const vec2f& _a )
+    MT_CONSTEXPR bool is_ident_v2( const vec2f& _a )
     {
         return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y );
     }
 
-    constexpr bool is_one_v2( const vec2f& _a )
+    MT_CONSTEXPR bool is_one_v2( const vec2f& _a )
     {
         return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y );
     }
