@@ -46,10 +46,16 @@
 
 #ifndef MT_CONSTEXPR
 #   ifdef __cplusplus
-#       if __cplusplus >= 201103L
+#       if __cplusplus >= 201402L
+#           define MT_CONSTFUNC constexpr
+#           define MT_CONSTEXPR constexpr
+#           define MT_CONSTVAR constexpr
+#       elif __cplusplus >= 201103L
+#           define MT_CONSTFUNC inline
 #           define MT_CONSTEXPR constexpr
 #           define MT_CONSTVAR constexpr
 #       else
+#           define MT_CONSTFUNC inline
 #           define MT_CONSTEXPR inline
 #           define MT_CONSTVAR static
 #       endif

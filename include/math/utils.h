@@ -80,7 +80,7 @@ namespace mt
         return _f >= mt::constant::one_neps;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR uint32_t factorial( uint32_t _value )
+    MT_CONSTFUNC uint32_t factorial( uint32_t _value )
     {
         if( _value == 0 )
         {
@@ -100,7 +100,7 @@ namespace mt
         return f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR float factorialf( uint32_t _value )
+    MT_CONSTFUNC float factorialf( uint32_t _value )
     {
         if( _value == 0 )
         {
@@ -120,7 +120,7 @@ namespace mt
         return f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR float integral_powf( float _value, uint32_t _count )
+    MT_CONSTFUNC float integral_powf( float _value, uint32_t _count )
     {
         if( _count == 0 )
         {
@@ -142,7 +142,7 @@ namespace mt
         return !(_n & (_n - 1));
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR uint32_t next_pow2( uint32_t _n )
+    MT_CONSTFUNC uint32_t next_pow2( uint32_t _n )
     {
         --_n;
         _n |= _n >> 16;
@@ -155,7 +155,7 @@ namespace mt
         return _n;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR uint32_t get_np2( uint32_t _n )
+    MT_CONSTFUNC uint32_t get_np2( uint32_t _n )
     {
         uint32_t p2 = 0;
         while( (_n >>= 1) != 0 )
@@ -166,7 +166,7 @@ namespace mt
         return p2;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR float length( float _a, float _b )
+    MT_CONSTFUNC float length( float _a, float _b )
     {
         float d = _a - _b;
 
