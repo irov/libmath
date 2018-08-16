@@ -458,9 +458,9 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void linerp_v3( mt::vec3f & _out, const mt::vec3f & _in1, const mt::vec3f & _in2, float _scale )
     {
-        mt::linerp_f1( _out.x, _in1.x, _in2.x, _scale );
-        mt::linerp_f1( _out.y, _in1.y, _in2.y, _scale );
-        mt::linerp_f1( _out.z, _in1.z, _in2.z, _scale );
+        _out.x = mt::linerp_f1( _in1.x, _in2.x, _scale );
+        _out.y = mt::linerp_f1( _in1.y, _in2.y, _scale );
+        _out.z = mt::linerp_f1( _in1.z, _in2.z, _scale );
     }
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE float follow_v3( mt::vec3f & _out, const mt::vec3f & _in1, const mt::vec3f & _in2, float _step )

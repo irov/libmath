@@ -178,9 +178,9 @@ namespace mt
         return -d;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR void linerp_f1( float & _out, float _in1, float _in2, float _scale )
+    MT_CONSTEXPR float linerp_f1(  float _in1, float _in2, float _scale )
     {
-        _out = _in1 + (_in2 - _in1) * _scale;
+        return _in1 + (_in2 - _in1) * _scale;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_CONSTEXPR float cross2_f( float _a, float _b, float _c, float _d )
