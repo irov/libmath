@@ -28,6 +28,7 @@ namespace mt
 
         MT_METHOD_INLINE mat4f& operator = ( const mat4f& _rhs );
 
+        MT_METHOD_INLINE void from_f12( const float * _v );
         MT_METHOD_INLINE void from_f16( const float * _v );
 
         MT_METHOD_INLINE float * buff();
