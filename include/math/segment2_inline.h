@@ -164,4 +164,17 @@ namespace mt
 
 		return true;
 	}
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f & _out )
+    {
+        const float sqrl = mt::sqrlength_v2_v2( _segment0.a, _segment0.b );
+
+        mt::vec2f p0 = _point - _segment0.a;
+        mt::vec2f p1 = _segment0.b - _segment0.a;
+        float t = mt::dot_v2_v2( p0, p1 ) / sqrl;
+
+        float tn = mt::clampf( 0.f, t, 1.f );
+                       
+        _out = _segment0.a + tn * (_segment0.b - _segment0.a);
+    }
 }

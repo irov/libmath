@@ -192,7 +192,7 @@ namespace mt
         return is_intersect( _a.minimum, _a.maximum, _b, _b );
     }
 	//////////////////////////////////////////////////////////////////////////
-	MT_FUNCTION_INLINE bool is_intersect(const box2f & _a, const vec2f & _b, float _radius)
+    MT_FUNCTION_INLINE bool is_intersect( const box2f & _a, const vec2f & _b, float _radius )
 	{
 		if( _a.minimum.x > _b.x + _radius )
 		{
@@ -216,6 +216,31 @@ namespace mt
 
 		return true;
 	}
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE bool is_intersect( const box2f & _a, const vec2f & _b, float _radiusx, float _radiusy )
+    {
+        if( _a.minimum.x > _b.x + _radiusx )
+        {
+            return false;
+        }
+
+        if( _a.maximum.x < _b.x - _radiusx )
+        {
+            return false;
+        }
+
+        if( _a.minimum.y > _b.y + _radiusy )
+        {
+            return false;
+        }
+
+        if( _a.maximum.y < _b.y - _radiusy )
+        {
+            return false;
+        }
+
+        return true;
+    }
 	//////////////////////////////////////////////////////////////////////////
 	MT_FUNCTION_INLINE void mul_box2_m4( box2f & _out, const box2f & _a, const mat4f & _b )
 	{

@@ -355,7 +355,8 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void perp_v2( vec2f&	_out, const vec2f& _in )
     {
-        _out = vec2f( -_in.y, _in.x );
+        _out.x = -_in.y;
+        _out.y = _in.x;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE vec2f perp( const vec2f&	_rhs )

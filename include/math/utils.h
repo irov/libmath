@@ -46,7 +46,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_CONSTEXPR float clampf( float _leftBound, float _value, float _rightBound )
     {
-        return (_value < _leftBound) ? _leftBound : ((_value > _rightBound) ? _rightBound : _value);
+        return max_f( _leftBound, min_f( _rightBound, _value ) );
     }
     //////////////////////////////////////////////////////////////////////////
     template< typename T >

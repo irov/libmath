@@ -50,6 +50,10 @@ namespace mt
 		const mt::segment2 & _segment0,
 		const mt::segment2 & _segment1,
 		mt::vec2f & _intersectionPoint );
+
+    MT_FUNCTION_INLINE void segment2_projection_point(
+        const mt::segment2 & _segment0,
+        const mt::vec2f & _point, mt::vec2f & _projection );
 }
 
 #if MT_FORCE_INLINE == 1
