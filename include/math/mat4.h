@@ -81,6 +81,7 @@ namespace mt
     MT_FUNCTION_INLINE void mul_v2_v3_m4_homogenize( vec2f & _out, const vec3f & _a, const mat4f & _b );
     MT_FUNCTION_INLINE void mul_v3_v2_m4_homogenize( vec3f & _out, const vec2f & _a, const mat4f & _b );
     MT_FUNCTION_INLINE void mul_v2_v2_m4_homogenize( vec2f & _out, const vec2f & _a, const mat4f & _b );
+    MT_FUNCTION_INLINE void mul_v2_v2z_m4_homogenize( vec2f & _out, const mat4f & _b );
 
 
     MT_FUNCTION_INLINE void mul_m4_m4( mat4f& _out, const mat4f& _a, const mat4f& _b );
