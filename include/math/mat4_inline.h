@@ -193,6 +193,12 @@ namespace mt
         return w;
     }
     //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE void mul_v2_v2z_m4( vec2f& _out, const mat4f& _m )
+    {
+        _out.x += _m.v3.x;
+        _out.y += _m.v3.y;
+    }
+    //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void mul_v2_v2_m4( vec2f& _out, const vec2f& _v, const mat4f& _m )
     {
         mul_v2_v2_m4_r( _out, _v, _m );
