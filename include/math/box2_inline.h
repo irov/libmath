@@ -28,13 +28,21 @@ namespace mt
         return *this;
     }
 	//////////////////////////////////////////////////////////////////////////
-	MT_FUNCTION_INLINE void ident_box( box2f & box )
+	MT_FUNCTION_INLINE void infinity_box( box2f & box )
 	{
-		box.minimum.x = MT_FLT_MAX;
-		box.minimum.y = MT_FLT_MAX;
-		box.maximum.x = -MT_FLT_MAX;
-		box.maximum.y = -MT_FLT_MAX;
+		box.minimum.x = -MT_FLT_MAX;
+		box.minimum.y = -MT_FLT_MAX;
+		box.maximum.x = MT_FLT_MAX;
+		box.maximum.y = MT_FLT_MAX;
 	}
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE void insideout_box( box2f & box )
+    {
+        box.minimum.x = MT_FLT_MAX;
+        box.minimum.y = MT_FLT_MAX;
+        box.maximum.x = -MT_FLT_MAX;
+        box.maximum.y = -MT_FLT_MAX;
+    }
 	//////////////////////////////////////////////////////////////////////////
 	MT_FUNCTION_INLINE void reset( box2f & box, const vec2f &initValue)
 	{

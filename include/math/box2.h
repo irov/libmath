@@ -20,7 +20,8 @@ namespace mt
         MT_METHOD_INLINE box2f & operator = ( const box2f & _box );
     };
 
-    MT_FUNCTION_INLINE void ident_box( box2f & box );
+    MT_FUNCTION_INLINE void infinity_box( box2f & box );
+    MT_FUNCTION_INLINE void insideout_box( box2f & box );
     MT_FUNCTION_INLINE void reset( box2f & box, const vec2f & initValue );
     MT_FUNCTION_INLINE void reset( box2f & box, float x, float y );
     MT_FUNCTION_INLINE void add_internal_point( box2f & box, float x, float y );
