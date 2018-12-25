@@ -26,6 +26,6 @@ namespace mt
 }
 
 #ifndef MT_NO_DEFINE
-#   define MT_DEG2RAD( DEG ) (DEG * mt::constant::deg2rad)
-#   define MT_RAD2DEG( RAD ) (RAD * mt::constant::rad2deg)
+#   define MT_DEG2RAD( DEG ) ((DEG) * mt::constant::deg2rad)
+#   define MT_RAD2DEG( RAD ) ((RAD) * mt::constant::rad2deg)
 #endif

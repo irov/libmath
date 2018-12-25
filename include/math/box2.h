@@ -27,6 +27,7 @@ namespace mt
     MT_FUNCTION_INLINE void add_internal_point( box2f & box, float x, float y );
     MT_FUNCTION_INLINE void add_internal_point( box2f & box, const vec2f & p );
     MT_FUNCTION_INLINE void merge_box( box2f & box, const box2f & external_box );
+    MT_FUNCTION_INLINE void crop_box( box2f & box, const box2f & external_box );
     MT_FUNCTION_INLINE void transpose_box( box2f & _box, const mt::vec2f & _pos );
     MT_FUNCTION_INLINE void scale_box( box2f & _box, const mt::vec2f & _scale );
     MT_FUNCTION_INLINE void get_center_box( const box2f & _box, mt::vec2f & _pos );
