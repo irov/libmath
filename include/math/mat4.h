@@ -58,8 +58,8 @@ namespace mt
     MT_FUNCTION_INLINE void mul_m4_v3_z( vec3f& _out, const mat4f& _m );
     MT_FUNCTION_INLINE void mul_m4_v4_z( vec4f& _out, const mat4f& _m );
 
-    MT_FUNCTION_INLINE void mul_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v );
-    MT_FUNCTION_INLINE void mul_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v );
+    MT_FUNCTION_INLINE void mul_v2_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v );
+    MT_FUNCTION_INLINE void mul_v3_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v );
 
     MT_FUNCTION_INLINE void mul_v3_v3_m4( vec3f& _out, const vec3f& _v, const mat4f& _m );
     MT_FUNCTION_INLINE void mul_v3_v3_m4_r( vec3f& _out, const vec3f& _v, const mat4f& _m );
@@ -109,7 +109,7 @@ namespace mt
     MT_FUNCTION_INLINE vec4f get_col_m4( const mat4f& _rhs, int _index );
     MT_FUNCTION_INLINE void set_col_m4( mat4f& out, const vec4f& _rhs, int _index );
 
-    MT_FUNCTION_INLINE void transpose_m4( mat4f& _out, const mat4f& _rhs );
+    MT_FUNCTION_INLINE void transpose_m4_m4( mat4f& _out, const mat4f& _rhs );
     MT_FUNCTION_INLINE mat4f transpose_m4( const mat4f& _rhs );
 
     MT_FUNCTION_INLINE void extract_m4_m3( mat3f& _out, const mat4f& _rhs );

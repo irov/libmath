@@ -147,23 +147,23 @@ namespace mt
         _out.w = dot_v4_z( _m.v3 );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v )
+    MT_FUNCTION_INLINE void mul_v2_m4_v2( vec2f& _out, const mat4f& _m, const vec2f& _v )
     {
-        _out.x = dot_v4_v2( _m.v0, _v );
-        _out.y = dot_v4_v2( _m.v1, _v );
+        _out.x = dot_v4_v2( _m.v0, _v ) + _m.v3.x;
+        _out.y = dot_v4_v2( _m.v1, _v ) + _m.v3.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v )
+    MT_FUNCTION_INLINE void mul_v3_m4_v3( vec3f& _out, const mat4f& _m, const vec3f& _v )
     {
-        _out.x = dot_v4_v3( _m.v0, _v );
-        _out.y = dot_v4_v3( _m.v1, _v );
-        _out.z = dot_v4_v3( _m.v2, _v );
+        _out.x = dot_v4_v3( _m.v0, _v ) + _m.v3.x;
+        _out.y = dot_v4_v3( _m.v1, _v ) + _m.v3.y;
+        _out.z = dot_v4_v3( _m.v2, _v ) + _m.v3.z;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE vec3f operator*( const mat4f& m, const vec3f& v )
     {
         vec3f out;
-        mul_m4_v3( out, m, v );
+        mul_v3_m4_v3( out, m, v );
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
@@ -537,7 +537,7 @@ namespace mt
         out.v3[_index] = _rhs.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void transpose_m4( mat4f& _out, const mat4f& _rhs )
+    MT_FUNCTION_INLINE void transpose_m4_m4( mat4f& _out, const mat4f& _rhs )
     {
         _out[0][0] = _rhs[0][0];
         _out[1][1] = _rhs[1][1];
@@ -562,7 +562,7 @@ namespace mt
     MT_FUNCTION_INLINE mat4f transpose_m4( const mat4f& _rhs )
     {
         mat4f out;
-        transpose_m4( out, _rhs );
+        transpose_m4_m4( out, _rhs );
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
