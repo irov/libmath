@@ -153,11 +153,6 @@ quat
 )
 
 ADD_FILTER(
-rand
-	include/math/rand.h
-)
-
-ADD_FILTER(
 simplex
 	src/simplex.cpp
 	include/math/simplex.h
