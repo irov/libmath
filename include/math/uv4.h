@@ -22,6 +22,9 @@ namespace mt
 		MT_METHOD_INLINE mt::vec2f & operator [] ( size_t i );
 		MT_METHOD_INLINE uv4f & operator = ( const uv4f & _rhs );
 
+        MT_METHOD_INLINE float * buff();
+        MT_METHOD_INLINE const float * buff() const;
+
         static MT_METHOD_INLINE const uv4f & identity();
 	};
 

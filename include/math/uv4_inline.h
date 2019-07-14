@@ -60,6 +60,15 @@ namespace mt
 		return *this;
 	}
     //////////////////////////////////////////////////////////////////////////
+    MT_METHOD_INLINE float * uv4f::buff()
+    {
+        return p0.buff();
+    }
+    MT_METHOD_INLINE const float * uv4f::buff() const
+    {
+        return p0.buff();
+    }
+    //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE const uv4f & uv4f::identity()
     {
         static mt::uv4f uv;
