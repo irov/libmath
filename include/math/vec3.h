@@ -42,70 +42,70 @@ namespace mt
 
         static MT_METHOD_INLINE const vec3f & identity();
     };
-    
+
     MT_CONSTEXPR bool is_ident_v3( const vec3f & _a )
     {
         return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y ) && mt::equal_f_z( _a.z );
     }
-    
+
     MT_CONSTEXPR bool is_one_v3( const vec3f & _a )
     {
         return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y ) && mt::equal_f_1( _a.z );
     }
 
-    MT_FUNCTION_INLINE bool operator==( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE bool operator!=( const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE bool operator==( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE bool operator!=( const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE vec3f operator+( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE vec3f operator-( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE vec3f operator*( const vec3f& _a, const vec3f & _b );
-    MT_FUNCTION_INLINE vec3f operator*( const vec3f& _rhs, const float _val );
-    MT_FUNCTION_INLINE vec3f operator*( const float _val, const vec3f& _rhs );
-    MT_FUNCTION_INLINE vec3f operator/( const vec3f& _a, const vec3f & _b );
-    MT_FUNCTION_INLINE vec3f operator/( const vec3f& _rhs, const float _val );
+    MT_FUNCTION_INLINE vec3f operator+( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f operator-( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f operator*( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f operator*( const vec3f & _rhs, const float _val );
+    MT_FUNCTION_INLINE vec3f operator*( const float _val, const vec3f & _rhs );
+    MT_FUNCTION_INLINE vec3f operator/( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f operator/( const vec3f & _rhs, const float _val );
     MT_FUNCTION_INLINE vec3f operator-( vec3f _rhs );
 
-    MT_FUNCTION_INLINE void ident_v3( vec3f& _a );
+    MT_FUNCTION_INLINE void ident_v3( vec3f & _a );
 
-    MT_FUNCTION_INLINE float length( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE float length_v3_v3( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE float length_v3( const vec3f& _a );
-    MT_FUNCTION_INLINE float sqrlength_v3_v3( const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE float sqrlength_v3( const vec3f& _a );
+    MT_FUNCTION_INLINE float length( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE float length_v3_v3( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE float length_v3( const vec3f & _a );
+    MT_FUNCTION_INLINE float sqrlength_v3_v3( const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE float sqrlength_v3( const vec3f & _a );
 
-    MT_FUNCTION_INLINE void dir_v3_v3( vec3f & _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE float dir_v3_v3_f( vec3f & _out, const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE void dir_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE float dir_v3_v3_f( vec3f & _out, const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE bool cmp_v3_v2( const vec3f& _a, const vec2f& _b );
-    MT_FUNCTION_INLINE bool cmp_v3_v3( const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE bool cmp_v3_v2( const vec3f & _a, const vec2f & _b );
+    MT_FUNCTION_INLINE bool cmp_v3_v3( const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE void add_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE void sub_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE void scale_v3_v3( vec3f& _out, const vec3f& _a, float _val );
-    MT_FUNCTION_INLINE void mul_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE void neg_v3( vec3f& _out );
+    MT_FUNCTION_INLINE void add_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE void sub_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE void scale_v3_v3( vec3f & _out, const vec3f & _a, float _val );
+    MT_FUNCTION_INLINE void mul_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE void neg_v3( vec3f & _out );
 
-    MT_FUNCTION_INLINE float dot_v3( const vec3f &a );
-    MT_FUNCTION_INLINE float dot_v3_v3( const vec3f &a, const vec3f &b );
-    MT_FUNCTION_INLINE float dot_v3_v3_clamp( const vec3f &a, const vec3f &b );
+    MT_FUNCTION_INLINE float dot_v3( const vec3f & a );
+    MT_FUNCTION_INLINE float dot_v3_v3( const vec3f & a, const vec3f & b );
+    MT_FUNCTION_INLINE float dot_v3_v3_clamp( const vec3f & a, const vec3f & b );
 
-    MT_FUNCTION_INLINE float dot_v3_v2( const vec3f &a, const vec2f &b );
+    MT_FUNCTION_INLINE float dot_v3_v2( const vec3f & a, const vec2f & b );
 
-    MT_FUNCTION_INLINE void reflect_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE vec3f reflect_v3_v3( const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE void reflect_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f reflect_v3_v3( const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE float project_to_line_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b, const vec3f & _c );
+    MT_FUNCTION_INLINE float project_to_line_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b, const vec3f & _c );
 
-    MT_FUNCTION_INLINE void cross_v3_v3( vec3f& _out, const vec3f& _a, const vec3f& _b );
-    MT_FUNCTION_INLINE vec3f cross_v3_v3( const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE void cross_v3_v3( vec3f & _out, const vec3f & _a, const vec3f & _b );
+    MT_FUNCTION_INLINE vec3f cross_v3_v3( const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE void cross_v3_v3_norm( vec3f& _out, const vec3f& _a, const vec3f& _b );
+    MT_FUNCTION_INLINE void cross_v3_v3_norm( vec3f & _out, const vec3f & _a, const vec3f & _b );
 
-    MT_FUNCTION_INLINE void norm_v3_v3( vec3f& _out, const vec3f& _rhs );
-    MT_FUNCTION_INLINE float norm_v3_v3_f( vec3f& _out, const vec3f& _rhs );
-    MT_FUNCTION_INLINE vec3f norm_v3( const vec3f& _rhs );
-    MT_FUNCTION_INLINE void norm_safe_v3( vec3f& out, const vec3f& _rhs, float err = 1e-06 );
-    MT_FUNCTION_INLINE vec3f norm_safe_v3( const vec3f& _rhs );
+    MT_FUNCTION_INLINE void norm_v3_v3( vec3f & _out, const vec3f & _rhs );
+    MT_FUNCTION_INLINE float norm_v3_v3_f( vec3f & _out, const vec3f & _rhs );
+    MT_FUNCTION_INLINE vec3f norm_v3( const vec3f & _rhs );
+    MT_FUNCTION_INLINE void norm_safe_v3( vec3f & out, const vec3f & _rhs, float err = 1e-06 );
+    MT_FUNCTION_INLINE vec3f norm_safe_v3( const vec3f & _rhs );
 
     MT_FUNCTION_INLINE float get_axis_angle( const vec3f & dir, int axis );
 

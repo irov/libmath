@@ -2,7 +2,8 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box2f::box2f()
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box2f::box2f( float _minx, float _miny, float _maxx, float _maxy )
         : minimum( _minx, _miny )
@@ -13,12 +14,14 @@ namespace mt
     MT_METHOD_INLINE box2f::box2f( const box2f & _box )
         : minimum( _box.minimum )
         , maximum( _box.maximum )
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box2f::box2f( const vec2f & _min, const vec2f & _max )
         : minimum( _min )
         , maximum( _max )
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box2f & box2f::operator = ( const box2f & _box )
     {
@@ -44,7 +47,7 @@ namespace mt
         box.maximum.y = -MT_FLT_MAX;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void reset( box2f & box, const vec2f &initValue )
+    MT_FUNCTION_INLINE void reset( box2f & box, const vec2f & initValue )
     {
         box.maximum = initValue;
         box.minimum = initValue;
@@ -63,7 +66,7 @@ namespace mt
         if( y < box.minimum.y ) box.minimum.y = y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void add_internal_point( box2f & box, const vec2f &p )
+    MT_FUNCTION_INLINE void add_internal_point( box2f & box, const vec2f & p )
     {
         add_internal_point( box, p.x, p.y );
     }
@@ -101,7 +104,7 @@ namespace mt
         _pos = (_box.minimum + _box.maximum) * 0.5f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_box_from_min_max( box2f & box, const vec2f &minimum, const vec2f &maximum )
+    MT_FUNCTION_INLINE void set_box_from_min_max( box2f & box, const vec2f & minimum, const vec2f & maximum )
     {
         box.minimum = minimum;
         box.maximum = maximum;
@@ -113,13 +116,13 @@ namespace mt
         mt::add_internal_point( box, b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_box_from_center_and_extent( box2f & box, const vec2f &center, const vec2f &extent )
+    MT_FUNCTION_INLINE void set_box_from_center_and_extent( box2f & box, const vec2f & center, const vec2f & extent )
     {
         box.minimum = center - extent;
         box.maximum = center + extent;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_box_from_oriented_extent( box2f & box, const mt::vec2f & _offset, const mt::vec2f& _size, const mt::mat3f& _wm )
+    MT_FUNCTION_INLINE void set_box_from_oriented_extent( box2f & box, const mt::vec2f & _offset, const mt::vec2f & _size, const mt::mat3f & _wm )
     {
         mt::vec2f bounds[4];
 
@@ -264,7 +267,7 @@ namespace mt
         mt::mul_v2_v2_m4( _out.maximum, _a.maximum, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE vec2f box_size( const box2f& _box )
+    MT_FUNCTION_INLINE vec2f box_size( const box2f & _box )
     {
         return _box.maximum - _box.minimum;
     }

@@ -11,7 +11,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef( const planef& _plane )
+    MT_METHOD_INLINE planef::planef( const planef & _plane )
         :a( _plane.a )
         , b( _plane.b )
         , c( _plane.c )
@@ -19,7 +19,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef( const vec3f &_norm, float _dist )
+    MT_METHOD_INLINE planef::planef( const vec3f & _norm, float _dist )
         :a( _norm.x )
         , b( _norm.y )
         , c( _norm.z )
@@ -88,7 +88,7 @@ namespace mt
         _plane.d = -dot_v3_v3( _point, _normal );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool projection_to_plane( vec3f & _out, const vec3f & _eye, const vec3f  & _dir, const planef & _plane )
+    MT_FUNCTION_INLINE bool projection_to_plane( vec3f & _out, const vec3f & _eye, const vec3f & _dir, const planef & _plane )
     {
         vec3f norm( _plane.a, _plane.b, _plane.c );
 

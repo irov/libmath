@@ -2,17 +2,20 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box3f::box3f()
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box3f::box3f( const box3f & _box )
         : minimum( _box.minimum )
         , maximum( _box.maximum )
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE box3f::box3f( const vec3f &_min, const vec3f &_max )
+    MT_METHOD_INLINE box3f::box3f( const vec3f & _min, const vec3f & _max )
         : minimum( _min )
         , maximum( _max )
-    {}
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE box3f & box3f::operator = ( const box3f & _box )
     {
@@ -22,18 +25,18 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void reset( box3f &box, const vec3f &initValue )
+    MT_FUNCTION_INLINE void reset( box3f & box, const vec3f & initValue )
     {
         box.maximum = initValue;
         box.minimum = initValue;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void reset( box3f &box, float x, float y, float z )
+    MT_FUNCTION_INLINE void reset( box3f & box, float x, float y, float z )
     {
         reset( box, vec3f( x, y, z ) );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void add_internal_point( box3f &box, float x, float y, float z )
+    MT_FUNCTION_INLINE void add_internal_point( box3f & box, float x, float y, float z )
     {
         if( x > box.maximum.x ) box.maximum.x = x;
         if( y > box.maximum.y ) box.maximum.y = y;
@@ -43,24 +46,24 @@ namespace mt
         if( z < box.minimum.z ) box.minimum.z = z;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void add_internal_point( box3f &box, const vec3f &p )
+    MT_FUNCTION_INLINE void add_internal_point( box3f & box, const vec3f & p )
     {
         add_internal_point( box, p.x, p.y, p.z );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_box_from_min_max( box3f &box, const vec3f &min, const vec3f &max )
+    MT_FUNCTION_INLINE void set_box_from_min_max( box3f & box, const vec3f & min, const vec3f & max )
     {
         box.minimum = min;
         box.maximum = max;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_box_from_center_and_extent( box3f &box, const vec3f &center, const vec3f &extent )
+    MT_FUNCTION_INLINE void set_box_from_center_and_extent( box3f & box, const vec3f & center, const vec3f & extent )
     {
         box.minimum = center - extent;
         box.maximum = center + extent;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void GetUVHVector( vec3f uvh[3], const box3f &box )
+    MT_FUNCTION_INLINE void GetUVHVector( vec3f uvh[3], const box3f & box )
     {
         vec3f vDir = box.maximum - box.minimum;
         uvh[0] = vec3f( vDir.x, 0, 0 );
@@ -68,7 +71,7 @@ namespace mt
         uvh[2] = vec3f( 0, 0, vDir.z );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void get_point_from_box( vec3f point[8], const box3f &box )
+    MT_FUNCTION_INLINE void get_point_from_box( vec3f point[8], const box3f & box )
     {
         vec3f uvh[3];
         GetUVHVector( uvh, box );

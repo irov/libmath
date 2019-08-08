@@ -2,76 +2,76 @@
 
 namespace mt
 {
-	MT_FUNCTION_INLINE bool ccd_sphere_sphere( const mt::vec3f & _center1, float _radius1, const mt::vec3f & _velocity1, const mt::vec3f & _center2, float _radius2, const mt::vec3f & _velocity2, float & _time, mt::vec3f & _normal )
-	{
-		mt::vec3f nPos = _center1 - _center2;
-		mt::vec3f nSpeed = _velocity1 - _velocity2;
+    MT_FUNCTION_INLINE bool ccd_sphere_sphere( const mt::vec3f & _center1, float _radius1, const mt::vec3f & _velocity1, const mt::vec3f & _center2, float _radius2, const mt::vec3f & _velocity2, float & _time, mt::vec3f & _normal )
+    {
+        mt::vec3f nPos = _center1 - _center2;
+        mt::vec3f nSpeed = _velocity1 - _velocity2;
 
-		float nSpeedLen = mt::length_v3( nSpeed );
-		
-		if( nSpeedLen <= 0.f )
-		{
-			return false;
-		}
+        float nSpeedLen = mt::length_v3( nSpeed );
 
-		mt::vec3f nSpeedDir = nSpeed / nSpeedLen;
+        if( nSpeedLen <= 0.f )
+        {
+            return false;
+        }
 
-		float dist = mt::dot_v3_v3( -nPos, nSpeedDir );
+        mt::vec3f nSpeedDir = nSpeed / nSpeedLen;
 
-		if( dist <= 0.f )
-		{
-			return false;
-		}
+        float dist = mt::dot_v3_v3( -nPos, nSpeedDir );
 
-		float nPosLen = mt::length_v3( nPos );
+        if( dist <= 0.f )
+        {
+            return false;
+        }
 
-		float r = _radius1 + _radius2;
+        float nPosLen = mt::length_v3( nPos );
 
-		float x = nPosLen * nPosLen - dist * dist;
+        float r = _radius1 + _radius2;
 
-		if( x > r * r )
-		{
-			return false;
-		}
+        float x = nPosLen * nPosLen - dist * dist;
 
-		float z = dist - MT_sqrtf( r * r - x );
+        if( x > r * r )
+        {
+            return false;
+        }
 
-		_time = z / nSpeedLen;
-		mt::norm_v3_v3( _normal, nPos + nSpeedDir * z );
+        float z = dist - MT_sqrtf( r * r - x );
 
-		return true;
-	}
-	//////////////////////////////////////////////////////////////////////////
-	MT_FUNCTION_INLINE bool ccd_ray_plane( const mt::vec3f & _point, const mt::vec3f & _velocity, const mt::planef & _plane, float & _time )
-	{
-		mt::vec3f pn;
-		mt::get_plane_normal( pn, _plane );
+        _time = z / nSpeedLen;
+        mt::norm_v3_v3( _normal, nPos + nSpeedDir * z );
 
-		float denom = mt::dot_v3_v3( _velocity, pn );
+        return true;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE bool ccd_ray_plane( const mt::vec3f & _point, const mt::vec3f & _velocity, const mt::planef & _plane, float & _time )
+    {
+        mt::vec3f pn;
+        mt::get_plane_normal( pn, _plane );
 
-		if( mt::greatequal_f_z( denom ) == true )
-		{
-			return false;
-		}
-		
-		float orgon = mt::dot_v3_v3( _point, pn );
+        float denom = mt::dot_v3_v3( _velocity, pn );
 
-		float numer = -(_plane.d + orgon);
+        if( mt::greatequal_f_z( denom ) == true )
+        {
+            return false;
+        }
 
-		_time = numer / denom;
+        float orgon = mt::dot_v3_v3( _point, pn );
 
-		return true;
-	}
-	//////////////////////////////////////////////////////////////////////////
-	MT_FUNCTION_INLINE bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float & _time )
-	{
-		mt::vec3f pn;
-		mt::get_plane_normal( pn, _plane );
+        float numer = -(_plane.d + orgon);
 
-		mt::vec3f pt = _center - pn * _radius;
+        _time = numer / denom;
 
-		bool successful = mt::ccd_ray_plane( pt, _velocity, _plane, _time );
+        return true;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float & _time )
+    {
+        mt::vec3f pn;
+        mt::get_plane_normal( pn, _plane );
 
-		return successful;
-	}
+        mt::vec3f pt = _center - pn * _radius;
+
+        bool successful = mt::ccd_ray_plane( pt, _velocity, _plane, _time );
+
+        return successful;
+    }
 }

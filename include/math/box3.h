@@ -13,7 +13,7 @@ namespace mt
 
         MT_METHOD_INLINE box3f();
         MT_METHOD_INLINE box3f( const box3f & _box );
-        MT_METHOD_INLINE box3f( const vec3f &_min, const vec3f &_max );
+        MT_METHOD_INLINE box3f( const vec3f & _min, const vec3f & _max );
 
         MT_METHOD_INLINE box3f & operator = ( const box3f & _box );
     };

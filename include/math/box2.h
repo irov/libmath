@@ -44,7 +44,7 @@ namespace mt
     MT_FUNCTION_INLINE bool is_intersect( const box2f & _a, const vec2f & _b, float _radius );
     MT_FUNCTION_INLINE bool is_intersect( const box2f & _a, const vec2f & _b, float _radiusx, float _radiusy );
     MT_FUNCTION_INLINE void mul_box2_m4( box2f & _out, const box2f & _a, const mat4f & _b );
-    MT_FUNCTION_INLINE vec2f box_size( const box2f& _box );
+    MT_FUNCTION_INLINE vec2f box_size( const box2f & _box );
 }
 
 #if MT_FORCE_INLINE == 1

@@ -135,7 +135,7 @@ namespace mt
         const mt::vec2f & v0 = c[0];
         const mt::vec2f & v1 = c[1];
         const mt::vec2f & v2 = c[2];
-        
+
         int winding = convex8_left_of( v0, v1, v2 );
 
         return winding;

@@ -3,7 +3,7 @@
 #include "math/config.h"
 
 namespace mt
-{	
+{
 }
 
 #if MT_FORCE_INLINE == 1

@@ -5,9 +5,9 @@
 #include "math/vec2.h"
 
 namespace mt
-{    
-	class convex8
-	{
+{
+    class convex8
+    {
     public:
         MT_METHOD_INLINE convex8();
 
@@ -24,11 +24,11 @@ namespace mt
         MT_METHOD_INLINE void clear();
 
     protected:
-		mt::vec2f point[8];
-		uint32_t count;
-	};
+        mt::vec2f point[8];
+        uint32_t count;
+    };
 
-	MT_FUNCTION_INLINE void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result );
+    MT_FUNCTION_INLINE void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result );
     MT_FUNCTION_INLINE float convex8_area( const mt::convex8 & _convex );
 }
 

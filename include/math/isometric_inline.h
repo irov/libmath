@@ -2,9 +2,10 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE isometric::isometric( float w, float h )
-        : w(w)
-        , h(h)
-    {}
+        : w( w )
+        , h( h )
+    {
+    }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE void isometric::screen2iso( float sx, float sy, float & ix, float & iy ) const
     {
