@@ -130,18 +130,8 @@ namespace mt
         float x4 = _segment1.b.x;
         float y4 = _segment1.b.y;
 
-        if( max_f( x1, x2 ) < max_f( x3, x4 ) || max_f( x3, x4 ) < max_f( x1, x2 ) )
-        {
-            return false;
-        }
-
-        if( max_f( y1, y2 ) < max_f( y3, y4 ) || max_f( y3, y4 ) < max_f( y1, y2 ) )
-        {
-            return false;
-        }
-
-        float ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3));
-        float ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3));
+        float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
+        float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
         float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
 
         if( denom == 0.f )
@@ -159,8 +149,8 @@ namespace mt
             return false;
         }
 
-        _intersectionPoint.x = (x1 + ua * (x2 - x1));
-        _intersectionPoint.y = (y1 + ua * (y2 - y1));
+        _intersectionPoint.x = x1 + ua * (x2 - x1);
+        _intersectionPoint.y = y1 + ua * (y2 - y1);
 
         return true;
     }
