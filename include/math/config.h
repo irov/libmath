@@ -33,7 +33,7 @@
 
 
 #ifndef MT_FORCE_INLINE
-#   ifdef _DEBUG
+#   ifndef NDEBUG
 #       define MT_FORCE_INLINE 0
 #	else
 #       define MT_FORCE_INLINE 1
