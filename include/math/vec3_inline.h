@@ -9,14 +9,14 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE vec3f::vec3f( float _x, float _y, float _z )
-        :x( _x )
+        : x( _x )
         , y( _y )
         , z( _z )
     {
     }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE vec3f::vec3f( const vec3f & _v )
-        :x( _v.x )
+        : x( _v.x )
         , y( _v.y )
         , z( _v.z )
     {
