@@ -3,6 +3,14 @@ sudo: required
 
 language: cpp
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - cmake
+    - gcc-8
+
 os:
     - linux
     - osx
@@ -16,12 +24,6 @@ env:
     - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
     - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
     - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
-    
-addons:
-  apt:
-    packages:
-    - cmake
-    - gcc-8
 
 matrix:
     exclude:
