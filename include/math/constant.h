@@ -15,8 +15,8 @@ namespace mt
         MT_CONSTVAR const float inv_two_pi = 0.15915494309189533576888376337251f;
         MT_CONSTVAR const float e = 2.71828182845904523536f;
         MT_CONSTVAR const float sqrt2 = 1.4142135623730950488016887242097f;
-        MT_CONSTVAR const float	deg2rad = 0.01745329251994329576923690768489f;
-        MT_CONSTVAR const float	rad2deg = 57.295779513082320876798154814105f;
+        MT_CONSTVAR const float deg2rad = 0.01745329251994329576923690768489f;
+        MT_CONSTVAR const float rad2deg = 57.295779513082320876798154814105f;
         MT_CONSTVAR const float eps = 0.00001f;
         MT_CONSTVAR const float eps2 = eps * 10.f;
         MT_CONSTVAR const float neps = -eps;
