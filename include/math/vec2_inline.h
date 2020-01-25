@@ -106,7 +106,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE float vec2f::length() const
     {
-        float sql = sqrlength();
+        float sql = this->sqrlength();
 
         return MT_sqrtf( sql );
     }
