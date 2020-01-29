@@ -3,19 +3,23 @@ version: '{build}'
 environment:
   matrix:
   # Comilers matrix
-  - env_cmake_generator: "Visual Studio 15 2017"
+  - env_cmake_generator: "Visual Studio 16 2019"
+    env_cmake_architecture: x32
     env_cmake_configuration: Debug
-  - env_cmake_generator: "Visual Studio 15 2017"
+  - env_cmake_generator: "Visual Studio 16 2019"
+    env_cmake_architecture: x32
     env_cmake_configuration: Release
-  - env_cmake_generator: "Visual Studio 15 2017 Win64"
+  - env_cmake_generator: "Visual Studio 16 2019"
+    env_cmake_architecture: x64
     env_cmake_configuration: Debug
-  - env_cmake_generator: "Visual Studio 15 2017 Win64"
+  - env_cmake_generator: "Visual Studio 16 2019"
+    env_cmake_architecture: x64
     env_cmake_configuration: Release
 
 build_script:
 - mkdir build_cmake
 - cd build_cmake
-- cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
+- cmake -G %env_cmake_generator% -A %env_cmake_architecture% -S ".." -DCMAKE_BUILD_TYPE=%env_cmake_configuration% -DTARGET_CPU=$TARGET_CPU
 - cmake --build .
 - ctest --output-on-failure
 
