@@ -5,9 +5,12 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void line_from_two_point_v2( mt::line2f & _line, const mt::vec2f & _a, const mt::vec2f & _b )
     {
-        _line.a = _a.y - _b.y;
-        _line.b = _b.x - _a.x;
-        _line.c = _a.x * _b.y - _b.x * _a.y;
+        float a = _b.y - _a.y;
+        float b = _a.x - _b.x;
+
+        _line.a = a;
+        _line.b = b;
+        _line.c = a * _a.x + b * _a.y;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE float line_dot_point_v2( mt::line2f & _line, const mt::vec2f & _a )
@@ -26,8 +29,8 @@ namespace mt
 
         float inv_zn = 1.f / zn;
 
-        _p.x = -cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
-        _p.y = -cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
+        _p.x = cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
+        _p.y = cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
 
         return true;
     }
