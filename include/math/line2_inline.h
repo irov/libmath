@@ -41,7 +41,7 @@ namespace mt
 
         float inv_zn = 1.f / zn;
 
-        _p.x = -cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
-        _p.y = -cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
+        _p.x = cross2_f( _l1.c, _l1.b, _l2.c, _l2.b ) * inv_zn;
+        _p.y = cross2_f( _l1.a, _l1.c, _l2.a, _l2.c ) * inv_zn;
     }
 }
