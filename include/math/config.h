@@ -22,6 +22,7 @@
 #   define MT_fabsf (::fabsf)
 #   define MT_logf (::logf)
 #   define MT_rand (::rand)
+#   define MT_ceilf (::ceilf)
 #   define MT_RAND_MAX (RAND_MAX)
 #endif
 

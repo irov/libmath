@@ -101,7 +101,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE float vec2f::sqrlength() const
     {
-        return	x * x + y * y;
+        return x * x + y * y;
     }
     //////////////////////////////////////////////////////////////////////////
     MT_METHOD_INLINE float vec2f::length() const
