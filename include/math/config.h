@@ -19,6 +19,20 @@
 #   define MT_logf (::logf)
 #   define MT_roundf (::roundf)
 #   define MT_ceilf (::ceilf)
+
+#   define MT_floor (::floor)
+#   define MT_acos (::acos)
+#   define MT_asin (::asin)
+#   define MT_atan2 (::atan2)
+#   define MT_sqrt (::sqrt)
+#   define MT_pow (::pow)
+#   define MT_cos (::cos)
+#   define MT_sin (::sin)
+#   define MT_tan (::tan)
+#   define MT_fabs (::fabs)
+#   define MT_log (::log)
+#   define MT_round (::round)
+#   define MT_ceil (::ceil)
 #endif
 
 #ifndef MT_NO_FLOAT
