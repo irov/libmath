@@ -3,12 +3,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#ifndef MT_NO_DEFINE
+#ifndef MT_NO_MATH
 #   include <math.h>
-#   include <float.h>
-
-#   define MT_FLT_MAX FLT_MAX 
-#   define MT_FLT_MIN FLT_MIN
 
 #   define MT_floorf (::floorf)
 #   define MT_acosf (::acosf)
@@ -23,7 +19,13 @@
 #   define MT_logf (::logf)
 #   define MT_roundf (::roundf)
 #   define MT_ceilf (::ceilf)
-#   define MT_RAND_MAX (RAND_MAX)
+#endif
+
+#ifndef MT_NO_FLOAT
+#   include <float.h>
+
+#   define MT_FLT_MAX FLT_MAX 
+#   define MT_FLT_MIN FLT_MIN
 #endif
 
 #ifndef MT_NO_ASSERT
