@@ -167,6 +167,11 @@ namespace mt
         _out = _uv[0] + (_uv[2] - _uv[0]) * _point;
     }
     //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE void uv4_quad_point_rotate( mt::vec2f & _out, const mt::uv4f & _uv, const mt::vec2f & _point )
+    {
+        _out = _uv[0] + (_uv[2] - _uv[0]) * mt::vec2f( _point.y, _point.x );
+    }
+    //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void multiply_tetragon_uv4( mt::uv4f & _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 )
     {
         const mt::vec2f & A = _uv1.p0;

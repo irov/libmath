@@ -39,6 +39,7 @@ namespace mt
     MT_FUNCTION_INLINE void uv4_swap_v( mt::uv4f & _out );
     MT_FUNCTION_INLINE void uv4_scale( mt::uv4f & _out, const mt::uv4f & _uv, const mt::vec2f & _scale );
     MT_FUNCTION_INLINE void uv4_quad_point( mt::vec2f & _out, const mt::uv4f & _uv, const mt::vec2f & _point );
+    MT_FUNCTION_INLINE void uv4_quad_point_rotate( mt::vec2f & _out, const mt::uv4f & _uv, const mt::vec2f & _point );
     MT_FUNCTION_INLINE void multiply_tetragon_uv4( mt::uv4f & _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 );
     MT_FUNCTION_INLINE void multiply_tetragon_uv4_v4( mt::uv4f & _out, const mt::uv4f & _uv, const mt::vec4f & _mask );
     MT_FUNCTION_INLINE void multiply_tetragon_uv4_vp( mt::uv4f & _out, const mt::uv4f & _uv1, const mt::vec2f * _uv2 );
