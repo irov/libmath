@@ -31,7 +31,8 @@ namespace mt
     MT_FUNCTION_INLINE bool operator==( const uv4f & _a, const uv4f & _b );
     MT_FUNCTION_INLINE bool operator!=( const uv4f & _a, const uv4f & _b );
 
-    MT_FUNCTION_INLINE bool uv4_identity( const mt::uv4f & _uv );
+    MT_FUNCTION_INLINE bool uv4_is_identity( const mt::uv4f & _uv );
+    MT_FUNCTION_INLINE void uv4_identity( mt::uv4f & _uv );
     MT_FUNCTION_INLINE bool cmp_uv4_uv4( const mt::uv4f & _a, const mt::uv4f & _b );
     MT_FUNCTION_INLINE void uv4_from_mask( mt::uv4f & _out, const mt::vec4f & _mask );
     MT_FUNCTION_INLINE void uv4_rotate( mt::uv4f & _out );

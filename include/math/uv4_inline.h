@@ -93,7 +93,7 @@ namespace mt
             mt::cmp_v2_v2( _a.p3, _b.p3 ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool uv4_identity( const mt::uv4f & _uv )
+    MT_FUNCTION_INLINE bool uv4_is_identity( const mt::uv4f & _uv )
     {
         float uv_c = _uv.p0.x + _uv.p0.y +
             _uv.p1.x + _uv.p1.y +
@@ -113,6 +113,11 @@ namespace mt
             mt::equal_f_1( _uv.p2.y ) == true &&
             mt::equal_f_z( _uv.p3.x ) == true &&
             mt::equal_f_1( _uv.p3.y ) == true;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE void uv4_identity( mt::uv4f & _uv )
+    {
+        _uv = mt::uv4f();
     }
     //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void uv4_from_mask( mt::uv4f & _out, const mt::vec4f & _mask )
