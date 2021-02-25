@@ -39,6 +39,31 @@ namespace mt
         box.maximum.y = MT_FLT_MAX;
     }
     //////////////////////////////////////////////////////////////////////////
+    MT_FUNCTION_INLINE bool is_infinity_box( const box2f & box )
+    {
+        if( box.minimum.x != -MT_FLT_MAX )
+        {
+            return false;
+        }
+
+        if( box.minimum.y != -MT_FLT_MAX )
+        {
+            return false;
+        }
+
+        if( box.maximum.x != MT_FLT_MAX )
+        {
+            return false;
+        }
+
+        if( box.maximum.y != MT_FLT_MAX )
+        {
+            return false;
+        }
+
+        return true;
+    }
+    //////////////////////////////////////////////////////////////////////////
     MT_FUNCTION_INLINE void insideout_box( box2f & box )
     {
         box.minimum.x = MT_FLT_MAX;

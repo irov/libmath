@@ -21,6 +21,7 @@ namespace mt
     };
 
     MT_FUNCTION_INLINE void infinity_box( box2f & box );
+    MT_FUNCTION_INLINE bool is_infinity_box( const box2f & box );
     MT_FUNCTION_INLINE void insideout_box( box2f & box );
     MT_FUNCTION_INLINE void reset( box2f & box, const vec2f & initValue );
     MT_FUNCTION_INLINE void reset( box2f & box, float x, float y );
