@@ -33,5 +33,5 @@ namespace mt
 }
 
 #if MT_FORCE_INLINE == 1
-#	include "convex8_inline.h"
+#   include "convex8.cpp"
 #endif

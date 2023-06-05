@@ -15,16 +15,16 @@ namespace mt
         float height;
 
         MT_METHOD_INLINE rectf();
-        MT_METHOD_INLINE rectf( const rectf & _rect );
+        MT_METHOD_INLINE rectf( const mt::rectf & _rect );
         MT_METHOD_INLINE explicit rectf( float _x, float _y, float _width, float _height );
-        MT_METHOD_INLINE rectf & operator = ( const rectf & _rect );
+        MT_METHOD_INLINE mt::rectf & operator = ( const mt::rectf & _rect );
 
         MT_METHOD_INLINE bool empty() const;
     };
 
-    MT_FUNCTION_INLINE bool rect_contains_point( const rectf & _rect, const mt::vec2f & _point );
+    MT_FUNCTION_INLINE bool rect_contains_point( const mt::rectf & _rect, const mt::vec2f & _point );
 }
 
 #if MT_FORCE_INLINE == 1
-#include "math/rect_inline.h"
+#include "math/rect.cpp"
 #endif

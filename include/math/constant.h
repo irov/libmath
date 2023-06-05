@@ -20,10 +20,10 @@ namespace mt
         MT_CONSTVAR const float deg2rad = 0.01745329251994329576923690768489f;
         MT_CONSTVAR const float rad2deg = 57.295779513082320876798154814105f;
         MT_CONSTVAR const float eps = 0.00001f;
-        MT_CONSTVAR const float eps2 = eps * 10.f;
-        MT_CONSTVAR const float neps = -eps;
-        MT_CONSTVAR const float one_eps = 1.f + eps;
-        MT_CONSTVAR const float one_neps = 1.f - eps;
+        MT_CONSTVAR const float eps2 = mt::constant::eps * 10.f;
+        MT_CONSTVAR const float neps = -mt::constant::eps;
+        MT_CONSTVAR const float one_eps = 1.f + mt::constant::eps;
+        MT_CONSTVAR const float one_neps = 1.f - mt::constant::eps;
         MT_CONSTVAR const float log2 = 0.69314718055994530941723212145818f;
         MT_CONSTVAR const float inv_log2 = 1.4426950408889634073599246810019f;
         MT_CONSTVAR const float decimal_base = 10.f;
