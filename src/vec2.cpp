@@ -1,6 +1,5 @@
 #include "math/vec2.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/angle.h"
 
 #include "math/utils.h"
@@ -9,29 +8,29 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     //cppcheck-suppress uninitMemberVar
-    MT_METHOD_INLINE vec2f::vec2f()
+    vec2f::vec2f()
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE vec2f::vec2f( float _x, float _y )
+    vec2f::vec2f( float _x, float _y )
         : x( _x )
         , y( _y )
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE vec2f::vec2f( const mt::vec2f & _v2 )
+    vec2f::vec2f( const mt::vec2f & _v2 )
         : x( _v2.x )
         , y( _v2.y )
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE vec2f::vec2f( const float * _v )
+    vec2f::vec2f( const float * _v )
         : x( _v[0] )
         , y( _v[1] )
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator = ( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator = ( const mt::vec2f & _v2 )
     {
         x = _v2.x;
         y = _v2.y;
@@ -39,17 +38,17 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float vec2f::operator [] ( size_t i ) const
+    float vec2f::operator [] ( size_t i ) const
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float & vec2f::operator [] ( size_t i )
+    float & vec2f::operator [] ( size_t i )
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator+=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator+=( const mt::vec2f & _v2 )
     {
         x += _v2.x;
         y += _v2.y;
@@ -57,7 +56,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator-=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator-=( const mt::vec2f & _v2 )
     {
         x -= _v2.x;
         y -= _v2.y;
@@ -65,14 +64,14 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator/=( float _v )
+    mt::vec2f & vec2f::operator/=( float _v )
     {
         operator *= ( 1.f / _v );
 
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator*=( float _v )
+    mt::vec2f & vec2f::operator*=( float _v )
     {
         x *= _v;
         y *= _v;
@@ -80,7 +79,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator/=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator/=( const mt::vec2f & _v2 )
     {
         x /= _v2.x;
         y /= _v2.y;
@@ -88,7 +87,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & vec2f::operator*=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator*=( const mt::vec2f & _v2 )
     {
         x *= _v2.x;
         y *= _v2.y;
@@ -96,62 +95,62 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void vec2f::from_f2( const float * _v )
+    void vec2f::from_f2( const float * _v )
     {
         x = _v[0];
         y = _v[1];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float vec2f::sqrlength() const
+    float vec2f::sqrlength() const
     {
         return x * x + y * y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float vec2f::length() const
+    float vec2f::length() const
     {
         float sql = this->sqrlength();
 
         return MT_sqrtf( sql );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float * vec2f::buff()
+    float * vec2f::buff()
     {
         return &x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const float * vec2f::buff() const
+    const float * vec2f::buff() const
     {
         return &x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::vec2f & vec2f::identity()
+    const mt::vec2f & vec2f::identity()
     {
         static mt::vec2f v( 0.f, 0.f );
 
         return v;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void ident_v2( vec2f * const _a )
+    void ident_v2( vec2f * const _a )
     {
         _a->x = 0.f;
         _a->y = 0.f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float length_f( const mt::vec2f & _a, const mt::vec2f & _b )
+    float length_f( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         float l = length_v2_v2( _a, _b );
 
         return l;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float length_v2( const mt::vec2f & _a )
+    float length_v2( const mt::vec2f & _a )
     {
         float l = _a.length();
 
         return l;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
+    float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f c = _a - _b;
 
@@ -160,7 +159,7 @@ namespace mt
         return sqrlength;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float length_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
+    float length_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f c = _a - _b;
 
@@ -169,28 +168,28 @@ namespace mt
         return l;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool cmp_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
+    bool cmp_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         return mt::equal_f_f( _a.x, _b.x ) == true && mt::equal_f_f( _a.y, _b.y ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator==( const mt::vec2f & _a, const mt::vec2f & _b )
+    bool operator==( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         return mt::cmp_v2_v2( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator!=( const mt::vec2f & _a, const mt::vec2f & _b )
+    bool operator!=( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         return !operator==( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void add_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void add_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         _out->x = _a.x + _b.x;
         _out->y = _a.y + _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator+( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator+( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::add_v2_v2( &out, _a, _b );
@@ -198,13 +197,13 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void sub_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void sub_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         _out->x = _a.x - _b.x;
         _out->y = _a.y - _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void dir_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void dir_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::sub_v2_v2( &out, _a, _b );
@@ -212,7 +211,7 @@ namespace mt
         mt::norm_v2_v2( _out, out );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator-( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator-( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::sub_v2_v2( &out, _a, _b );
@@ -220,25 +219,25 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_v2_f( mt::vec2f * const _out, const mt::vec2f & _a, float _val )
+    void mul_v2_f( mt::vec2f * const _out, const mt::vec2f & _a, float _val )
     {
         _out->x = _a.x * _val;
         _out->y = _a.y * _val;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void mul_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         _out->x = _a.x * _b.x;
         _out->y = _a.y * _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void div_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void div_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         _out->x = _a.x / _b.x;
         _out->y = _a.y / _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator*( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator*( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::mul_v2_v2( &out, _a, _b );
@@ -246,7 +245,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator*( const mt::vec2f & _rhs, float _val )
+    mt::vec2f operator*( const mt::vec2f & _rhs, float _val )
     {
         mt::vec2f out;
         mt::mul_v2_f( &out, _rhs, _val );
@@ -254,7 +253,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator * ( float _val, const mt::vec2f & _rhs )
+    mt::vec2f operator * ( float _val, const mt::vec2f & _rhs )
     {
         mt::vec2f out;
         mt::mul_v2_f( &out, _rhs, _val );
@@ -262,7 +261,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator/( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator/( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::div_v2_v2( &out, _a, _b );
@@ -270,58 +269,58 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator / ( const mt::vec2f & _rhs, float _val )
+    mt::vec2f operator / ( const mt::vec2f & _rhs, float _val )
     {
         return operator*( _rhs, 1 / _val );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator / ( float _val, const mt::vec2f & _rhs )
+    mt::vec2f operator / ( float _val, const mt::vec2f & _rhs )
     {
         return mt::vec2f( _val / _rhs.x, _val / _rhs.y );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void inv_v2( mt::vec2f * const _out, const mt::vec2f & _in )
+    void inv_v2( mt::vec2f * const _out, const mt::vec2f & _in )
     {
         _out->x = 1.f / _in.x;
         _out->y = 1.f / _in.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void neg_v2( mt::vec2f * const _out )
+    void neg_v2( mt::vec2f * const _out )
     {
         _out->x = -_out->x;
         _out->y = -_out->y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator-( vec2f _rhs )
+    mt::vec2f operator-( vec2f _rhs )
     {
         mt::neg_v2( &_rhs );
 
         return _rhs;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f operator+( vec2f _rhs )
+    mt::vec2f operator+( vec2f _rhs )
     {
         return _rhs;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float dot_v2( const mt::vec2f & a )
+    float dot_v2( const mt::vec2f & a )
     {
         return a.x * a.x + a.y * a.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float dot_v2_v2( const mt::vec2f & a, const mt::vec2f & b )
+    float dot_v2_v2( const mt::vec2f & a, const mt::vec2f & b )
     {
         return a.x * b.x + a.y * b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void norm_v2_v2( mt::vec2f * const _out, const mt::vec2f & _rhs )
+    void norm_v2_v2( mt::vec2f * const _out, const mt::vec2f & _rhs )
     {
         float l = _rhs.length();
 
         *_out = _rhs / l;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float norm_v2_f( mt::vec2f * const _out, const mt::vec2f & _rhs )
+    float norm_v2_f( mt::vec2f * const _out, const mt::vec2f & _rhs )
     {
         float l = _rhs.length();
 
@@ -330,7 +329,7 @@ namespace mt
         return l;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f norm_v2( const mt::vec2f & _rhs )
+    mt::vec2f norm_v2( const mt::vec2f & _rhs )
     {
         mt::vec2f out;
         mt::norm_v2_v2( &out, _rhs );
@@ -338,7 +337,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void norm_safe_v2( mt::vec2f * const _out, const mt::vec2f & _rhs, float _err )
+    void norm_safe_v2( mt::vec2f * const _out, const mt::vec2f & _rhs, float _err )
     {
         float l = _rhs.length();
 
@@ -352,7 +351,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f norm_safe( const mt::vec2f & _rhs )
+    mt::vec2f norm_safe( const mt::vec2f & _rhs )
     {
         mt::vec2f out;
         mt::norm_safe_v2( &out, _rhs );
@@ -360,7 +359,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void perp_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
+    void perp_v2_v2( mt::vec2f * const _out, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f d;
         mt::dir_v2_v2( &d, _a, _b );
@@ -368,13 +367,13 @@ namespace mt
         mt::perp_v2( _out, d );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void perp_v2( mt::vec2f * const _out, const mt::vec2f & _in )
+    void perp_v2( mt::vec2f * const _out, const mt::vec2f & _in )
     {
         _out->x = -_in.y;
         _out->y = _in.x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f perp( const mt::vec2f & _rhs )
+    mt::vec2f perp( const mt::vec2f & _rhs )
     {
         mt::vec2f pv;
         mt::perp_v2( &pv, _rhs );
@@ -382,13 +381,13 @@ namespace mt
         return pv;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void perp_left_v2( mt::vec2f * const _out, const mt::vec2f & _in )
+    void perp_left_v2( mt::vec2f * const _out, const mt::vec2f & _in )
     {
         _out->x = _in.y;
         _out->y = -_in.x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f perp_left( const mt::vec2f & _in )
+    mt::vec2f perp_left( const mt::vec2f & _in )
     {
         mt::vec2f pv;
         mt::perp_left_v2( &pv, _in );
@@ -396,17 +395,17 @@ namespace mt
         return pv;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float is_left_v2( const mt::vec2f & p0, const mt::vec2f & p1, const mt::vec2f & p2 )
+    float is_left_v2( const mt::vec2f & p0, const mt::vec2f & p1, const mt::vec2f & p2 )
     {
         return ((p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y));
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float cross_v2( const mt::vec2f & a, const mt::vec2f & b )
+    float cross_v2( const mt::vec2f & a, const mt::vec2f & b )
     {
         return a.x * b.y - a.y * b.x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void project_v2_v2( mt::vec2f * const out, const mt::vec2f & a, const mt::vec2f & b )
+    void project_v2_v2( mt::vec2f * const out, const mt::vec2f & a, const mt::vec2f & b )
     {
         float dp = mt::dot_v2_v2( a, b );
 
@@ -414,7 +413,7 @@ namespace mt
         out->y = dp * a.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::vec2f slerp_v2_v2( const mt::vec2f & a, const mt::vec2f & b, float t )
+    mt::vec2f slerp_v2_v2( const mt::vec2f & a, const mt::vec2f & b, float t )
     {
         float asqrl = a.sqrlength();
         float bsqrl = b.sqrlength();
@@ -448,7 +447,7 @@ namespace mt
         return s2;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void rotate_v2( mt::vec2f * const _out, float _angle )
+    void rotate_v2( mt::vec2f * const _out, float _angle )
     {
         mt::vec2f v = *_out;
 
@@ -458,7 +457,7 @@ namespace mt
         _out->y = cos_angle * v.y + sin_angle * v.x;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void direction( mt::vec2f * const _out, float _angle )
+    void direction( mt::vec2f * const _out, float _angle )
     {
         float cos_angle = MT_cosf( _angle );
         float sin_angle = MT_sinf( _angle );
@@ -467,7 +466,7 @@ namespace mt
         _out->y = sin_angle;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float signed_angle( const mt::vec2f & _vec )
+    float signed_angle( const mt::vec2f & _vec )
     {
         float l = _vec.length();
 
@@ -489,6 +488,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif
-
-

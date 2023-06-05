@@ -1,12 +1,11 @@
 #include "math/line2.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void line_from_two_point_v2( mt::line2f * const _line, const mt::vec2f & _a, const mt::vec2f & _b )
+    void line_from_two_point_v2( mt::line2f * const _line, const mt::vec2f & _a, const mt::vec2f & _b )
     {
         float a = _b.y - _a.y;
         float b = _a.x - _b.x;
@@ -16,14 +15,14 @@ namespace mt
         _line->c = a * _a.x + b * _a.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float line_dot_point_v2( const mt::line2f & _line, const mt::vec2f & _a )
+    float line_dot_point_v2( const mt::line2f & _line, const mt::vec2f & _a )
     {
         float dot = _line.a * _a.x + _line.b * _a.y + _line.c;
 
         return dot;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool line_intersect( const mt::line2f & _l1, const mt::line2f & _l2 )
+    bool line_intersect( const mt::line2f & _l1, const mt::line2f & _l2 )
     {
         float zn = mt::cross2_f( _l1.a, _l1.b, _l2.a, _l2.b );
 
@@ -32,7 +31,7 @@ namespace mt
         return intersect;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool line_intersect_v2( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f * const _p )
+    bool line_intersect_v2( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f * const _p )
     {
         float zn = mt::cross2_f( _l1.a, _l1.b, _l2.a, _l2.b );
 
@@ -49,7 +48,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void line_intersect_v2_np( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f * const _p )
+    void line_intersect_v2_np( const mt::line2f & _l1, const mt::line2f & _l2, mt::vec2f * const _p )
     {
         float zn = mt::cross2_f( _l1.a, _l1.b, _l2.a, _l2.b );
 
@@ -60,4 +59,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

@@ -37,9 +37,5 @@ namespace mt
         }
     };
 
-    MT_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
+    bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
 }
-
-#if MT_FORCE_INLINE == 1
-#include "math/sphere2.cpp"
-#endif

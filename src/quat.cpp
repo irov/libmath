@@ -1,6 +1,5 @@
 #include "math/quat.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/mat4.h"
 #include "math/angle.h"
 
@@ -8,11 +7,11 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     //cppcheck-suppress uninitMemberVar
-    MT_METHOD_INLINE quatf::quatf()
+    quatf::quatf()
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE quatf::quatf( float _x, float _y, float _z, float _w )
+    quatf::quatf( float _x, float _y, float _z, float _w )
         : x( _x )
         , y( _y )
         , z( _z )
@@ -20,12 +19,12 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE quatf::quatf( float _angle, const mt::vec3f & _v )
+    quatf::quatf( float _angle, const mt::vec3f & _v )
     {
         *this = q_from_angle_axis( _v, _angle );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE quatf::quatf( const mt::quatf & _q )
+    quatf::quatf( const mt::quatf & _q )
         : x( _q.x )
         , y( _q.y )
         , z( _q.z )
@@ -33,17 +32,17 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float & quatf::operator[]( size_t i )
+    float & quatf::operator[]( size_t i )
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const float quatf::operator[]( size_t i )const
+    const float quatf::operator[]( size_t i )const
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE quatf & quatf::operator=( const mt::quatf & q )
+    quatf & quatf::operator=( const mt::quatf & q )
     {
         x = q.x;
         y = q.y;
@@ -52,12 +51,12 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float quatf::length() const
+    float quatf::length() const
     {
         return MT_sqrtf( x * x + y * y + z * z + w * w );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void quatf::normalize()
+    void quatf::normalize()
     {
         float inv_length = 1.f / this->length();
 
@@ -67,7 +66,7 @@ namespace mt
         w *= inv_length;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void quatf::multiply( const mt::quatf & left, const mt::vec3f & right )
+    void quatf::multiply( const mt::quatf & left, const mt::vec3f & right )
     {
         float a = -left.x * right.x - left.y * right.y - left.z * right.z;
         float b = left.w * right.x + left.y * right.z - right.y * left.z;
@@ -80,7 +79,7 @@ namespace mt
         z = d;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void quatf::rotate( mt::vec3f * const _v ) const
+    void quatf::rotate( mt::vec3f * const _v ) const
     {
         quatf myInverse;
         myInverse.x = -x;
@@ -96,7 +95,7 @@ namespace mt
         _v->z = left.w * myInverse.z + myInverse.w * left.z + left.x * myInverse.y - myInverse.x * left.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float quatf::getPitch( bool _reprojectAxis ) const
+    float quatf::getPitch( bool _reprojectAxis ) const
     {
         if( _reprojectAxis == true )
         {
@@ -115,7 +114,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float quatf::getYaw( bool _reprojectAxis ) const
+    float quatf::getYaw( bool _reprojectAxis ) const
     {
         if( _reprojectAxis == true )
         {
@@ -136,7 +135,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool cmp_q_q( const mt::quatf & _a, const mt::quatf & _b )
+    bool cmp_q_q( const mt::quatf & _a, const mt::quatf & _b )
     {
         return mt::equal_f_f( _a.w, _b.w ) == true &&
             mt::equal_f_f( _a.x, _b.x ) == true &&
@@ -144,17 +143,17 @@ namespace mt
             mt::equal_f_f( _a.z, _b.z ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator==( const mt::quatf & _a, const mt::quatf & _b )
+    bool operator==( const mt::quatf & _a, const mt::quatf & _b )
     {
         return cmp_q_q( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator!=( const mt::quatf & _a, const mt::quatf & _b )
+    bool operator!=( const mt::quatf & _a, const mt::quatf & _b )
     {
         return !operator==( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void add_q_q( mt::quatf * const _out, const mt::quatf & _a, const mt::quatf & _b )
+    void add_q_q( mt::quatf * const _out, const mt::quatf & _a, const mt::quatf & _b )
     {
         _out->x = _a.x + _b.x;
         _out->y = _a.y + _b.y;
@@ -162,7 +161,7 @@ namespace mt
         _out->w = _a.w + _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf operator+( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator+( const mt::quatf & _a, const mt::quatf & _b )
     {
         quatf out;
         add_q_q( &out, _a, _b );
@@ -170,7 +169,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void sub_q_q( quatf * const _out, const mt::quatf & _a, const mt::quatf & _b )
+    void sub_q_q( quatf * const _out, const mt::quatf & _a, const mt::quatf & _b )
     {
         _out->x = _a.x - _b.x;
         _out->y = _a.y - _b.y;
@@ -178,7 +177,7 @@ namespace mt
         _out->w = _a.w - _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf operator-( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator-( const mt::quatf & _a, const mt::quatf & _b )
     {
         mt::quatf out;
         mt::sub_q_q( &out, _a, _b );
@@ -186,7 +185,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_q_q( quatf * const _out, const mt::quatf & _q1, const mt::quatf & _q2 )
+    void mul_q_q( quatf * const _out, const mt::quatf & _q1, const mt::quatf & _q2 )
     {
         _out->x = _q1.y * _q2.z - _q1.z * _q2.y + _q1.x * _q2.w + _q1.w * _q2.x;
         _out->y = _q1.z * _q2.x - _q1.x * _q2.z + _q1.y * _q2.w + _q1.w * _q2.y;
@@ -194,7 +193,7 @@ namespace mt
         _out->w = _q1.w * _q2.w - _q1.x * _q2.x - _q1.y * _q2.y - _q1.z * _q2.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf operator*( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator*( const mt::quatf & _a, const mt::quatf & _b )
     {
         mt::quatf out;
         mt::mul_q_q( &out, _a, _b );
@@ -202,7 +201,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_q_v3( mt::vec3f * const _out, const mt::quatf & _q, const mt::vec3f & _v3 )
+    void mul_q_v3( mt::vec3f * const _out, const mt::quatf & _q, const mt::vec3f & _v3 )
     {
         mt::vec3f uv;
         mt::cross_v3_v3( &uv, mt::vec3f( _q.x, _q.y, _q.z ), _v3 );
@@ -217,7 +216,7 @@ namespace mt
         mt::add_v3_v3( _out, _v3, uv );
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE vec3f operator*( const mt::quatf & _q, const mt::vec3f & _v3 )
+    vec3f operator*( const mt::quatf & _q, const mt::vec3f & _v3 )
     {
         mt::vec3f out;
         mt::mul_q_v3( &out, _q, _v3 );
@@ -225,7 +224,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void scale_q_s( mt::quatf * const _out, const mt::quatf & _q, float _v )
+    void scale_q_s( mt::quatf * const _out, const mt::quatf & _q, float _v )
     {
         _out->w = _q.w * _v;
         _out->x = _q.x * _v;
@@ -233,7 +232,7 @@ namespace mt
         _out->z = _q.z * _v;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf operator*( const mt::quatf & _q, float _v )
+    quatf operator*( const mt::quatf & _q, float _v )
     {
         mt::quatf out;
         mt::scale_q_s( &out, _q, _v );
@@ -241,17 +240,17 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf operator/( const mt::quatf & _q, float _v )
+    quatf operator/( const mt::quatf & _q, float _v )
     {
         return operator*( _q, 1 / _v );;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float dot_q_q( const mt::quatf & _a, const mt::quatf & _b )
+    float dot_q_q( const mt::quatf & _a, const mt::quatf & _b )
     {
         return _a.w * _b.w + _a.x * _b.x + _a.y * _b.y + _a.z * _b.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void norm_q_q( mt::quatf * const _out, const mt::quatf & _rhs )
+    void norm_q_q( mt::quatf * const _out, const mt::quatf & _rhs )
     {
         float l = _rhs.length();
         float inv_length = 1.f / l;
@@ -259,7 +258,7 @@ namespace mt
         *_out = _rhs * inv_length;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf norm_q( const mt::quatf & _rhs )
+    quatf norm_q( const mt::quatf & _rhs )
     {
         mt::quatf out;
         mt::norm_q_q( &out, _rhs );
@@ -267,7 +266,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void norm_safe_q( mt::quatf * const _out, const mt::quatf & _rhs )
+    void norm_safe_q( mt::quatf * const _out, const mt::quatf & _rhs )
     {
         float len = _rhs.length();
 
@@ -281,7 +280,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf norm_safe_q( const mt::quatf & _rhs )
+    quatf norm_safe_q( const mt::quatf & _rhs )
     {
         mt::quatf out;
         mt::norm_safe_q( &out, _rhs );
@@ -289,13 +288,13 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void lerp_q_q( mt::quatf * const _out, const mt::quatf & _q1, const mt::quatf & _q2, float _t )
+    void lerp_q_q( mt::quatf * const _out, const mt::quatf & _q1, const mt::quatf & _q2, float _t )
     {
         *_out = _q1 * (1.f - _t) + _q2 * _t;
         _out->normalize();
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_from_angle_axis( mt::quatf * const _out, const mt::vec3f & _rhs, float _val )
+    void q_from_angle_axis( mt::quatf * const _out, const mt::vec3f & _rhs, float _val )
     {
         float hangle = mt::constant::deg2rad * _val * 0.5f;
         float fsin = MT_sinf( hangle );
@@ -308,7 +307,7 @@ namespace mt
         _out->z = fsin * _rhs[2] * i_length;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf q_from_angle_axis( const mt::vec3f & _rhs, float _val )
+    quatf q_from_angle_axis( const mt::vec3f & _rhs, float _val )
     {
         mt::quatf out;
         mt::q_from_angle_axis( &out, _rhs, _val );
@@ -316,7 +315,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void inverse_q( mt::quatf * const _out, const mt::quatf & _rhs )
+    void inverse_q( mt::quatf * const _out, const mt::quatf & _rhs )
     {
         float norm = _rhs.length();
 
@@ -335,7 +334,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf inverse_q( const mt::quatf & _rhs )
+    quatf inverse_q( const mt::quatf & _rhs )
     {
         mt::quatf out;
         mt::inverse_q( &out, _rhs );
@@ -343,7 +342,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void exp_q( quatf * const _out, const mt::quatf & _rhs )
+    void exp_q( quatf * const _out, const mt::quatf & _rhs )
     {
         float angle = MT_sqrtf( _rhs.x * _rhs.x + _rhs.y * _rhs.y + _rhs.z * _rhs.z );
         float fsin = MT_sinf( angle );
@@ -365,7 +364,7 @@ namespace mt
         }
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf exp_q( const mt::quatf & _rhs )
+    quatf exp_q( const mt::quatf & _rhs )
     {
         mt::quatf out;
         mt::exp_q( &out, _rhs );
@@ -373,7 +372,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void log_q( quatf * const _out, const mt::quatf & _rhs )
+    void log_q( quatf * const _out, const mt::quatf & _rhs )
     {
         _out->w = 0.0f;
 
@@ -398,7 +397,7 @@ namespace mt
         _out->z = _rhs.z;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf log_q( const mt::quatf & _rhs )
+    quatf log_q( const mt::quatf & _rhs )
     {
         mt::quatf out;
         mt::log_q( &out, _rhs );
@@ -406,7 +405,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_from_rot_m3( quatf * const _out, const mt::mat3f & _rhs )
+    void q_from_rot_m3( quatf * const _out, const mt::mat3f & _rhs )
     {
         float ftrace = _rhs.v0.x + _rhs.v1.y + _rhs.v2.z;
         float froot;
@@ -446,7 +445,7 @@ namespace mt
         }
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf q_from_rot_m3( const mt::mat3f & _rhs )
+    quatf q_from_rot_m3( const mt::mat3f & _rhs )
     {
         mt::quatf out;
         mt::q_from_rot_m3( &out, _rhs );
@@ -454,7 +453,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_from_rot_m4( quatf * const _out, const mt::mat4f & _rhs )
+    void q_from_rot_m4( quatf * const _out, const mt::mat4f & _rhs )
     {
         float ftrace = _rhs.v0.x + _rhs.v1.y + _rhs.v2.z;
         float froot;
@@ -494,7 +493,7 @@ namespace mt
         }
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf q_from_rot_m4( const mt::mat4f & _rhs )
+    quatf q_from_rot_m4( const mt::mat4f & _rhs )
     {
         mt::quatf out;
         mt::q_from_rot_m4( &out, _rhs );
@@ -502,7 +501,7 @@ namespace mt
         return out;
     };
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_to_rot_m3( mat3f * const _out, const mt::quatf & _rhs )
+    void q_to_rot_m3( mat3f * const _out, const mt::quatf & _rhs )
     {
         float wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2;
         x2 = _rhs.x + _rhs.x;
@@ -523,7 +522,7 @@ namespace mt
         _out->v2.z = 1.0f - (xx + yy);
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mat3f q_to_rot_m3( const mt::quatf & _rhs )
+    mat3f q_to_rot_m3( const mt::quatf & _rhs )
     {
         mt::mat3f out;
         mt::q_to_rot_m3( &out, _rhs );
@@ -531,7 +530,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_from_axes( quatf * const out, const mt::vec3f & _x, const mt::vec3f & _y, const mt::vec3f & _z )
+    void q_from_axes( quatf * const out, const mt::vec3f & _x, const mt::vec3f & _y, const mt::vec3f & _z )
     {
         mt::mat3f rot;
         mt::set_m3_from_axes( &rot, vec3f( _x.x, _y.x, _z.x ), vec3f( _x.y, _y.y, _z.y ), vec3f( _x.z, _y.z, _z.z ) );
@@ -539,7 +538,7 @@ namespace mt
         mt::q_from_rot_m3( out, rot );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE quatf q_from_axes( const mt::vec3f & _x, const mt::vec3f & _y, const mt::vec3f & _z )
+    quatf q_from_axes( const mt::vec3f & _x, const mt::vec3f & _y, const mt::vec3f & _z )
     {
         mt::quatf out;
         mt::q_from_axes( &out, _x, _y, _z );
@@ -547,7 +546,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void q_to_angle_axis( vec3f * const _out, float * const _out1, const mt::quatf & _rhs )
+    void q_to_angle_axis( vec3f * const _out, float * const _out1, const mt::quatf & _rhs )
     {
         float fsqrlen = _rhs[1] * _rhs[1] + _rhs[2] * _rhs[2] + _rhs[3] * _rhs[3];
 
@@ -569,7 +568,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE vec3f q_to_angle_axis( float * const _out, const mt::quatf & _rhs )
+    vec3f q_to_angle_axis( float * const _out, const mt::quatf & _rhs )
     {
         mt::vec3f out;
         mt::q_to_angle_axis( &out, _out, _rhs );
@@ -577,14 +576,14 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void rotate_q( quatf * const _out, const mt::vec3f & axis, float angle )
+    void rotate_q( quatf * const _out, const mt::vec3f & axis, float angle )
     {
         mt::quatf q = mt::q_from_angle_axis( axis, angle );
 
         *_out = *_out * q;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void qpos_to_rot_m4( mat4f * const out, const mt::quatf & _rhs, const mt::vec3f & _pos )
+    void qpos_to_rot_m4( mat4f * const out, const mt::quatf & _rhs, const mt::vec3f & _pos )
     {
         float wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2;
         x2 = _rhs.x + _rhs.x;
@@ -612,7 +611,7 @@ namespace mt
         out->v3.w = 1.0f;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE mt::mat4f qpos_to_rot_m4( const mt::quatf & _rhs, const mt::vec3f & _pos )
+    mt::mat4f qpos_to_rot_m4( const mt::quatf & _rhs, const mt::vec3f & _pos )
     {
         mt::mat4f out;
         mt::qpos_to_rot_m4( &out, _rhs, _pos );
@@ -620,7 +619,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void make_quat_from_euler( mt::quatf * const _out, const mt::vec3f & _euler )
+    void make_quat_from_euler( mt::quatf * const _out, const mt::vec3f & _euler )
     {
         float c1 = MT_cosf( _euler.z * 0.5f );
         float c2 = MT_cosf( _euler.y * 0.5f );
@@ -638,7 +637,7 @@ namespace mt
         mt::norm_q_q( _out, q );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void make_quat_from_angle( quatf * const _out, float _angle )
+    void make_quat_from_angle( quatf * const _out, float _angle )
     {
         float c = MT_cosf( _angle * 0.5f );
         float s = MT_sinf( _angle * 0.5f );
@@ -649,7 +648,7 @@ namespace mt
         _out->w = c;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void quat_to_euler( const mt::quatf & _q, mt::vec3f * const _euler )
+    void quat_to_euler( const mt::quatf & _q, mt::vec3f * const _euler )
     {
         float sqw = _q.w * _q.w;
         float sqx = _q.x * _q.x;
@@ -677,7 +676,7 @@ namespace mt
         _euler->y = y;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float quatzw_to_angle( const mt::quatf & _q )
+    float quatzw_to_angle( const mt::quatf & _q )
     {
         float sqw = _q.w * _q.w;
         float sqz = _q.z * _q.z;
@@ -688,4 +687,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

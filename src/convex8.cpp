@@ -1,57 +1,56 @@
 #include "math/convex8.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE convex8::convex8()
+    convex8::convex8()
         : count( 0 )
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::vec2f & convex8::operator [] ( size_t i ) const
+    const mt::vec2f & convex8::operator [] ( size_t i ) const
     {
         return this->point[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & convex8::operator [] ( size_t i )
+    mt::vec2f & convex8::operator [] ( size_t i )
     {
         return this->point[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void convex8::add( const mt::vec2f & v )
+    void convex8::add( const mt::vec2f & v )
     {
         this->point[this->count++] = v;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::vec2f & convex8::front() const
+    const mt::vec2f & convex8::front() const
     {
         return this->point[0];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::vec2f & convex8::back() const
+    const mt::vec2f & convex8::back() const
     {
         return this->point[this->count - 1];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE uint32_t convex8::size() const
+    uint32_t convex8::size() const
     {
         return this->count;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE bool convex8::empty() const
+    bool convex8::empty() const
     {
         return this->count == 0U;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void convex8::clear()
+    void convex8::clear()
     {
         this->count = 0U;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE int32_t convex8_line_sect( const mt::vec2f & x0, const mt::vec2f & x1, const mt::vec2f & y0, const mt::vec2f & y1, mt::vec2f & res )
+    int32_t convex8_line_sect( const mt::vec2f & x0, const mt::vec2f & x1, const mt::vec2f & y0, const mt::vec2f & y1, mt::vec2f & res )
     {
         vec2f dx = x1 - x0;
         vec2f dy = y1 - y0;
@@ -77,7 +76,7 @@ namespace mt
         return 1;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE int convex8_left_of( const mt::vec2f & a, const mt::vec2f & b, const mt::vec2f & c )
+    int convex8_left_of( const mt::vec2f & a, const mt::vec2f & b, const mt::vec2f & c )
     {
         mt::vec2f tmp1 = b - a;
         mt::vec2f tmp2 = c - b;
@@ -88,7 +87,7 @@ namespace mt
         return winding;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void convex8_poly_edge_clip( const mt::convex8 & sub, const mt::vec2f & x0, const mt::vec2f & x1, int left, mt::convex8 & res )
+    void convex8_poly_edge_clip( const mt::convex8 & sub, const mt::vec2f & x0, const mt::vec2f & x1, int left, mt::convex8 & res )
     {
         res.clear();
 
@@ -133,7 +132,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE int convex8_poly_winding( const mt::convex8 & c )
+    int convex8_poly_winding( const mt::convex8 & c )
     {
         const mt::vec2f & v0 = c[0];
         const mt::vec2f & v1 = c[1];
@@ -144,7 +143,7 @@ namespace mt
         return winding;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result )
+    void convex8_intersect( const mt::convex8 & _convex, const mt::convex8 & _clip, mt::convex8 & _result )
     {
         mt::convex8 P1, P2;
         mt::convex8 * p1 = &P1;
@@ -188,7 +187,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float convex8_area( const mt::convex8 & _convex )
+    float convex8_area( const mt::convex8 & _convex )
     {
         float double_area = 0.f;
 
@@ -211,4 +210,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

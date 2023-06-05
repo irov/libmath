@@ -15,26 +15,22 @@ namespace mt
         float c;
         float d;
 
-        MT_METHOD_INLINE planef();
-        MT_METHOD_INLINE planef( const mt::planef & _plane );
-        MT_METHOD_INLINE planef( const mt::vec3f & _norm, float _dist );
-        MT_METHOD_INLINE planef( float _a, float _b, float _c, float _d );
+        planef();
+        planef( const mt::planef & _plane );
+        planef( const mt::vec3f & _norm, float _dist );
+        planef( float _a, float _b, float _c, float _d );
 
-        MT_METHOD_INLINE mt::planef & operator = ( const mt::planef & _plane );
+        mt::planef & operator = ( const mt::planef & _plane );
 
-        MT_METHOD_INLINE float * buff();
-        MT_METHOD_INLINE const float * buff() const;
+        float * buff();
+        const float * buff() const;
     };
 
-    MT_FUNCTION_INLINE void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane );
-    MT_FUNCTION_INLINE void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane );
-    MT_FUNCTION_INLINE void set_plane_by_triangle( mt::planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 );
-    MT_FUNCTION_INLINE void set_plane_by_point_and_normal( mt::planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal );
-    MT_FUNCTION_INLINE bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane );
-    MT_FUNCTION_INLINE void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane );
-    MT_FUNCTION_INLINE void mul_plane_mat4( mt::planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm );
+    void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane );
+    void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane );
+    void set_plane_by_triangle( mt::planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 );
+    void set_plane_by_point_and_normal( mt::planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal );
+    bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane );
+    void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane );
+    void mul_plane_mat4( mt::planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm );
 }
-
-#if MT_FORCE_INLINE == 1
-#include "math/plane.cpp"
-#endif

@@ -1,30 +1,29 @@
 #include "math/simplex.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE simplex_solver::simplex_solver()
+    simplex_solver::simplex_solver()
         : size( 0 )
         , eps( 0.00001f )
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void simplex_solver::reset()
+    void simplex_solver::reset()
     {
         size = 0;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void simplex_solver::addWPQ( const mt::vec3f & w, const mt::vec3f & p, const mt::vec3f & q )
+    void simplex_solver::addWPQ( const mt::vec3f & w, const mt::vec3f & p, const mt::vec3f & q )
     {
         W[size] = w;
         P[size] = p;
         Q[size++] = q;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE bool simplex_solver::update( mt::vec3f * const _out )
+    bool simplex_solver::update( mt::vec3f * const _out )
     {
         bool found = false;
 
@@ -40,7 +39,7 @@ namespace mt
         return found;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void simplex_solver::remove_1()
+    void simplex_solver::remove_1()
     {
         W[0] = W[1];
         P[0] = P[1];
@@ -49,7 +48,7 @@ namespace mt
         size = 1;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE void simplex_solver::remove_2()
+    void simplex_solver::remove_2()
     {
         W[1] = W[2];
         P[1] = P[2];
@@ -58,7 +57,7 @@ namespace mt
         size = 2;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE bool simplex_solver::solve( const mt::vec3f & _ao, const mt::vec3f & _ab, mt::vec3f * const _out )
+    bool simplex_solver::solve( const mt::vec3f & _ao, const mt::vec3f & _ab, mt::vec3f * const _out )
     {
         if( mt::dot_v3_v3( _ao, _ab ) > 0 )
         {
@@ -85,7 +84,7 @@ namespace mt
         return false;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE bool simplex_solver::solve( const mt::vec3f & _ao, const mt::vec3f & _ab, const mt::vec3f & _ac, mt::vec3f * const _out )
+    bool simplex_solver::solve( const mt::vec3f & _ao, const mt::vec3f & _ab, const mt::vec3f & _ac, mt::vec3f * const _out )
     {
         mt::vec3f ABC = mt::cross_v3_v3( _ab, _ac );
 
@@ -126,7 +125,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 };
-#endif
-
-
-

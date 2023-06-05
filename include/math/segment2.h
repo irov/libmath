@@ -40,12 +40,8 @@ namespace mt
         mt::vec2f b;
     };
 
-    MT_FUNCTION_INLINE float segment2_distance_squared( const mt::segment2 & _segment0, const mt::segment2 & _segment1, float * const _sc, float * const _tc );
-    MT_FUNCTION_INLINE bool segment2_intersect_segment2( const mt::segment2 & _segment0, const mt::segment2 & _segment1 );
-    MT_FUNCTION_INLINE bool segment2_intersect_segment2_point( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _intersectionPoint );
-    MT_FUNCTION_INLINE void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _projection );
+    float segment2_distance_squared( const mt::segment2 & _segment0, const mt::segment2 & _segment1, float * const _sc, float * const _tc );
+    bool segment2_intersect_segment2( const mt::segment2 & _segment0, const mt::segment2 & _segment1 );
+    bool segment2_intersect_segment2_point( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _intersectionPoint );
+    void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _projection );
 }
-
-#if MT_FORCE_INLINE == 1
-#include "math/segment2.cpp"
-#endif

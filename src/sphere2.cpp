@@ -1,10 +1,9 @@
 #include "math/sphere2.h"
 
-#if MT_FORCE_INLINE == 0
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 )
+    bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 )
     {
         float distance = _sphere0.radius + _sphere1.radius;
 
@@ -19,4 +18,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

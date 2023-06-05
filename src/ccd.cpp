@@ -1,12 +1,11 @@
 #include "math/ccd.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool ccd_sphere_sphere( const mt::vec3f & _center1, float _radius1, const mt::vec3f & _velocity1, const mt::vec3f & _center2, float _radius2, const mt::vec3f & _velocity2, float * const _time, mt::vec3f * const _normal )
+    bool ccd_sphere_sphere( const mt::vec3f & _center1, float _radius1, const mt::vec3f & _velocity1, const mt::vec3f & _center2, float _radius2, const mt::vec3f & _velocity2, float * const _time, mt::vec3f * const _normal )
     {
         mt::vec3f nPos = _center1 - _center2;
         mt::vec3f nSpeed = _velocity1 - _velocity2;
@@ -46,7 +45,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool ccd_ray_plane( const mt::vec3f & _point, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
+    bool ccd_ray_plane( const mt::vec3f & _point, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
     {
         mt::vec3f pn;
         mt::get_plane_normal( &pn, _plane );
@@ -67,7 +66,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
+    bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
     {
         mt::vec3f pn;
         mt::get_plane_normal( &pn, _plane );
@@ -80,4 +79,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

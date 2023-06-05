@@ -53,19 +53,6 @@
 #   define MT_assert(A)
 #endif
 
-
-#ifndef MT_FORCE_INLINE
-#   ifndef NDEBUG
-#       define MT_FORCE_INLINE 0
-#   else
-#       define MT_FORCE_INLINE 1
-#   endif
-#endif
-
-#ifndef MT_INLINE
-#   define MT_INLINE inline
-#endif
-
 #ifndef MT_CONSTEXPR
 #   ifdef __cplusplus
 #       if __cplusplus >= 201402L
@@ -85,12 +72,4 @@
 #       define MT_CONSTEXPR inline
 #       define MT_CONSTVAR static
 #   endif
-#endif
-
-#if MT_FORCE_INLINE == 1
-#   define MT_FUNCTION_INLINE MT_INLINE static
-#   define MT_METHOD_INLINE MT_INLINE
-#else
-#   define MT_FUNCTION_INLINE
-#   define MT_METHOD_INLINE
 #endif

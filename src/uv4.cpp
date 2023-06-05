@@ -1,6 +1,5 @@
 #include "math/uv4.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/line2.h"
 #include "math/vec3.h"
 
@@ -9,7 +8,7 @@
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE uv4f::uv4f()
+    uv4f::uv4f()
         : p0( 0.f, 0.f )
         , p1( 1.f, 0.f )
         , p2( 1.f, 1.f )
@@ -17,7 +16,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE uv4f::uv4f( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 )
+    uv4f::uv4f( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 )
         : p0( _p0 )
         , p1( _p1 )
         , p2( _p2 )
@@ -25,7 +24,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE uv4f::uv4f( const mt::vec4f & _mask )
+    uv4f::uv4f( const mt::vec4f & _mask )
         : p0( _mask.x, _mask.y )
         , p1( _mask.z, _mask.y )
         , p2( _mask.z, _mask.w )
@@ -33,7 +32,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE uv4f::uv4f( const mt::uv4f & _uv )
+    uv4f::uv4f( const mt::uv4f & _uv )
         : p0( _uv.p0 )
         , p1( _uv.p1 )
         , p2( _uv.p2 )
@@ -41,17 +40,17 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::vec2f & uv4f::operator [] ( size_t i ) const
+    const mt::vec2f & uv4f::operator [] ( size_t i ) const
     {
         return (&p0)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::vec2f & uv4f::operator [] ( size_t i )
+    mt::vec2f & uv4f::operator [] ( size_t i )
     {
         return (&p0)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::uv4f & uv4f::operator = ( const mt::uv4f & _rhs )
+    mt::uv4f & uv4f::operator = ( const mt::uv4f & _rhs )
     {
         p0 = _rhs.p0;
         p1 = _rhs.p1;
@@ -61,32 +60,32 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float * uv4f::buff()
+    float * uv4f::buff()
     {
         return p0.buff();
     }
-    MT_METHOD_INLINE const float * uv4f::buff() const
+    const float * uv4f::buff() const
     {
         return p0.buff();
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const mt::uv4f & uv4f::identity()
+    const mt::uv4f & uv4f::identity()
     {
         static mt::uv4f uv;
 
         return uv;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator==( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool operator==( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return mt::cmp_uv4_uv4( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool operator!=( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool operator!=( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return !operator==( _a, _b );
     }
-    MT_FUNCTION_INLINE bool cmp_uv4_uv4( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool cmp_uv4_uv4( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return mt::cmp_v2_v2( _a.p0, _b.p0 ) == true &&
             mt::cmp_v2_v2( _a.p1, _b.p1 ) == true &&
@@ -94,7 +93,7 @@ namespace mt
             mt::cmp_v2_v2( _a.p3, _b.p3 ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool uv4_is_identity( const mt::uv4f & _uv )
+    bool uv4_is_identity( const mt::uv4f & _uv )
     {
         float uv_c = _uv.p0.x + _uv.p0.y +
             _uv.p1.x + _uv.p1.y +
@@ -116,12 +115,12 @@ namespace mt
             mt::equal_f_1( _uv.p3.y ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_identity( mt::uv4f * const _uv )
+    void uv4_identity( mt::uv4f * const _uv )
     {
         *_uv = mt::uv4f();
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_from_mask( mt::uv4f * const _out, const mt::vec4f & _mask )
+    void uv4_from_mask( mt::uv4f * const _out, const mt::vec4f & _mask )
     {
         _out->p0 = mt::vec2f( _mask.x, _mask.y );
         _out->p1 = mt::vec2f( _mask.z, _mask.y );
@@ -129,7 +128,7 @@ namespace mt
         _out->p3 = mt::vec2f( _mask.x, _mask.w );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_rotate( mt::uv4f * const _out )
+    void uv4_rotate( mt::uv4f * const _out )
     {
         mt::vec2f tmp = _out->p0;
         _out->p0 = _out->p1;
@@ -138,7 +137,7 @@ namespace mt
         _out->p3 = tmp;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_swap_u( mt::uv4f * const _out )
+    void uv4_swap_u( mt::uv4f * const _out )
     {
         mt::vec2f tmp_0 = _out->p0;
         _out->p0 = _out->p1;
@@ -149,7 +148,7 @@ namespace mt
         _out->p3 = tmp_1;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_swap_v( mt::uv4f * const _out )
+    void uv4_swap_v( mt::uv4f * const _out )
     {
         mt::vec2f tmp_0 = _out->p0;
         _out->p0 = _out->p3;
@@ -160,7 +159,7 @@ namespace mt
         _out->p2 = tmp_1;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_scale( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec2f & _scale )
+    void uv4_scale( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec2f & _scale )
     {
         _out->p0 = _uv.p0;
         _out->p1 = _uv.p0 + (_uv.p1 - _uv.p0) * _scale;
@@ -168,17 +167,17 @@ namespace mt
         _out->p3 = _uv.p0 + (_uv.p3 - _uv.p0) * _scale;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_quad_point( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point )
+    void uv4_quad_point( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point )
     {
         *_out = _uv.p0 + (_uv.p2 - _uv.p0) * _point;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void uv4_quad_point_rotate( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point )
+    void uv4_quad_point_rotate( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point )
     {
         *_out = _uv.p0 + (_uv.p2 - _uv.p0) * mt::vec2f( _point.y, _point.x );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void multiply_tetragon_uv4( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 )
+    void multiply_tetragon_uv4( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 )
     {
         const mt::vec2f & A = _uv1.p0;
         const mt::vec2f & B = _uv1.p1;
@@ -208,7 +207,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void multiply_tetragon_uv4_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * _uv2 )
+    void multiply_tetragon_uv4_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * _uv2 )
     {
         const mt::vec2f & A = _uv1.p0;
         const mt::vec2f & B = _uv1.p1;
@@ -238,7 +237,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void multiply_tetragon_uv4_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p )
+    void multiply_tetragon_uv4_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p )
     {
         const mt::vec2f & A = _uv.p0;
         const mt::vec2f & B = _uv.p1;
@@ -263,7 +262,7 @@ namespace mt
         *_out = new_uv;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void multiply_tetragon_uv4_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask )
+    void multiply_tetragon_uv4_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask )
     {
         mt::uv4f uv2;
         mt::uv4_from_mask( &uv2, _mask );
@@ -271,7 +270,7 @@ namespace mt
         mt::multiply_tetragon_uv4( _out, _uv, uv2 );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv )
+    void calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv )
     {
         mt::vec2f uvA = _auv;
         mt::vec2f dAB = _b - _a;
@@ -304,4 +303,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

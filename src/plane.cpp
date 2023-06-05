@@ -1,12 +1,11 @@
 #include "math/plane.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef()
+    planef::planef()
         :a( 1.f )
         , b( 0.f )
         , c( 0.f )
@@ -14,7 +13,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef( const mt::planef & _plane )
+    planef::planef( const mt::planef & _plane )
         :a( _plane.a )
         , b( _plane.b )
         , c( _plane.c )
@@ -22,7 +21,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef( const mt::vec3f & _norm, float _dist )
+    planef::planef( const mt::vec3f & _norm, float _dist )
         :a( _norm.x )
         , b( _norm.y )
         , c( _norm.z )
@@ -30,7 +29,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE planef::planef( float _a, float _b, float _c, float _d )
+    planef::planef( float _a, float _b, float _c, float _d )
         : a( _a )
         , b( _b )
         , c( _c )
@@ -38,7 +37,7 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE mt::planef & planef::operator = ( const mt::planef & _plane )
+    mt::planef & planef::operator = ( const mt::planef & _plane )
     {
         a = _plane.a;
         b = _plane.b;
@@ -48,31 +47,31 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE float * planef::buff()
+    float * planef::buff()
     {
         return &a;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_METHOD_INLINE const float * planef::buff() const
+    const float * planef::buff() const
     {
         return &a;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane )
+    void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane )
     {
         _out->x = _plane.a;
         _out->y = _plane.b;
         _out->z = _plane.c;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane )
+    void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane )
     {
         _out->x = -_plane.a * _plane.d;
         _out->y = -_plane.b * _plane.d;
         _out->z = -_plane.c * _plane.d;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_plane_by_triangle( planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 )
+    void set_plane_by_triangle( planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 )
     {
         mt::vec3f edge0 = _v1 - _v0;
         mt::vec3f edge1 = _v2 - _v0;
@@ -83,7 +82,7 @@ namespace mt
         mt::set_plane_by_point_and_normal( _plane, _v0, norm );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void set_plane_by_point_and_normal( planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal )
+    void set_plane_by_point_and_normal( planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal )
     {
         _plane->a = _normal.x;
         _plane->b = _normal.y;
@@ -91,7 +90,7 @@ namespace mt
         _plane->d = -mt::dot_v3_v3( _point, _normal );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane )
+    bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane )
     {
         mt::vec3f norm( _plane.a, _plane.b, _plane.c );
 
@@ -107,14 +106,14 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane )
+    void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane )
     {
         mt::vec3f norm( _plane.a, _plane.b, _plane.c );
 
         mt::reflect_v3_v3( _out, norm, _dir );
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void mul_plane_mat4( planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm )
+    void mul_plane_mat4( planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm )
     {
         mt::vec3f dir;
         mt::get_plane_normal( &dir, _plane );
@@ -137,4 +136,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif

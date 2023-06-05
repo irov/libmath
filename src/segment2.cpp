@@ -1,12 +1,11 @@
 #include "math/segment2.h"
 
-#if MT_FORCE_INLINE == 0
 #include "math/utils.h"
 
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE float segment2_distance_squared( const mt::segment2 & _segment0, const mt::segment2 & _segment1, float * const _sc, float * const _tc )
+    float segment2_distance_squared( const mt::segment2 & _segment0, const mt::segment2 & _segment1, float * const _sc, float * const _tc )
     {
         mt::vec2f w0 = _segment0.a - _segment1.a;
 
@@ -94,7 +93,7 @@ namespace mt
 
         return wcd;
     }
-    MT_FUNCTION_INLINE bool segment2_intersect_segment2( const mt::segment2 & _segment0, const mt::segment2 & _segment1 )
+    bool segment2_intersect_segment2( const mt::segment2 & _segment0, const mt::segment2 & _segment1 )
     {
         if( _segment0.a == _segment1.a ||
             _segment0.a == _segment1.b ||
@@ -135,7 +134,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE bool segment2_intersect_segment2_point( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _p )
+    bool segment2_intersect_segment2_point( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _p )
     {
         if( _segment0.a == _segment1.a ||
             _segment0.a == _segment1.b ||
@@ -179,7 +178,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_FUNCTION_INLINE void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _out )
+    void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _out )
     {
         const float sqrl = mt::sqrlength_v2_v2( _segment0.a, _segment0.b );
 
@@ -193,4 +192,3 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
 }
-#endif
