@@ -183,7 +183,7 @@ namespace mt
         return p2;
     }
     //////////////////////////////////////////////////////////////////////////
-    MT_CONSTEXPR float length( float _a, float _b )
+    MT_CONSTEXPR float length_f( float _a, float _b )
     {
         float d = _a - _b;
 
