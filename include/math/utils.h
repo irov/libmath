@@ -185,14 +185,14 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     MT_CONSTEXPR float length_f( float _a, float _b )
     {
-        float d = _a - _b;
-
-        if( d >= 0.f )
+        if( _a >= _b )
         {
-            return d;
+            return _a - _b;
         }
-
-        return -d;
+        else
+        {
+            return _b - _a;
+        }
     }
     //////////////////////////////////////////////////////////////////////////
     MT_CONSTEXPR float linerp_f1( float _in1, float _in2, float _scale )

@@ -1,0 +1,12 @@
+@echo off
+
+set "CONFIGURATION=Release"
+set "SOLUTION_DIR=..\..\solutions\libmath_msvc17\%CONFIGURATION%"
+
+@mkdir %SOLUTION_DIR%
+@pushd %SOLUTION_DIR%
+CMake -G "Visual Studio 17 2022" -S "%CD%\..\..\.." -DCMAKE_CONFIGURATION_TYPES:STRING=%CONFIGURATION% -DCMAKE_BUILD_TYPE:STRING=%CONFIGURATION% -DLIBMATH_EXAMPLES_BUILD:BOOL=TRUE
+@popd
+
+@echo on
+@pause

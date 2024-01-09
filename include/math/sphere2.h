@@ -6,9 +6,11 @@
 
 namespace mt
 {
-    class sphere2
+    struct sphere2
     {
-    public:
+        mt::vec2f position;
+        float radius;
+
         //cppcheck-suppress uninitMemberVar
         sphere2()
         {
@@ -33,15 +35,7 @@ namespace mt
 
             return *this;
         }
-
-    public:
-        mt::vec2f position;
-        float radius;
     };
 
-    MT_FUNCTION_INLINE bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
+    bool sphere2_intersect_sphere2( const mt::sphere2 & _sphere0, const mt::sphere2 & _sphere1 );
 }
-
-#if MT_FORCE_INLINE == 1
-#include "math/sphere2_inline.h"
-#endif
