@@ -7,9 +7,8 @@
 
 namespace mt
 {
-    class planef
+    struct planef
     {
-    public:
         float a;
         float b;
         float c;
@@ -26,11 +25,11 @@ namespace mt
         const float * buff() const;
     };
 
-    void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane );
-    void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane );
-    void set_plane_by_triangle( mt::planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 );
-    void set_plane_by_point_and_normal( mt::planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal );
-    bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane );
-    void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane );
-    void mul_plane_mat4( mt::planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm );
+    void plane_get_normal( mt::vec3f * const _out, const mt::planef & _plane );
+    void plane_get_point( mt::vec3f * const _out, const mt::planef & _plane );
+    void plane_set_by_triangle( mt::planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 );
+    void plane_set_by_point_and_normal( mt::planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal );
+    bool plane_projection( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane );
+    void plane_reflect( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane );
+    void plane_mul_mat4( mt::planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm );
 }

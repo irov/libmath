@@ -33,7 +33,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    void infinity_box( mt::box2f * const box )
+    void box2_infinity( mt::box2f * const box )
     {
         box->minimum.x = -MT_FLT_MAX;
         box->minimum.y = -MT_FLT_MAX;
@@ -41,7 +41,7 @@ namespace mt
         box->maximum.y = MT_FLT_MAX;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_infinity_box( const mt::box2f & box )
+    bool box2_is_infinity( const mt::box2f & box )
     {
         if( box.minimum.x != -MT_FLT_MAX )
         {
@@ -66,7 +66,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    void insideout_box( mt::box2f * const box )
+    void box2_insideout( mt::box2f * const box )
     {
         box->minimum.x = MT_FLT_MAX;
         box->minimum.y = MT_FLT_MAX;
@@ -74,18 +74,18 @@ namespace mt
         box->maximum.y = -MT_FLT_MAX;
     }
     //////////////////////////////////////////////////////////////////////////
-    void reset( box2f * const box, const mt::vec2f & initValue )
+    void box2_reset( box2f * const box, const mt::vec2f & initValue )
     {
         box->maximum = initValue;
         box->minimum = initValue;
     }
     //////////////////////////////////////////////////////////////////////////
-    void reset( mt::box2f * const box, float x, float y )
+    void box2_reset( mt::box2f * const box, float x, float y )
     {
-        mt::reset( box, mt::vec2f( x, y ) );
+        mt::box2_reset( box, mt::vec2f( x, y ) );
     }
     //////////////////////////////////////////////////////////////////////////
-    void add_internal_point( mt::box2f * const box, float x, float y )
+    void box2_add_internal_point( mt::box2f * const box, float x, float y )
     {
         if( x > box->maximum.x ) box->maximum.x = x;
         if( y > box->maximum.y ) box->maximum.y = y;
@@ -93,12 +93,12 @@ namespace mt
         if( y < box->minimum.y ) box->minimum.y = y;
     }
     //////////////////////////////////////////////////////////////////////////
-    void add_internal_point( mt::box2f * const box, const mt::vec2f & p )
+    void box2_add_internal_point( mt::box2f * const box, const mt::vec2f & p )
     {
-        mt::add_internal_point( box, p.x, p.y );
+        mt::box2_add_internal_point( box, p.x, p.y );
     }
     //////////////////////////////////////////////////////////////////////////
-    void merge_box( mt::box2f * const box, const mt::box2f & external_box )
+    void box2_merge( mt::box2f * const box, const mt::box2f & external_box )
     {
         if( external_box.minimum.x < box->minimum.x ) box->minimum.x = external_box.minimum.x;
         if( external_box.minimum.y < box->minimum.y ) box->minimum.y = external_box.minimum.y;
@@ -106,7 +106,7 @@ namespace mt
         if( external_box.maximum.y > box->maximum.y ) box->maximum.y = external_box.maximum.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    void crop_box( mt::box2f * const box, const box2f & external_box )
+    void box2_crop( mt::box2f * const box, const box2f & external_box )
     {
         if( external_box.minimum.x > box->minimum.x ) box->minimum.x = external_box.minimum.x;
         if( external_box.minimum.y > box->minimum.y ) box->minimum.y = external_box.minimum.y;
@@ -114,42 +114,42 @@ namespace mt
         if( external_box.maximum.y < box->maximum.y ) box->maximum.y = external_box.maximum.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    void transpose_box( mt::box2f * const _box, const mt::vec2f & _pos )
+    void box2_transpose( mt::box2f * const _box, const mt::vec2f & _pos )
     {
         _box->minimum += _pos;
         _box->maximum += _pos;
     }
     //////////////////////////////////////////////////////////////////////////
-    void scale_box( mt::box2f * const _box, const mt::vec2f & _scale )
+    void box2_scale( mt::box2f * const _box, const mt::vec2f & _scale )
     {
         _box->minimum *= _scale;
         _box->maximum *= _scale;
     }
     //////////////////////////////////////////////////////////////////////////
-    void get_center_box( const mt::box2f & _box, mt::vec2f * const _pos )
+    void box2_get_center( const mt::box2f & _box, mt::vec2f * const _pos )
     {
         *_pos = (_box.minimum + _box.maximum) * 0.5f;
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_box_from_min_max( mt::box2f * const box, const mt::vec2f & minimum, const mt::vec2f & maximum )
+    void box2_set_from_min_max( mt::box2f * const box, const mt::vec2f & minimum, const mt::vec2f & maximum )
     {
         box->minimum = minimum;
         box->maximum = maximum;
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_box_from_two_point( mt::box2f * const box, const mt::vec2f & a, const mt::vec2f & b )
+    void box2_set_from_two_point( mt::box2f * const box, const mt::vec2f & a, const mt::vec2f & b )
     {
-        mt::reset( box, a );
-        mt::add_internal_point( box, b );
+        mt::box2_reset( box, a );
+        mt::box2_add_internal_point( box, b );
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_box_from_center_and_extent( mt::box2f * const box, const mt::vec2f & center, const mt::vec2f & extent )
+    void box2_set_from_center_and_extent( mt::box2f * const box, const mt::vec2f & center, const mt::vec2f & extent )
     {
         box->minimum = center - extent;
         box->maximum = center + extent;
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_box_from_oriented_extent( mt::box2f * const box, const mt::vec2f & _offset, const mt::vec2f & _size, const mt::mat3f & _wm )
+    void box2_set_from_oriented_extent( mt::box2f * const box, const mt::vec2f & _offset, const mt::vec2f & _size, const mt::mat3f & _wm )
     {
         mt::vec2f bounds[4];
 
@@ -181,7 +181,7 @@ namespace mt
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_box_homogenize( mt::box2f * const box, const mt::vec2f & _begin, const mt::vec2f & _end, const mt::mat4f & _wm )
+    void box2_homogenize( mt::box2f * const box, const mt::vec2f & _begin, const mt::vec2f & _end, const mt::mat4f & _wm )
     {
         mt::vec2f bb_minimum_homogenize;
         mt::mul_v2_v2_m4_homogenize( &bb_minimum_homogenize, _begin, _wm );
@@ -197,10 +197,10 @@ namespace mt
         bb_maximum_homogenize_n.x = (1.f + bb_maximum_homogenize.x) * 0.5f;
         bb_maximum_homogenize_n.y = (1.f - bb_maximum_homogenize.y) * 0.5f;
 
-        mt::set_box_from_min_max( box, bb_minimum_homogenize_n, bb_maximum_homogenize_n );
+        mt::box2_set_from_min_max( box, bb_minimum_homogenize_n, bb_maximum_homogenize_n );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::vec2f & _aminimum, const mt::vec2f & _amaximum, const mt::vec2f & _bminimum, const mt::vec2f & _bmaximum )
+    bool box2_intersect( const mt::vec2f & _aminimum, const mt::vec2f & _amaximum, const mt::vec2f & _bminimum, const mt::vec2f & _bmaximum )
     {
         if( _amaximum.x < _bminimum.x || _aminimum.x > _bmaximum.x )
         {
@@ -215,28 +215,28 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_exist( const mt::vec2f & _aminimum, const mt::vec2f & _amaximum, const mt::vec2f & _bminimum, const mt::vec2f & _bmaximum )
+    bool box2_exist( const mt::vec2f & _aminimum, const mt::vec2f & _amaximum, const mt::vec2f & _bminimum, const mt::vec2f & _bmaximum )
     {
         return (_aminimum.x >= _bminimum.x && _amaximum.x <= _bmaximum.x)
             && (_aminimum.y >= _bminimum.y && _amaximum.y <= _bmaximum.y);
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::vec2f & _minimum, const mt::vec2f & _maximum, const mt::vec2f & _p )
+    bool box2_intersect( const mt::vec2f & _minimum, const mt::vec2f & _maximum, const mt::vec2f & _p )
     {
-        return mt::is_intersect( _minimum, _maximum, _p, _p );
+        return mt::box2_intersect( _minimum, _maximum, _p, _p );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::box2f & _a, const mt::box2f & _b )
+    bool box2_intersect( const mt::box2f & _a, const mt::box2f & _b )
     {
-        return mt::is_intersect( _a.minimum, _a.maximum, _b.minimum, _b.maximum );
+        return mt::box2_intersect( _a.minimum, _a.maximum, _b.minimum, _b.maximum );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::box2f & _a, const mt::vec2f & _b )
+    bool box2_intersect( const mt::box2f & _a, const mt::vec2f & _b )
     {
-        return mt::is_intersect( _a.minimum, _a.maximum, _b, _b );
+        return mt::box2_intersect( _a.minimum, _a.maximum, _b, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::box2f & _a, const mt::vec2f & _b, float _radius )
+    bool box2_intersect( const mt::box2f & _a, const mt::vec2f & _b, float _radius )
     {
         if( _a.minimum.x > _b.x + _radius )
         {
@@ -261,7 +261,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::box2f & _a, const mt::vec2f & _b, float _radiusx, float _radiusy )
+    bool box2_intersect( const mt::box2f & _a, const mt::vec2f & _b, float _radiusx, float _radiusy )
     {
         if( _a.minimum.x > _b.x + _radiusx )
         {
@@ -286,13 +286,13 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    void mul_box2_m4( mt::box2f * const _out, const mt::box2f & _a, const mt::mat4f & _b )
+    void box2_mul_m4( mt::box2f * const _out, const mt::box2f & _a, const mt::mat4f & _b )
     {
         mt::mul_v2_v2_m4( &_out->minimum, _a.minimum, _b );
         mt::mul_v2_v2_m4( &_out->maximum, _a.maximum, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f box_size( const mt::box2f & _box )
+    mt::vec2f box2_size( const mt::box2f & _box )
     {
         return _box.maximum - _box.minimum;
     }

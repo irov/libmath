@@ -48,7 +48,7 @@ namespace mt
     bool ccd_ray_plane( const mt::vec3f & _point, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
     {
         mt::vec3f pn;
-        mt::get_plane_normal( &pn, _plane );
+        mt::plane_get_normal( &pn, _plane );
 
         float denom = mt::dot_v3_v3( _velocity, pn );
 
@@ -69,7 +69,7 @@ namespace mt
     bool ccd_sphere_plane( const mt::vec3f & _center, float _radius, const mt::vec3f & _velocity, const mt::planef & _plane, float * const _time )
     {
         mt::vec3f pn;
-        mt::get_plane_normal( &pn, _plane );
+        mt::plane_get_normal( &pn, _plane );
 
         mt::vec3f pt = _center - pn * _radius;
 

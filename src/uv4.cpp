@@ -78,14 +78,14 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     bool operator==( const mt::uv4f & _a, const mt::uv4f & _b )
     {
-        return mt::cmp_uv4_uv4( _a, _b );
+        return mt::uv4_cmp( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
     bool operator!=( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return !operator==( _a, _b );
     }
-    bool cmp_uv4_uv4( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool uv4_cmp( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return mt::cmp_v2_v2( _a.p0, _b.p0 ) == true &&
             mt::cmp_v2_v2( _a.p1, _b.p1 ) == true &&
@@ -177,7 +177,7 @@ namespace mt
         *_out = _uv.p0 + (_uv.p2 - _uv.p0) * mt::vec2f( _point.y, _point.x );
     }
     //////////////////////////////////////////////////////////////////////////
-    void multiply_tetragon_uv4( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 )
+    void uv4_multiply_tetragon( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 )
     {
         const mt::vec2f & A = _uv1.p0;
         const mt::vec2f & B = _uv1.p1;
@@ -195,19 +195,19 @@ namespace mt
             mt::vec2f BC = B + (C - B) * uv.y;
 
             mt::line2f uv_l1;
-            mt::line_from_two_point_v2( &uv_l1, AB, DC );
+            mt::line2_from_two_point_v2( &uv_l1, AB, DC );
 
             mt::line2f uv_l2;
-            mt::line_from_two_point_v2( &uv_l2, AD, BC );
+            mt::line2_from_two_point_v2( &uv_l2, AD, BC );
 
             mt::vec2f new_uv;
-            mt::line_intersect_v2_np( uv_l1, uv_l2, &new_uv );
+            mt::line2_intersect_v2_np( uv_l1, uv_l2, &new_uv );
 
             (*_out)[i] = new_uv;
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    void multiply_tetragon_uv4_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * _uv2 )
+    void uv4_multiply_tetragon_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * _uv2 )
     {
         const mt::vec2f & A = _uv1.p0;
         const mt::vec2f & B = _uv1.p1;
@@ -225,19 +225,19 @@ namespace mt
             mt::vec2f BC = B + (C - B) * uv.y;
 
             mt::line2f uv_l1;
-            mt::line_from_two_point_v2( &uv_l1, AB, DC );
+            mt::line2_from_two_point_v2( &uv_l1, AB, DC );
 
             mt::line2f uv_l2;
-            mt::line_from_two_point_v2( &uv_l2, AD, BC );
+            mt::line2_from_two_point_v2( &uv_l2, AD, BC );
 
             mt::vec2f new_uv;
-            mt::line_intersect_v2_np( uv_l1, uv_l2, &new_uv );
+            mt::line2_intersect_v2_np( uv_l1, uv_l2, &new_uv );
 
             (*_out)[i] = new_uv;
         }
     }
     //////////////////////////////////////////////////////////////////////////
-    void multiply_tetragon_uv4_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p )
+    void uv4_multiply_tetragon_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p )
     {
         const mt::vec2f & A = _uv.p0;
         const mt::vec2f & B = _uv.p1;
@@ -251,26 +251,26 @@ namespace mt
         mt::vec2f BC = B + (C - B) * _p.y;
 
         mt::line2f uv_l1;
-        mt::line_from_two_point_v2( &uv_l1, AB, DC );
+        mt::line2_from_two_point_v2( &uv_l1, AB, DC );
 
         mt::line2f uv_l2;
-        mt::line_from_two_point_v2( &uv_l2, AD, BC );
+        mt::line2_from_two_point_v2( &uv_l2, AD, BC );
 
         mt::vec2f new_uv;
-        mt::line_intersect_v2_np( uv_l1, uv_l2, &new_uv );
+        mt::line2_intersect_v2_np( uv_l1, uv_l2, &new_uv );
 
         *_out = new_uv;
     }
     //////////////////////////////////////////////////////////////////////////
-    void multiply_tetragon_uv4_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask )
+    void uv4_multiply_tetragon_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask )
     {
         mt::uv4f uv2;
         mt::uv4_from_mask( &uv2, _mask );
 
-        mt::multiply_tetragon_uv4( _out, _uv, uv2 );
+        mt::uv4_multiply_tetragon( _out, _uv, uv2 );
     }
     //////////////////////////////////////////////////////////////////////////
-    void calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv )
+    void uv4_calc_point( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv )
     {
         mt::vec2f uvA = _auv;
         mt::vec2f dAB = _b - _a;

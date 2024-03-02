@@ -5,6 +5,17 @@
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
+    //cppcheck-suppress uninitMemberVar
+    capsule2::capsule2()
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    capsule2::capsule2( const mt::segment2 & _segment, float _radius )
+        : segment( _segment )
+        , radius( _radius )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
     bool capsule2_intersect_segment( const mt::capsule2 & _capsule, const mt::segment2 & _segment )
     {
         float s, t;

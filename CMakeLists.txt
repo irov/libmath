@@ -96,9 +96,15 @@ capsule2
 )
 
 ADD_FILTER(
-triangle
-	src/triangle.cpp
-	include/math/triangle.h
+triangle2
+	src/triangle2.cpp
+	include/math/triangle2.h
+)
+
+ADD_FILTER(
+polygon2
+	src/polygon2.cpp
+	include/math/polygon2.h
 )
 
 ADD_FILTER(

@@ -5,6 +5,31 @@
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
+    //cppcheck-suppress uninitMemberVar
+    segment2::segment2()
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    segment2::segment2( const mt::vec2f & _a, const mt::vec2f & _b )
+        : a( _a )
+        , b( _b )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    segment2::segment2( const mt::segment2 & _segment )
+        : a( _segment.a )
+        , b( _segment.b )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    segment2 & segment2::operator = ( const mt::segment2 & _segment )
+    {
+        a = _segment.a;
+        b = _segment.b;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
     float segment2_distance_squared( const mt::segment2 & _segment0, const mt::segment2 & _segment1, float * const _sc, float * const _tc )
     {
         mt::vec2f w0 = _segment0.a - _segment1.a;
@@ -93,24 +118,22 @@ namespace mt
 
         return wcd;
     }
-    bool segment2_intersect_segment2( const mt::segment2 & _segment0, const mt::segment2 & _segment1 )
+    //////////////////////////////////////////////////////////////////////////
+    bool segment2_intersect( const mt::vec2f & _a0, const mt::vec2f & _b0, const mt::vec2f & _a1, const mt::vec2f & _b1 )
     {
-        if( _segment0.a == _segment1.a ||
-            _segment0.a == _segment1.b ||
-            _segment0.b == _segment1.a ||
-            _segment0.b == _segment1.b )
+        if( _a0 == _a1 || _a0 == _b1 || _b0 == _a1 || _b0 == _b1 )
         {
             return false;
         }
 
-        float x1 = _segment0.a.x;
-        float y1 = _segment0.a.y;
-        float x2 = _segment0.b.x;
-        float y2 = _segment0.b.y;
-        float x3 = _segment1.a.x;
-        float y3 = _segment1.a.y;
-        float x4 = _segment1.b.x;
-        float y4 = _segment1.b.y;
+        float x1 = _a0.x;
+        float y1 = _a0.y;
+        float x2 = _b0.x;
+        float y2 = _b0.y;
+        float x3 = _a1.x;
+        float y3 = _a1.y;
+        float x4 = _b1.x;
+        float y4 = _b1.y;
 
         float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
         float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
@@ -134,7 +157,12 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool segment2_intersect_segment2_point( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _p )
+    bool segment2_intersect( const mt::segment2 & _segment0, const mt::segment2 & _segment1 )
+    {
+        return segment2_intersect( _segment0.a, _segment0.b, _segment1.a, _segment1.b );
+    }
+    //////////////////////////////////////////////////////////////////////////
+    bool segment2_intersect( const mt::segment2 & _segment0, const mt::segment2 & _segment1, mt::vec2f * const _p )
     {
         if( _segment0.a == _segment1.a ||
             _segment0.a == _segment1.b ||
@@ -178,7 +206,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    void segment2_projection_point( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _out )
+    void segment2_projection_v2( const mt::segment2 & _segment0, const mt::vec2f & _point, mt::vec2f * const _out )
     {
         const float sqrl = mt::sqrlength_v2_v2( _segment0.a, _segment0.b );
 

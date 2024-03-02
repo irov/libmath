@@ -6,7 +6,7 @@ namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
     planef::planef()
-        :a( 1.f )
+        : a( 1.f )
         , b( 0.f )
         , c( 0.f )
         , d( 0.f )
@@ -14,7 +14,7 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
     planef::planef( const mt::planef & _plane )
-        :a( _plane.a )
+        : a( _plane.a )
         , b( _plane.b )
         , c( _plane.c )
         , d( _plane.d )
@@ -22,7 +22,7 @@ namespace mt
     }
     //////////////////////////////////////////////////////////////////////////
     planef::planef( const mt::vec3f & _norm, float _dist )
-        :a( _norm.x )
+        : a( _norm.x )
         , b( _norm.y )
         , c( _norm.z )
         , d( _dist )
@@ -57,21 +57,21 @@ namespace mt
         return &a;
     }
     //////////////////////////////////////////////////////////////////////////
-    void get_plane_normal( mt::vec3f * const _out, const mt::planef & _plane )
+    void plane_get_normal( mt::vec3f * const _out, const mt::planef & _plane )
     {
         _out->x = _plane.a;
         _out->y = _plane.b;
         _out->z = _plane.c;
     }
     //////////////////////////////////////////////////////////////////////////
-    void get_plane_point( mt::vec3f * const _out, const mt::planef & _plane )
+    void plane_get_point( mt::vec3f * const _out, const mt::planef & _plane )
     {
         _out->x = -_plane.a * _plane.d;
         _out->y = -_plane.b * _plane.d;
         _out->z = -_plane.c * _plane.d;
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_plane_by_triangle( planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 )
+    void plane_set_by_triangle( planef * const _plane, const mt::vec3f & _v0, const mt::vec3f & _v1, const mt::vec3f & _v2 )
     {
         mt::vec3f edge0 = _v1 - _v0;
         mt::vec3f edge1 = _v2 - _v0;
@@ -79,10 +79,10 @@ namespace mt
         mt::vec3f norm;
         mt::cross_v3_v3_norm( &norm, edge0, edge1 );
 
-        mt::set_plane_by_point_and_normal( _plane, _v0, norm );
+        mt::plane_set_by_point_and_normal( _plane, _v0, norm );
     }
     //////////////////////////////////////////////////////////////////////////
-    void set_plane_by_point_and_normal( planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal )
+    void plane_set_by_point_and_normal( planef * const _plane, const mt::vec3f & _point, const mt::vec3f & _normal )
     {
         _plane->a = _normal.x;
         _plane->b = _normal.y;
@@ -90,7 +90,7 @@ namespace mt
         _plane->d = -mt::dot_v3_v3( _point, _normal );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool projection_to_plane( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane )
+    bool plane_projection( mt::vec3f * const _out, const mt::vec3f & _eye, const mt::vec3f & _dir, const mt::planef & _plane )
     {
         mt::vec3f norm( _plane.a, _plane.b, _plane.c );
 
@@ -106,20 +106,20 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    void reflect_plane( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane )
+    void plane_reflect( mt::vec3f * const _out, const mt::vec3f & _dir, const mt::planef & _plane )
     {
         mt::vec3f norm( _plane.a, _plane.b, _plane.c );
 
         mt::reflect_v3_v3( _out, norm, _dir );
     }
     //////////////////////////////////////////////////////////////////////////
-    void mul_plane_mat4( planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm )
+    void plane_mul_mat4( planef * const _out, const mt::planef & _plane, const mt::mat4f & _wm )
     {
         mt::vec3f dir;
-        mt::get_plane_normal( &dir, _plane );
+        mt::plane_get_normal( &dir, _plane );
 
         mt::vec3f pos;
-        mt::get_plane_point( &pos, _plane );
+        mt::plane_get_point( &pos, _plane );
 
         mt::vec3f at = pos + dir;
 
@@ -132,7 +132,7 @@ namespace mt
         mt::vec3f dir_wm;
         mt::dir_v3_v3( &dir_wm, pos_wm, at_wm );
 
-        mt::set_plane_by_point_and_normal( _out, pos_wm, dir_wm );
+        mt::plane_set_by_point_and_normal( _out, pos_wm, dir_wm );
     }
     //////////////////////////////////////////////////////////////////////////
 }

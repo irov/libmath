@@ -88,7 +88,7 @@ namespace mt
         point[7] = box.minimum + uvh[1] + uvh[2];
     }
     //////////////////////////////////////////////////////////////////////////
-    bool is_intersect( const mt::box3f & _a, const mt::box3f & _b )
+    bool box2_intersect( const mt::box3f & _a, const mt::box3f & _b )
     {
         return (_a.maximum.y > _b.minimum.y && _a.minimum.y < _b.maximum.y &&
             _a.maximum.x > _b.minimum.x && _a.minimum.x < _b.maximum.x &&

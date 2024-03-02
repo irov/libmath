@@ -33,7 +33,7 @@ namespace mt
 
     bool uv4_is_identity( const mt::uv4f & _uv );
     void uv4_identity( mt::uv4f * const _out );
-    bool cmp_uv4_uv4( const mt::uv4f & _a, const mt::uv4f & _b );
+    bool uv4_cmp( const mt::uv4f & _a, const mt::uv4f & _b );
     void uv4_from_mask( mt::uv4f * const _out, const mt::vec4f & _mask );
     void uv4_rotate( mt::uv4f * const _out );
     void uv4_swap_u( mt::uv4f * const _out );
@@ -41,9 +41,9 @@ namespace mt
     void uv4_scale( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec2f & _scale );
     void uv4_quad_point( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point );
     void uv4_quad_point_rotate( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _point );
-    void multiply_tetragon_uv4( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 );
-    void multiply_tetragon_uv4_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask );
-    void multiply_tetragon_uv4_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * const _uv2 );
-    void multiply_tetragon_uv4_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p );
-    void calc_point_uv( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv );
+    void uv4_multiply_tetragon( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::uv4f & _uv2 );
+    void uv4_multiply_tetragon_v4( mt::uv4f * const _out, const mt::uv4f & _uv, const mt::vec4f & _mask );
+    void uv4_multiply_tetragon_vp( mt::uv4f * const _out, const mt::uv4f & _uv1, const mt::vec2f * const _uv2 );
+    void uv4_multiply_tetragon_v2( mt::vec2f * const _out, const mt::uv4f & _uv, const mt::vec2f & _p );
+    void uv4_calc_point( const mt::vec2f & _a, const mt::vec2f & _b, const mt::vec2f & _c, const mt::vec2f & _auv, const mt::vec2f & _buv, const mt::vec2f & _cuv, const mt::vec2f & _point, mt::vec2f * const _uv );
 }

@@ -26,5 +26,5 @@ namespace mt
     void set_box_from_center_and_extent( mt::box3f * const box, const mt::vec3f & center, const mt::vec3f & extent );
     void get_box_uvh_vector( const mt::box3f & box, mt::vec3f uvh[3] );
     void get_point_from_box( const mt::box3f & box, mt::vec3f point[8] );
-    bool is_intersect( const mt::box3f & _a, const mt::box3f & _b );
+    bool box2_intersect( const mt::box3f & _a, const mt::box3f & _b );
 }
