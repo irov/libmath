@@ -5,7 +5,7 @@
 namespace mt
 {
     //////////////////////////////////////////////////////////////////////////
-    void polygon2_centroid( const mt::vec2f * _polygon, uint32_t _count, mt::vec2f * const _point )
+    void polygon2_centroid( const mt::vec2f * _polygon, size_t _count, mt::vec2f * const _point )
     {
         if( _count == 0 )
         {
@@ -17,7 +17,7 @@ namespace mt
         mt::vec2f centroid_point( 0.f, 0.f );
         float centroid_area = 0.f;
 
-        for( uint32_t i = 0; i != _count - 1; ++i )
+        for( size_t i = 0; i != _count - 1; ++i )
         {
             float x0 = _polygon[i + 0].x;
             float y0 = _polygon[i + 0].y;
@@ -61,13 +61,13 @@ namespace mt
         return (_v1.x - _v0.x) * (_point.y - _v0.y) - (_point.x - _v0.x) * (_v1.y - _v0.y);
     }
     //////////////////////////////////////////////////////////////////////////
-    bool polygon2_intersect( const mt::vec2f * _polygon, uint32_t _count, const mt::vec2f & _point )
+    bool polygon2_intersect( const mt::vec2f * _polygon, size_t _count, const mt::vec2f & _point )
     {
         int32_t wn = 0;
 
-        for( uint32_t i = 0; i != _count; ++i )
+        for( size_t i = 0; i != _count; ++i )
         {
-            uint32_t next_i = (i + 1) % _count;
+            size_t next_i = (i + 1) % _count;
 
             const mt::vec2f & v0 = _polygon[i];
             const mt::vec2f & v1 = _polygon[next_i];
@@ -102,7 +102,7 @@ namespace mt
         return true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool polygon2_intersect( const mt::vec2f * _polygon, uint32_t _count, const mt::vec2f & _point, float _rx, float _ry )
+    bool polygon2_intersect( const mt::vec2f * _polygon, size_t _count, const mt::vec2f & _point, float _rx, float _ry )
     {
         if( polygon2_intersect( _polygon, _count, _point ) == true )
         {
@@ -112,9 +112,9 @@ namespace mt
         float rxxinv = 1.f / (_rx * _rx);
         float ryyinv = 1.f / (_ry * _ry);
 
-        for( uint32_t index = 0; index != _count; ++index )
+        for( size_t index = 0; index != _count; ++index )
         {
-            uint32_t next_index = (index + 1) % _count;
+            size_t next_index = (index + 1) % _count;
 
             const mt::vec2f & v0 = _polygon[index];
             const mt::vec2f & v1 = _polygon[next_index];
@@ -135,7 +135,7 @@ namespace mt
         return false;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool polygon2_intersect( const mt::vec2f * _polygon1, uint32_t _count1, const mt::vec2f * _polygon2, uint32_t _count2 )
+    bool polygon2_intersect( const mt::vec2f * _polygon1, size_t _count1, const mt::vec2f * _polygon2, size_t _count2 )
     {
         if( _count1 == 0 || _count2 == 0 )
         {
@@ -156,16 +156,16 @@ namespace mt
             return true;
         }
 
-        for( uint32_t i = 0; i != _count1; ++i )
+        for( size_t i = 0; i != _count1; ++i )
         {
-            uint32_t next_i = (i + 1) % _count1;
+            size_t next_i = (i + 1) % _count1;
 
             const mt::vec2f & p1 = _polygon1[i];
             const mt::vec2f & p2 = _polygon1[next_i];
 
-            for( uint32_t j = 0; j != _count2; ++j )
+            for( size_t j = 0; j != _count2; ++j )
             {
-                uint32_t next_j = (j + 1) % _count2;
+                size_t next_j = (j + 1) % _count2;
 
                 const mt::vec2f & p3 = _polygon2[j];
                 const mt::vec2f & p4 = _polygon2[next_j];
