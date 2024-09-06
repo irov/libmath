@@ -150,15 +150,6 @@ namespace mt
         return l;
     }
     //////////////////////////////////////////////////////////////////////////
-    float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
-    {
-        mt::vec2f c = _a - _b;
-
-        float sqrlength = c.sqrlength();
-
-        return sqrlength;
-    }
-    //////////////////////////////////////////////////////////////////////////
     float length_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f c = _a - _b;
@@ -166,6 +157,22 @@ namespace mt
         float l = c.length();
 
         return l;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    float sqrlength_v2( const mt::vec2f & _a )
+    {
+        float l = _a.sqrlength();
+
+        return l;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
+    {
+        mt::vec2f c = _a - _b;
+
+        float sqrlength = c.sqrlength();
+
+        return sqrlength;
     }
     //////////////////////////////////////////////////////////////////////////
     bool cmp_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )

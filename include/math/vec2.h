@@ -60,6 +60,16 @@ namespace mt
         return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y );
     }
 
+    MT_CONSTEXPR bool is_zero_v2( const mt::vec2f & _a )
+    {
+        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y );
+    }
+
+    MT_CONSTEXPR bool equal_v2_v2( const mt::vec2f & _v1, const mt::vec2f & _v2 )
+    {
+        return mt::equal_f_f( _v1.x, _v2.x ) && mt::equal_f_f( _v1.y, _v2.y );
+    }
+
     bool operator==( const mt::vec2f & _a, const mt::vec2f & _b );
     bool operator!=( const mt::vec2f & _a, const mt::vec2f & _b );
     mt::vec2f operator+( const mt::vec2f & _a, const mt::vec2f & _b );
@@ -76,8 +86,9 @@ namespace mt
     void ident_v2( mt::vec2f * const _a );
 
     float length_v2( const mt::vec2f & _a );
-    float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b );
     float length_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b );
+    float sqrlength_v2( const mt::vec2f & _a );
+    float sqrlength_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b );
 
     float length_f( const mt::vec2f & _a, const mt::vec2f & _b );
 
