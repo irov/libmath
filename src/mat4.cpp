@@ -244,6 +244,13 @@ namespace mt
         _out->y = _m.v0.y * _v.x + _m.v1.y * _v.y;
     }
     //////////////////////////////////////////////////////////////////////////
+    void mul_v3_v2z_m4( mt::vec3f * const _out, const mt::mat4f & _m )
+    {
+        _out->x = _m.v3.x;
+        _out->y = _m.v3.y;
+        _out->z = _m.v3.z;
+    }
+    //////////////////////////////////////////////////////////////////////////
     void mul_v3_v2_m4_r( mt::vec3f * const _out, const mt::vec2f & _v, const mt::mat4f & _m )
     {
         _out->x = _m.v0.x * _v.x + _m.v1.x * _v.y;

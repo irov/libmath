@@ -69,6 +69,7 @@ namespace mt
     void mul_v2_v3_m4_r( mt::vec2f * const _out, const mt::vec3f & _v, const mt::mat4f & _m );
     void mul_v3_v2_m4( mt::vec3f * const _out, const mt::vec2f & _v, const mt::mat4f & _m );
     void mul_v3_v2_m4_r( mt::vec3f * const _out, const mt::vec2f & _v, const mt::mat4f & _m );
+    void mul_v3_v2z_m4( mt::vec3f * const _out, const mt::mat4f & _m );
 
     void mul_m4_v4( mt::vec4f * const _out, const mt::mat4f & _m, const mt::vec4f & _v );
     void mul_v4_m4( mt::vec4f * const _out, const mt::vec4f & _a, const mt::mat4f & _b );
