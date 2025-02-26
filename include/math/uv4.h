@@ -25,19 +25,19 @@ namespace mt
         mt::uv4f & operator = ( const mt::uv4f & _rhs );
 
         template <int K>
-        mt::vec2f & get()
+        mt::vec2f & get_t()
         {
             return this->operator [] ( K );
         }
 
         template <int K>
-        const mt::vec2f & get() const
+        const mt::vec2f & get_t() const
         {
             return this->operator [] ( K );
         }
 
         template <int K>
-        void set( const mt::vec2f & _value )
+        void set_t( const mt::vec2f & _value )
         {
             this->operator [] ( K ) = _value;
         }

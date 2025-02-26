@@ -26,19 +26,19 @@ namespace mt
         const float operator []( size_t i ) const;
 
         template <int K>
-        float & get()
+        float & get_t()
         {
             return this->operator [] ( K );
         }
 
         template <int K>
-        float get() const
+        float get_t() const
         {
             return this->operator [] ( K );
         }
 
         template <int K>
-        void set( float _value )
+        void set_t( float _value )
         {
             this->operator [] ( K ) = _value;
         }
