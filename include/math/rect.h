@@ -16,7 +16,7 @@ namespace mt
 
         rectf();
         rectf( const mt::rectf & _rect );
-        explicit rectf( float _x, float _y, float _width, float _height );
+        rectf( float _x, float _y, float _width, float _height );
         mt::rectf & operator = ( const mt::rectf & _rect );
 
         bool empty() const;

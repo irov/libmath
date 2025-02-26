@@ -15,23 +15,44 @@ namespace mt
 
         vec4f();
         vec4f( float _x, float _y, float _z, float _w );
-        vec4f( const mt::vec2f & _v0, const mt::vec2f & _v1 );
         vec4f( const mt::vec4f & _v );
-        explicit vec4f( const mt::vec3f & _v );
         vec4f( const mt::vec3f & _v, float _w );
+        vec4f( const mt::vec2f & _v0, const mt::vec2f & _v1 );        
+        explicit vec4f( const float * _v );
 
         mt::vec4f & operator=( const mt::vec4f & _rhs );
 
         float & operator []( size_t i );
         const float operator []( size_t i ) const;
 
-        mt::vec4f & operator+=( const mt::vec4f & _rhs );
-        mt::vec4f & operator-=( const mt::vec4f & _rhs );
+        template <int K>
+        float & get()
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        float get() const
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        void set( float _value )
+        {
+            this->operator [] ( K ) = _value;
+        }
+
+        void set( float _x, float _y, float _z, float _w );
+
+        mt::vec4f & operator += ( const mt::vec4f & _rhs );
+        mt::vec4f & operator -= ( const mt::vec4f & _rhs );
+        mt::vec4f & operator *= ( const mt::vec4f & _rhs );
+        mt::vec4f & operator /= ( const mt::vec4f & _rhs );
         mt::vec4f & operator *= ( const mt::vec2f & _rhs );
         mt::vec4f & operator /= ( const mt::vec2f & _rhs );
         mt::vec4f & operator *= ( const float _rhs );
         mt::vec4f & operator /= ( const float _rhs );
-
 
         float sqrlength() const;
         float length() const;
@@ -76,8 +97,9 @@ namespace mt
     float dot_v4_v3( const mt::vec4f & a, const mt::vec3f & b );
     float dot_v4_v4( const mt::vec4f & a, const mt::vec4f & b );
 
-    void norm_v4( mt::vec4f * const _out, const mt::vec4f & _rhs );
-    mt::vec4f norm_v4( const mt::vec4f & _rhs );
+    void norm_v4_v4( mt::vec4f * const _out, const mt::vec4f & _rhs );
+    float norm_v4_v4_f( mt::vec4f * const _out, const mt::vec4f & _rhs );
+    mt::vec4f norm_v4_v4( const mt::vec4f & _rhs );
     void norm_safe_v4( mt::vec4f * const _out, const mt::vec4f & _rhs, float _err = 1e-06 );
     mt::vec4f norm_safe_v4( const mt::vec4f & _rhs );
 

@@ -17,13 +17,14 @@ namespace mt
 
         quatf();
         quatf( float _x, float _y, float _z, float _w );
-        quatf( float _angle, const mt::vec3f & _v );
         quatf( const mt::quatf & _q );
+        quatf( const mt::vec3f & _v, float _angle );
 
         void rotate( mt::vec3f * const _v ) const;
         void multiply( const mt::quatf & left, const mt::vec3f & right );
-        float & operator[]( size_t i );
-        const float operator[]( size_t i )const;
+
+        float & operator [] ( size_t i );
+        const float operator [] ( size_t i )const;
 
         quatf & operator=( const mt::quatf & q );
 
@@ -34,14 +35,15 @@ namespace mt
         float getPitch( bool _reprojectAxis = true ) const;
     };
 
-    bool operator==( const mt::quatf & _a, const mt::quatf & _b );
-    bool operator!=( const mt::quatf & _a, const mt::quatf & _b );
-    quatf operator+( const mt::quatf & _a, const mt::quatf & _b );
-    quatf operator-( const mt::quatf & _a, const mt::quatf & _b );
-    quatf operator*( const mt::quatf & _a, const mt::quatf & _b );
-    vec3f operator*( const mt::quatf & _q, const mt::vec3f & _v3 );
-    quatf operator*( const mt::quatf & _q, float _v );
-    quatf operator/( const mt::quatf & _q, float _v );
+    bool operator == ( const mt::quatf & _a, const mt::quatf & _b );
+    bool operator != ( const mt::quatf & _a, const mt::quatf & _b );
+
+    quatf operator + ( const mt::quatf & _a, const mt::quatf & _b );
+    quatf operator - ( const mt::quatf & _a, const mt::quatf & _b );
+    quatf operator * ( const mt::quatf & _a, const mt::quatf & _b );
+    vec3f operator * ( const mt::quatf & _q, const mt::vec3f & _v3 );
+    quatf operator * ( const mt::quatf & _q, float _v );
+    quatf operator / ( const mt::quatf & _q, float _v );
 
     bool cmp_q_q( const mt::quatf & _a, const mt::quatf & _b );
 

@@ -18,27 +18,11 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    vec4f::vec4f( const mt::vec2f & _v0, const mt::vec2f & _v1 )
-        :x( _v0.x )
-        , y( _v0.y )
-        , z( _v1.x )
-        , w( _v1.y )
-    {
-    }
-    //////////////////////////////////////////////////////////////////////////
     vec4f::vec4f( const mt::vec4f & _v )
         :x( _v.x )
         , y( _v.y )
         , z( _v.z )
         , w( _v.w )
-    {
-    }
-    //////////////////////////////////////////////////////////////////////////
-    vec4f::vec4f( const mt::vec3f & _v )
-        :x( _v.x )
-        , y( _v.y )
-        , z( _v.z )
-        , w( 0.f )
     {
     }
     //////////////////////////////////////////////////////////////////////////
@@ -50,26 +34,43 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f & vec4f::operator=( const mt::vec4f & _rhs )
+    vec4f::vec4f( const mt::vec2f & _v0, const mt::vec2f & _v1 )
+        :x( _v0.x )
+        , y( _v0.y )
+        , z( _v1.x )
+        , w( _v1.y )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    vec4f::vec4f( const float * _v )
+        : x( _v[0] )
+        , y( _v[1] )
+        , z( _v[2] )
+        , w( _v[3] )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec4f & vec4f::operator = ( const mt::vec4f & _rhs )
     {
         x = _rhs.x;
         y = _rhs.y;
         z = _rhs.z;
         w = _rhs.w;
+
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    float & vec4f::operator[]( size_t i )
+    float & vec4f::operator [] ( size_t i )
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    const float vec4f::operator[]( size_t i )const
+    const float vec4f::operator [] ( size_t i )const
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f & vec4f::operator+=( const mt::vec4f & _rhs )
+    mt::vec4f & vec4f::operator += ( const mt::vec4f & _rhs )
     {
         x += _rhs.x;
         y += _rhs.y;
@@ -85,6 +86,26 @@ namespace mt
         y -= _rhs.y;
         z -= _rhs.z;
         w -= _rhs.w;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec4f & vec4f::operator *= ( const mt::vec4f & _rhs )
+    {
+        x *= _rhs.x;
+        y *= _rhs.y;
+        z *= _rhs.z;
+        w *= _rhs.w;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec4f & vec4f::operator /= ( const mt::vec4f & _rhs )
+    {
+        x *= _rhs.x;
+        y *= _rhs.y;
+        z *= _rhs.z;
+        w *= _rhs.w;
 
         return *this;
     }
@@ -117,6 +138,14 @@ namespace mt
     mt::vec4f & vec4f::operator /= ( const float _rhs )
     {
         return operator *= ( 1.f / _rhs );
+    }
+    //////////////////////////////////////////////////////////////////////////
+    void vec4f::set( float _x, float _y, float _z, float _w )
+    {
+        x = _x;
+        y = _y;
+        z = _z;
+        w = _w;
     }
     //////////////////////////////////////////////////////////////////////////
     float vec4f::sqrlength() const
@@ -179,12 +208,12 @@ namespace mt
             mt::equal_f_f( _a.w, _b.w ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::vec4f & _a, const mt::vec4f & _b )
+    bool operator == ( const mt::vec4f & _a, const mt::vec4f & _b )
     {
         return mt::cmp_v4_v4( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::vec4f & _a, const mt::vec4f & _b )
+    bool operator != ( const mt::vec4f & _a, const mt::vec4f & _b )
     {
         return !operator==( _a, _b );
     }
@@ -204,7 +233,7 @@ namespace mt
         _out->w = _a.w + _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator+( const mt::vec4f & _a, const mt::vec4f & _b )
+    mt::vec4f operator + ( const mt::vec4f & _a, const mt::vec4f & _b )
     {
         mt::vec4f out;
         mt::add_v4_v4( &out, _a, _b );
@@ -220,7 +249,7 @@ namespace mt
         _out->w = _a.w - _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator-( const mt::vec4f & _a, const mt::vec4f & _b )
+    mt::vec4f operator - ( const mt::vec4f & _a, const mt::vec4f & _b )
     {
         mt::vec4f out;
         mt::sub_v4_v4( &out, _a, _b );
@@ -236,27 +265,27 @@ namespace mt
         _out->w = _a.w * _val;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator*( const mt::vec4f & _rhs, const mt::vec4f & _val )
+    mt::vec4f operator * ( const mt::vec4f & _rhs, const mt::vec4f & _val )
     {
         return mt::vec4f( _rhs.x * _val.x, _rhs.y * _val.y, _rhs.z * _val.z, _rhs.w * _val.w );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator/( const mt::vec4f & _rhs, const mt::vec4f & _val )
+    mt::vec4f operator / ( const mt::vec4f & _rhs, const mt::vec4f & _val )
     {
         return mt::vec4f( _rhs.x / _val.x, _rhs.y / _val.y, _rhs.z / _val.z, _rhs.w / _val.w );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator*( const mt::vec4f & _rhs, const mt::vec2f & _val )
+    mt::vec4f operator * ( const mt::vec4f & _rhs, const mt::vec2f & _val )
     {
         return mt::vec4f( _rhs.x * _val.x, _rhs.y * _val.y, _rhs.z * _val.x, _rhs.w * _val.y );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator/( const mt::vec4f & _rhs, const mt::vec2f & _val )
+    mt::vec4f operator / ( const mt::vec4f & _rhs, const mt::vec2f & _val )
     {
-        return operator*( _rhs, 1.f / _val );
+        return operator * ( _rhs, 1.f / _val );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator*( const mt::vec4f & _rhs, const float _val )
+    mt::vec4f operator * ( const mt::vec4f & _rhs, const float _val )
     {
         mt::vec4f out;
         mt::scale_v4_v4( &out, _rhs, _val );
@@ -264,9 +293,9 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator/( const mt::vec4f & _rhs, const float _val )
+    mt::vec4f operator / ( const mt::vec4f & _rhs, const float _val )
     {
-        return operator*( _rhs, 1.f / _val );
+        return operator * ( _rhs, 1.f / _val );
     }
     //////////////////////////////////////////////////////////////////////////
     void neg_v4( mt::vec4f * const _out )
@@ -277,7 +306,7 @@ namespace mt
         _out->w = -_out->w;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator-( vec4f _rhs )
+    mt::vec4f operator - ( vec4f _rhs )
     {
         mt::neg_v4( &_rhs );
 
@@ -304,17 +333,26 @@ namespace mt
         return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    void norm_v4( mt::vec4f * const _out, const mt::vec4f & _rhs )
+    void norm_v4_v4( mt::vec4f * const _out, const mt::vec4f & _rhs )
     {
         float l = _rhs.length();
 
         *_out = _rhs / l;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f norm_v4( const mt::vec4f & _rhs )
+    float norm_v4_v4_f( mt::vec4f * const _out, const mt::vec4f & _rhs )
+    {
+        float l = _rhs.length();
+
+        *_out = _rhs / l;
+
+        return l;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec4f norm_v4_v4( const mt::vec4f & _rhs )
     {
         mt::vec4f out;
-        mt::norm_v4( &out, _rhs );
+        mt::norm_v4_v4( &out, _rhs );
 
         return out;
     }

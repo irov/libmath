@@ -21,6 +21,12 @@ namespace mt
         float & operator [] ( size_t i );
 
         template <int K>
+        float & get()
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
         float get() const
         {
             return this->operator [] ( K );
@@ -32,12 +38,14 @@ namespace mt
             this->operator [] ( K ) = _value;
         }
 
-        mt::vec2f & operator+=( const mt::vec2f & _v2 );
-        mt::vec2f & operator-=( const mt::vec2f & _v2 );
-        mt::vec2f & operator/=( float _v );
-        mt::vec2f & operator*=( float _v );
-        mt::vec2f & operator/=( const mt::vec2f & _v2 );
-        mt::vec2f & operator*=( const mt::vec2f & _v2 );
+        void set( float _x, float _y );
+
+        mt::vec2f & operator += ( const mt::vec2f & _v2 );
+        mt::vec2f & operator -= ( const mt::vec2f & _v2 );
+        mt::vec2f & operator /= ( float _v );
+        mt::vec2f & operator *= ( float _v );
+        mt::vec2f & operator /= ( const mt::vec2f & _v2 );
+        mt::vec2f & operator *= ( const mt::vec2f & _v2 );
 
         void from_f2( const float * _v );
 

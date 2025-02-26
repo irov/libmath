@@ -16,11 +16,33 @@ namespace mt
 
         uv4f();
         uv4f( const mt::uv4f & _uv );
-        explicit uv4f( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 );
+        uv4f( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 );
         explicit uv4f( const mt::vec4f & _mask );
-        const mt::vec2f & operator [] ( size_t i ) const;
+
         mt::vec2f & operator [] ( size_t i );
+        const mt::vec2f & operator []( size_t i ) const;
+
         mt::uv4f & operator = ( const mt::uv4f & _rhs );
+
+        template <int K>
+        mt::vec2f & get()
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        const mt::vec2f & get() const
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        void set( const mt::vec2f & _value )
+        {
+            this->operator [] ( K ) = _value;
+        }
+
+        void set( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 );
 
         float * buff();
         const float * buff() const;

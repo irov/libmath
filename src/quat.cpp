@@ -19,11 +19,6 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf::quatf( float _angle, const mt::vec3f & _v )
-    {
-        *this = q_from_angle_axis( _v, _angle );
-    }
-    //////////////////////////////////////////////////////////////////////////
     quatf::quatf( const mt::quatf & _q )
         : x( _q.x )
         , y( _q.y )
@@ -32,17 +27,22 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    float & quatf::operator[]( size_t i )
+    quatf::quatf( const mt::vec3f & _v, float _angle )
+    {
+        mt::q_from_angle_axis( this, _v, _angle );
+    }
+    //////////////////////////////////////////////////////////////////////////
+    float & quatf::operator [] ( size_t i )
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    const float quatf::operator[]( size_t i )const
+    const float quatf::operator [] ( size_t i )const
     {
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf & quatf::operator=( const mt::quatf & q )
+    quatf & quatf::operator = ( const mt::quatf & q )
     {
         x = q.x;
         y = q.y;
@@ -143,12 +143,12 @@ namespace mt
             mt::equal_f_f( _a.z, _b.z ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::quatf & _a, const mt::quatf & _b )
+    bool operator == ( const mt::quatf & _a, const mt::quatf & _b )
     {
-        return cmp_q_q( _a, _b );
+        return mt::cmp_q_q( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::quatf & _a, const mt::quatf & _b )
+    bool operator != ( const mt::quatf & _a, const mt::quatf & _b )
     {
         return !operator==( _a, _b );
     }
@@ -161,7 +161,7 @@ namespace mt
         _out->w = _a.w + _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf operator+( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator + ( const mt::quatf & _a, const mt::quatf & _b )
     {
         quatf out;
         add_q_q( &out, _a, _b );
@@ -177,7 +177,7 @@ namespace mt
         _out->w = _a.w - _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf operator-( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator - ( const mt::quatf & _a, const mt::quatf & _b )
     {
         mt::quatf out;
         mt::sub_q_q( &out, _a, _b );
@@ -193,7 +193,7 @@ namespace mt
         _out->w = _q1.w * _q2.w - _q1.x * _q2.x - _q1.y * _q2.y - _q1.z * _q2.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf operator*( const mt::quatf & _a, const mt::quatf & _b )
+    quatf operator * ( const mt::quatf & _a, const mt::quatf & _b )
     {
         mt::quatf out;
         mt::mul_q_q( &out, _a, _b );
@@ -232,7 +232,7 @@ namespace mt
         _out->z = _q.z * _v;
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf operator*( const mt::quatf & _q, float _v )
+    quatf operator * ( const mt::quatf & _q, float _v )
     {
         mt::quatf out;
         mt::scale_q_s( &out, _q, _v );
@@ -240,7 +240,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    quatf operator/( const mt::quatf & _q, float _v )
+    quatf operator / ( const mt::quatf & _q, float _v )
     {
         return operator*( _q, 1 / _v );;
     }

@@ -15,18 +15,41 @@ namespace mt
         vec3f();
         vec3f( float _x, float _y, float _z );
         vec3f( const mt::vec3f & _v );
-
-        explicit vec3f( const mt::vec2f & _v, float _z );
+        vec3f( const mt::vec2f & _v, float _z );
+        explicit vec3f( const float * _v );
 
         mt::vec3f & operator = ( const mt::vec3f & _rhs );
 
         float operator [] ( size_t i ) const;
         float & operator [] ( size_t i );
 
+        template <int K>
+        float & get()
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        float get() const
+        {
+            return this->operator [] ( K );
+        }
+
+        template <int K>
+        void set( float _value )
+        {
+            this->operator [] ( K ) = _value;
+        }
+
+        void set( float _x, float _y, float _z );
+
         mt::vec3f & operator += ( const mt::vec3f & _rhs );
         mt::vec3f & operator -= ( const mt::vec3f & _rhs );
-        mt::vec3f & operator /= ( const float _rhs );
+        mt::vec3f & operator *= ( const mt::vec3f & _rhs );
+        mt::vec3f & operator /= ( const mt::vec3f & _rhs );
         mt::vec3f & operator *= ( const float _rhs );
+        mt::vec3f & operator /= ( const float _rhs );
+        
         float sqrlength() const;
         float length() const;
 

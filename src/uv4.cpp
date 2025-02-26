@@ -60,10 +60,19 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
+    void uv4f::set( const mt::vec2f & _p0, const mt::vec2f & _p1, const mt::vec2f & _p2, const mt::vec2f & _p3 )
+    {
+        p0 = _p0;
+        p1 = _p1;
+        p2 = _p2;
+        p3 = _p3;
+    }
+    //////////////////////////////////////////////////////////////////////////
     float * uv4f::buff()
     {
         return p0.buff();
     }
+    //////////////////////////////////////////////////////////////////////////
     const float * uv4f::buff() const
     {
         return p0.buff();
@@ -76,15 +85,16 @@ namespace mt
         return uv;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool operator == ( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return mt::uv4_cmp( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::uv4f & _a, const mt::uv4f & _b )
+    bool operator != ( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return !operator==( _a, _b );
     }
+    //////////////////////////////////////////////////////////////////////////
     bool uv4_cmp( const mt::uv4f & _a, const mt::uv4f & _b )
     {
         return mt::cmp_v2_v2( _a.p0, _b.p0 ) == true &&

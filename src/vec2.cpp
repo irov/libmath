@@ -48,7 +48,7 @@ namespace mt
         return (&x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator+=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator += ( const mt::vec2f & _v2 )
     {
         x += _v2.x;
         y += _v2.y;
@@ -56,7 +56,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator-=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator -= ( const mt::vec2f & _v2 )
     {
         x -= _v2.x;
         y -= _v2.y;
@@ -64,14 +64,14 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator/=( float _v )
+    mt::vec2f & vec2f::operator /= ( float _v )
     {
         operator *= ( 1.f / _v );
 
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator*=( float _v )
+    mt::vec2f & vec2f::operator *= ( float _v )
     {
         x *= _v;
         y *= _v;
@@ -79,7 +79,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator/=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator /= ( const mt::vec2f & _v2 )
     {
         x /= _v2.x;
         y /= _v2.y;
@@ -87,12 +87,18 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f & vec2f::operator*=( const mt::vec2f & _v2 )
+    mt::vec2f & vec2f::operator *= ( const mt::vec2f & _v2 )
     {
         x *= _v2.x;
         y *= _v2.y;
 
         return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    void vec2f::set( float _x, float _y )
+    {
+        x = _x;
+        y = _y;
     }
     //////////////////////////////////////////////////////////////////////////
     void vec2f::from_f2( const float * _v )
@@ -180,12 +186,12 @@ namespace mt
         return mt::equal_f_f( _a.x, _b.x ) == true && mt::equal_f_f( _a.y, _b.y ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::vec2f & _a, const mt::vec2f & _b )
+    bool operator == ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         return mt::cmp_v2_v2( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::vec2f & _a, const mt::vec2f & _b )
+    bool operator != ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         return !operator==( _a, _b );
     }
@@ -196,7 +202,7 @@ namespace mt
         _out->y = _a.y + _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator+( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator + ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::add_v2_v2( &out, _a, _b );
@@ -218,7 +224,7 @@ namespace mt
         mt::norm_v2_v2( _out, out );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator-( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator - ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::sub_v2_v2( &out, _a, _b );
@@ -244,7 +250,7 @@ namespace mt
         _out->y = _a.y / _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator*( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator * ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::mul_v2_v2( &out, _a, _b );
@@ -252,7 +258,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator*( const mt::vec2f & _rhs, float _val )
+    mt::vec2f operator * ( const mt::vec2f & _rhs, float _val )
     {
         mt::vec2f out;
         mt::mul_v2_f( &out, _rhs, _val );
@@ -268,7 +274,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator/( const mt::vec2f & _a, const mt::vec2f & _b )
+    mt::vec2f operator / ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
         mt::vec2f out;
         mt::div_v2_v2( &out, _a, _b );
@@ -298,14 +304,14 @@ namespace mt
         _out->y = -_out->y;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator-( vec2f _rhs )
+    mt::vec2f operator - ( vec2f _rhs )
     {
         mt::neg_v2( &_rhs );
 
         return _rhs;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec2f operator+( vec2f _rhs )
+    mt::vec2f operator + ( vec2f _rhs )
     {
         return _rhs;
     }

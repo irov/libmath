@@ -31,7 +31,14 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec3f & vec3f::operator=( const mt::vec3f & _rhs )
+    vec3f::vec3f( const float * _v )
+        : x( _v[0] )
+        , y( _v[1] )
+        , z( _v[2] )
+    {
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec3f & vec3f::operator = ( const mt::vec3f & _rhs )
     {
         this->x = _rhs.x;
         this->y = _rhs.y;
@@ -40,17 +47,17 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    float vec3f::operator[]( size_t i ) const
+    float vec3f::operator [] ( size_t i ) const
     {
         return (&this->x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    float & vec3f::operator[]( size_t i )
+    float & vec3f::operator [] ( size_t i )
     {
         return (&this->x)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec3f & vec3f::operator+=( const mt::vec3f & _rhs )
+    mt::vec3f & vec3f::operator += ( const mt::vec3f & _rhs )
     {
         this->x += _rhs.x;
         this->y += _rhs.y;
@@ -59,7 +66,7 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec3f & vec3f::operator-=( const mt::vec3f & _rhs )
+    mt::vec3f & vec3f::operator -= ( const mt::vec3f & _rhs )
     {
         this->x -= _rhs.x;
         this->y -= _rhs.y;
@@ -68,9 +75,20 @@ namespace mt
         return *this;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec3f & vec3f::operator /= ( const float _rhs )
+    mt::vec3f & vec3f::operator *= ( const mt::vec3f & _rhs )
     {
-        operator *= ( 1.f / _rhs );
+        this->x *= _rhs.x;
+        this->y *= _rhs.y;
+        this->z *= _rhs.z;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec3f & vec3f::operator /= ( const mt::vec3f & _rhs )
+    {
+        this->x /= _rhs.x;
+        this->y /= _rhs.y;
+        this->z /= _rhs.z;
 
         return *this;
     }
@@ -82,6 +100,20 @@ namespace mt
         this->z *= _rhs;
 
         return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::vec3f & vec3f::operator /= ( const float _rhs )
+    {
+        operator *= ( 1.f / _rhs );
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    void vec3f::set( float _x, float _y, float _z )
+    {
+        this->x = _x;
+        this->y = _y;
+        this->z = _z;
     }
     //////////////////////////////////////////////////////////////////////////
     float vec3f::sqrlength() const
@@ -109,6 +141,7 @@ namespace mt
         this->y = _v[1];
         this->z = _v[2];
     }
+    //////////////////////////////////////////////////////////////////////////
     void vec3f::from_f2( const float * _v, float _z )
     {
         this->x = _v[0];
@@ -206,14 +239,14 @@ namespace mt
             mt::equal_f_f( _a.z, _b.z ) == true;
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::vec3f & _a, const mt::vec3f & _b )
+    bool operator == ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
         return mt::cmp_v3_v3( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::vec3f & _a, const mt::vec3f & _b )
+    bool operator != ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
-        return !operator==( _a, _b );
+        return !operator == ( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
     void add_v3_v3( mt::vec3f * const _out, const mt::vec3f & _a, const mt::vec3f & _b )
@@ -223,7 +256,7 @@ namespace mt
         _out->z = _a.z + _b.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator+( const mt::vec3f & _a, const mt::vec3f & _b )
+    vec3f operator + ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
         mt::vec3f out;
         mt::add_v3_v3( &out, _a, _b );
@@ -238,7 +271,7 @@ namespace mt
         _out->z = _a.z - _b.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator-( const mt::vec3f & _a, const mt::vec3f & _b )
+    vec3f operator - ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
         mt::vec3f out;
         mt::sub_v3_v3( &out, _a, _b );
@@ -246,7 +279,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator*( const mt::vec3f & _a, const mt::vec3f & _b )
+    vec3f operator * ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
         mt::vec3f out;
         mt::mul_v3_v3( &out, _a, _b );
@@ -268,7 +301,7 @@ namespace mt
         _out->z = _a.z * _b.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator*( const mt::vec3f & _rhs, const float _val )
+    vec3f operator * ( const mt::vec3f & _rhs, const float _val )
     {
         mt::vec3f out;
         mt::scale_v3_v3( &out, _rhs, _val );
@@ -276,7 +309,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator*( const float _val, const mt::vec3f & _rhs )
+    vec3f operator * ( const float _val, const mt::vec3f & _rhs )
     {
         mt::vec3f out;
         mt::scale_v3_v3( &out, _rhs, _val );
@@ -284,7 +317,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator/( const mt::vec3f & _a, const mt::vec3f & _b )
+    vec3f operator / ( const mt::vec3f & _a, const mt::vec3f & _b )
     {
         mt::vec3f out;
         out.x = _a.x / _b.x;
@@ -294,7 +327,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator/( const mt::vec3f & _rhs, const float _val )
+    vec3f operator / ( const mt::vec3f & _rhs, const float _val )
     {
         return operator*( _rhs, 1 / _val );
     }
@@ -306,7 +339,7 @@ namespace mt
         _out->z = -_out->z;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator-( vec3f _rhs )
+    vec3f operator - ( vec3f _rhs )
     {
         mt::neg_v3( &_rhs );
 
