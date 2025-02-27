@@ -25,22 +25,52 @@ namespace mt
     {
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f & mat4f::operator[]( size_t i )
+    mt::vec4f & mat4f::operator [] ( size_t i )
     {
         return (&v0)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    const mt::vec4f & mat4f::operator[]( size_t i )const
+    const mt::vec4f & mat4f::operator [] ( size_t i )const
     {
         return (&v0)[i];
     }
     //////////////////////////////////////////////////////////////////////////
-    mat4f & mat4f::operator=( const mt::mat4f & _rhs )
+    mat4f & mat4f::operator = ( const mt::mat4f & _rhs )
     {
         v0 = _rhs.v0;
         v1 = _rhs.v1;
         v2 = _rhs.v2;
         v3 = _rhs.v3;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::mat4f & mat4f::operator += ( const mt::mat4f & _rhs )
+    {
+        v0 += _rhs.v0;
+        v1 += _rhs.v1;
+        v2 += _rhs.v2;
+        v3 += _rhs.v3;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::mat4f & mat4f::operator -= ( const mt::mat4f & _rhs )
+    {
+        v0 -= _rhs.v0;
+        v1 -= _rhs.v1;
+        v2 -= _rhs.v2;
+        v3 -= _rhs.v3;
+
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    mt::mat4f & mat4f::operator *= ( const mt::mat4f & _rhs )
+    {
+        mt::mat4f out;
+        mt::mul_m4_m4( &out, *this, _rhs );
+
+        *this = out;
 
         return *this;
     }
@@ -123,14 +153,14 @@ namespace mt
             mt::cmp_v4_v4( _a.v3, _b.v3 );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator==( const mt::mat4f & _a, const mt::mat4f & _b )
+    bool operator == ( const mt::mat4f & _a, const mt::mat4f & _b )
     {
         return mt::cmp_m4_m4( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    bool operator!=( const mt::mat4f & _a, const mt::mat4f & _b )
+    bool operator != ( const mt::mat4f & _a, const mt::mat4f & _b )
     {
-        return !operator==( _a, _b );
+        return !operator == ( _a, _b );
     }
     //////////////////////////////////////////////////////////////////////////
     void mul_m4_v2_z( mt::vec2f * const _out, const mt::mat4f & _m )
@@ -167,7 +197,7 @@ namespace mt
         _out->z = mt::dot_v4_v3( _m.v2, _v ) + _m.v3.z;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator*( const mt::mat4f & m, const mt::vec3f & v )
+    vec3f operator * ( const mt::mat4f & m, const mt::vec3f & v )
     {
         mt::vec3f out;
         mt::mul_v3_m4_v3( &out, m, v );
@@ -258,7 +288,7 @@ namespace mt
         _out->z = _m.v0.z * _v.x + _m.v1.z * _v.y;
     }
     //////////////////////////////////////////////////////////////////////////
-    vec3f operator*( const mt::vec3f & v, const mt::mat4f & m )
+    vec3f operator * ( const mt::vec3f & v, const mt::mat4f & m )
     {
         mt::vec3f out;
         mt::mul_v3_v3_m4( &out, v, m );
@@ -274,7 +304,7 @@ namespace mt
         _out->w = dot_v4_v4( _m.v3, _v );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator*( const mt::mat4f & m, const mt::vec4f & v )
+    mt::vec4f operator * ( const mt::mat4f & m, const mt::vec4f & v )
     {
         mt::vec4f out;
         mt::mul_m4_v4( &out, m, v );
@@ -378,7 +408,7 @@ namespace mt
         _out->z *= w_inv;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::vec4f operator* ( const mt::vec4f & v, const mt::mat4f & m )
+    mt::vec4f operator * ( const mt::vec4f & v, const mt::mat4f & m )
     {
         mt::vec4f out;
         mt::mul_v4_m4( &out, v, m );
@@ -426,7 +456,7 @@ namespace mt
         mt::mul_v4_m3_i( &_out->v3, _a.v3, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::mat4f operator* ( const mt::mat4f & _a, const mt::mat4f & _b )
+    mt::mat4f operator * ( const mt::mat4f & _a, const mt::mat4f & _b )
     {
         mt::mat4f out;
         mt::mul_m4_m4( &out, _a, _b );
@@ -434,7 +464,7 @@ namespace mt
         return out;
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::mat4f operator* ( const mt::mat4f & _a, const mt::mat3f & _b )
+    mt::mat4f operator * ( const mt::mat4f & _a, const mt::mat3f & _b )
     {
         mt::mat4f out;
         mt::mul_m4_m3( &out, _a, _b );
@@ -450,7 +480,7 @@ namespace mt
         mt::add_v4_v4( &_out->v3, _a.v3, _b.v3 );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::mat4f operator+( const mt::mat4f & _a, const mt::mat4f & _b )
+    mt::mat4f operator + ( const mt::mat4f & _a, const mt::mat4f & _b )
     {
         mt::mat4f out;
         mt::add_m4_m4( &out, _a, _b );
@@ -466,7 +496,7 @@ namespace mt
         mt::sub_v4_v4( &_out->v3, _a.v3, _b.v3 );
     }
     //////////////////////////////////////////////////////////////////////////
-    mt::mat4f operator-( const mt::mat4f & _a, const mt::mat4f & _b )
+    mt::mat4f operator - ( const mt::mat4f & _a, const mt::mat4f & _b )
     {
         mt::mat4f out;
         mt::sub_m4_m4( &out, _a, _b );

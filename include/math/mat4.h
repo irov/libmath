@@ -25,6 +25,10 @@ namespace mt
 
         mt::mat4f & operator = ( const mt::mat4f & _rhs );
 
+        mt::mat4f & operator += ( const mt::mat4f & _rhs );
+        mt::mat4f & operator -= ( const mt::mat4f & _rhs );
+        mt::mat4f & operator *= ( const mt::mat4f & _rhs );
+
         void from_f12( const float * _v );
         void from_f16( const float * _v );
 
