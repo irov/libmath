@@ -233,8 +233,8 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     void mul_v2_v2z_m4( mt::vec2f * const _out, const mt::mat4f & _m )
     {
-        _out->x += _m.v3.x;
-        _out->y += _m.v3.y;
+        _out->x = _m.v3.x;
+        _out->y = _m.v3.y;
     }
     //////////////////////////////////////////////////////////////////////////
     void mul_v2_v2_m4( mt::vec2f * const _out, const mt::vec2f & _v, const mt::mat4f & _m )
@@ -856,7 +856,7 @@ namespace mt
         _out->v3.z = (_near * _far) / (_near - _far);
         _out->v3.w = 0.f;
     }
-
+    //////////////////////////////////////////////////////////////////////////
     void make_projection_fov_m4( mt::mat4f * const _out, float _fov, float _aspect, float _zn, float _zf )
     {
         float yscale = 1.f / MT_tanf( _fov * 0.5f );
@@ -1229,7 +1229,6 @@ namespace mt
             {
                 y = x + MT_atan2f( _rotate.v0.y, _rotate.v0.z );
                 z = constant::half_pi;
-
             }
             else
             {

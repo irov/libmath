@@ -146,7 +146,7 @@ namespace mt
         mt::mul_m3_m3_i( &_out->v2, _a.v2, _b );
     }
     //////////////////////////////////////////////////////////////////////////
-    mat3f operator* ( const mt::mat3f & _a, const mt::mat3f & _b )
+    mat3f operator * ( const mt::mat3f & _a, const mt::mat3f & _b )
     {
         mt::mat3f out;
         mt::mul_m3_m3( &out, _a, _b );
@@ -161,7 +161,7 @@ namespace mt
         mt::add_v3_v3( &_out->v2, _a.v2, _b.v2 );
     }
     //////////////////////////////////////////////////////////////////////////
-    mat3f operator+( const mt::mat3f & _a, const mt::mat3f & _b )
+    mat3f operator + ( const mt::mat3f & _a, const mt::mat3f & _b )
     {
         mt::mat3f out;
         mt::add_m3_m3( &out, _a, _b );
@@ -176,7 +176,7 @@ namespace mt
         mt::sub_v3_v3( &_out->v2, _a.v2, _b.v2 );
     }
     //////////////////////////////////////////////////////////////////////////
-    mat3f operator-( const mt::mat3f & _a, const mt::mat3f & _b )
+    mat3f operator - ( const mt::mat3f & _a, const mt::mat3f & _b )
     {
         mt::mat3f out;
         mt::sub_m3_m3( &out, _a, _b );
@@ -191,7 +191,7 @@ namespace mt
         mt::scale_v3_v3( &_out->v2, _rhs.v2, _val );
     }
     //////////////////////////////////////////////////////////////////////////
-    mat3f operator*( const mt::mat3f & _rhs, float _val )
+    mat3f operator * ( const mt::mat3f & _rhs, float _val )
     {
         mt::mat3f out;
         mt::scale_m3_s( &out, _rhs, _val );
