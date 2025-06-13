@@ -183,12 +183,12 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     bool cmp_v2_v2( const mt::vec2f & _a, const mt::vec2f & _b )
     {
-        return mt::equal_f_f( _a.x, _b.x ) == true && mt::equal_f_f( _a.y, _b.y ) == true;
+        return _a.x == _b.x && _a.y == _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
     bool operator == ( const mt::vec2f & _a, const mt::vec2f & _b )
     {
-        return mt::cmp_v2_v2( _a, _b );
+        return _a.x == _b.x && _a.y == _b.y;
     }
     //////////////////////////////////////////////////////////////////////////
     bool operator != ( const mt::vec2f & _a, const mt::vec2f & _b )

@@ -560,10 +560,10 @@ namespace mt
     bool is_ident_m34( const mt::mat4f & _out )
     {
         return
-            mt::equal_f_1( _out.v0.x ) == true && mt::equal_f_z( _out.v0.y ) == true && mt::equal_f_z( _out.v0.z ) == true &&
-            mt::equal_f_z( _out.v1.x ) == true && mt::equal_f_1( _out.v1.y ) == true && mt::equal_f_z( _out.v1.z ) == true &&
-            mt::equal_f_z( _out.v2.x ) == true && mt::equal_f_z( _out.v2.y ) == true && mt::equal_f_1( _out.v2.z ) == true &&
-            mt::equal_f_z( _out.v3.x ) == true && mt::equal_f_z( _out.v3.y ) == true && mt::equal_f_z( _out.v3.z ) == true;
+            _out.v0.x == 0.f && _out.v0.y == 0.f && _out.v0.z == 0.f &&
+            _out.v1.x == 0.f && _out.v1.y == 0.f && _out.v1.z == 0.f &&
+            _out.v2.x == 0.f && _out.v2.y == 0.f && _out.v2.z == 0.f &&
+            _out.v3.x == 0.f && _out.v3.y == 0.f && _out.v3.z == 0.f;
     }
     //////////////////////////////////////////////////////////////////////////
     void get_col_m4( mt::vec4f * const out, const mt::mat4f & _rhs, int _index )

@@ -115,14 +115,14 @@ namespace mt
             return false;
         }
 
-        return mt::equal_f_z( _uv.p0.x ) == true &&
-            mt::equal_f_z( _uv.p0.y ) == true &&
-            mt::equal_f_1( _uv.p1.x ) == true &&
-            mt::equal_f_z( _uv.p1.y ) == true &&
-            mt::equal_f_1( _uv.p2.x ) == true &&
-            mt::equal_f_1( _uv.p2.y ) == true &&
-            mt::equal_f_z( _uv.p3.x ) == true &&
-            mt::equal_f_1( _uv.p3.y ) == true;
+        return _uv.p0.x == 0.f
+            && _uv.p0.y == 0.f
+            && _uv.p1.x == 0.f
+            && _uv.p1.y == 0.f
+            && _uv.p2.x == 0.f
+            && _uv.p2.y == 0.f
+            && _uv.p3.x == 0.f
+            && _uv.p3.y == 0.f;
     }
     //////////////////////////////////////////////////////////////////////////
     void uv4_identity( mt::uv4f * const _uv )

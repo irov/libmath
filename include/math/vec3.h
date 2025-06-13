@@ -65,12 +65,17 @@ namespace mt
 
     MT_CONSTEXPR bool is_ident_v3( const mt::vec3f & _a )
     {
-        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y ) && mt::equal_f_z( _a.z );
+        return _a.x == 0.f && _a.y == 0.f && _a.z == 0.f;
     }
 
     MT_CONSTEXPR bool is_one_v3( const mt::vec3f & _a )
     {
-        return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y ) && mt::equal_f_1( _a.z );
+        return _a.x == 1.f && _a.y == 1.f && _a.z == 1.f;
+    }
+
+    MT_CONSTEXPR bool is_zero_v3( const mt::vec3f & _a )
+    {
+        return _a.x == 0.f && _a.y == 0.f && _a.z == 0.f;
     }
 
     bool operator==( const mt::vec3f & _a, const mt::vec3f & _b );

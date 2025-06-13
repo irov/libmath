@@ -60,22 +60,22 @@ namespace mt
 
     MT_CONSTEXPR bool is_ident_v2( const mt::vec2f & _a )
     {
-        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y );
+        return _a.x == 0.f && _a.y == 0.f;
     }
 
     MT_CONSTEXPR bool is_one_v2( const mt::vec2f & _a )
     {
-        return mt::equal_f_1( _a.x ) && mt::equal_f_1( _a.y );
+        return _a.x == 1.f && _a.y == 1.f;
     }
 
     MT_CONSTEXPR bool is_zero_v2( const mt::vec2f & _a )
     {
-        return mt::equal_f_z( _a.x ) && mt::equal_f_z( _a.y );
+        return _a.x == 0.f && _a.y == 0.f;
     }
 
     MT_CONSTEXPR bool equal_v2_v2( const mt::vec2f & _v1, const mt::vec2f & _v2 )
     {
-        return mt::equal_f_f( _v1.x, _v2.x ) && mt::equal_f_f( _v1.y, _v2.y );
+        return _v1.x == _v2.x && _v1.y == _v2.y;
     }
 
     bool operator==( const mt::vec2f & _a, const mt::vec2f & _b );

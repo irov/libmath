@@ -201,11 +201,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     bool cmp_v4_v4( const mt::vec4f & _a, const mt::vec4f & _b )
     {
-        return
-            mt::equal_f_f( _a.x, _b.x ) == true &&
-            mt::equal_f_f( _a.y, _b.y ) == true &&
-            mt::equal_f_f( _a.z, _b.z ) == true &&
-            mt::equal_f_f( _a.w, _b.w ) == true;
+        return _a.x == _b.x && _a.y == _b.y && _a.z == _b.z && _a.w == _b.w;
     }
     //////////////////////////////////////////////////////////////////////////
     bool operator == ( const mt::vec4f & _a, const mt::vec4f & _b )

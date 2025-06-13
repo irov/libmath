@@ -137,10 +137,7 @@ namespace mt
     //////////////////////////////////////////////////////////////////////////
     bool cmp_q_q( const mt::quatf & _a, const mt::quatf & _b )
     {
-        return mt::equal_f_f( _a.w, _b.w ) == true &&
-            mt::equal_f_f( _a.x, _b.x ) == true &&
-            mt::equal_f_f( _a.y, _b.y ) == true &&
-            mt::equal_f_f( _a.z, _b.z ) == true;
+        return _a.w == _b.w && _a.x == _b.x && _a.y == _b.y && _a.z == _b.z;
     }
     //////////////////////////////////////////////////////////////////////////
     bool operator == ( const mt::quatf & _a, const mt::quatf & _b )
