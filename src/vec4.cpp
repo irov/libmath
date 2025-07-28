@@ -1,4 +1,5 @@
 #include "math/vec4.h"
+#include "math/stdmath.h"
 
 #include "math/utils.h"
 

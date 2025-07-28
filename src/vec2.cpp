@@ -1,4 +1,5 @@
 #include "math/vec2.h"
+#include "math/stdmath.h"
 
 #include "math/angle.h"
 

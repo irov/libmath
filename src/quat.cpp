@@ -1,4 +1,5 @@
 #include "math/quat.h"
+#include "math/stdmath.h"
 
 #include "math/mat4.h"
 #include "math/angle.h"

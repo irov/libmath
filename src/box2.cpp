@@ -1,4 +1,5 @@
 #include "math/box2.h"
+#include "math/stdmath.h"
 
 namespace mt
 {

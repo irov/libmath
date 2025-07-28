@@ -1,4 +1,5 @@
 #include "math/mat3.h"
+#include "math/stdmath.h"
 
 #include "math/angle.h"
 

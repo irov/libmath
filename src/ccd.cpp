@@ -1,4 +1,5 @@
 #include "math/ccd.h"
+#include "math/stdmath.h"
 
 #include "math/utils.h"
 

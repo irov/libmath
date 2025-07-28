@@ -1,6 +1,7 @@
 #include "math/angle.h"
 
 #include "math/constant.h"
+#include "math/stdmath.h"
 
 namespace mt
 {
